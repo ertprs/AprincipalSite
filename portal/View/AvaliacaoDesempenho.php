@@ -23,7 +23,6 @@
     <link href="../css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="../css/select.css" rel="stylesheet">
-    <!-- <link href="../css/bootstrap-multiselect.css" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="../js/bootstrap/bootstrap-select.css">
 
 
@@ -238,6 +237,33 @@
                         <div id="tela_indicador" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
                           <br>
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title">Criar Pergunta</div>
+                                        <br>
+                                        <div class="basic-form">
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-8">
+                                                        <label>Pergunta</label>
+                                                        <textarea type="text" id="pergunta" class="form-control" placeholder="Insira o Texto Aqui..."></textarea>
+                                                    </div>
+                                                    <div id="selectTIPO" class="form-group col-md-4">
+                                                        <label>Setor</label>
+                                                        <select id="inputTipo" class="form-control">
+                                                          <option value="0">Escolha</option>
+                                                          <option value="Escalonada">Escalonada</option>
+                                                          <option value="Dicotômica">Dicotômica</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <button type="button" onclick="SalvaPergunta()" class="btn btn-info">Cadastrar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div id="tela_forms" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
@@ -248,33 +274,6 @@
                   </div>
 
 
-                  <div class="col-lg-12">
-                      <div class="card">
-                          <div class="card-body">
-                              <div class="card-title">Criar Pergunta</div>
-                              <br>
-                              <div class="basic-form">
-                                  <form>
-                                      <div class="form-row">
-                                          <div class="form-group col-md-8">
-                                              <label>Pergunta</label>
-                                              <textarea type="text" id="pergunta" class="form-control" placeholder="Insira o Texto Aqui..."></textarea>
-                                          </div>
-                                          <div id="selectTIPO" class="form-group col-md-4">
-                                              <label>Setor</label>
-                                              <select id="inputTipo" class="form-control">
-                                                <option value="0">Escolha</option>
-                                                <option value="Escalonada">Escalonada</option>
-                                                <option value="Dicotômica">Dicotômica</option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <button type="button" onclick="SalvaPergunta()" class="btn btn-info">Cadastrar</button>
-                                  </form>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
