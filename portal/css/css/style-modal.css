@@ -1,0 +1,61 @@
+
+.modal-content{
+  
+}
+
+.editar{
+  max-width: inherit !important;
+  margin-right: 10% !important;
+  margin-left: 10% !important;
+}
+
+.estilo-header{
+  background-color: #d9534f;
+}
+
+.estilo-header-editar{
+  background-color: #F48732;
+}
+
+.estilo-body{
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.estilo-body-excluir{
+  text-align: center;
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.estilo-footer{
+  text-align: center;
+  justify-content: center !important;
+}
+
+.modal-dialogo{
+  width: 150px !important;
+}
+
+.titulo-modal{
+  font-size: 20px !important;
+}
+
+.corpo-modal{
+  padding: 0 !important;
+  padding-top: 15px !important;
+}
+
+.estilo-h5-header{
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+}
+
+
+.tabelaModalExibeinformacoes {
+  width: 100%;
+  margin-left: 11.2%;
+}

@@ -1,0 +1,53 @@
+#fotoPrincipalY{
+    display: none
+}
+
+.labelFotoPrincipal{
+    padding: 5px;
+    border: solid 1px gray;
+    border-radius: 20px;
+}
+
+#divPreviewFotoPrincipalY{
+    display: none;
+    height: 100px;
+    justify-content: center;
+}
+
+
+#previewFotoPrincipalNaoCarregadoY{
+    height: 100px;
+}
+
+#rowImagemPrincipalY{
+    height: 100px;
+    width: 80%;
+    text-align: center;
+}
+
+.labelFormInputInterno{
+    padding-top: 25px;
+}
+
+.labelFotoPrincipalY{
+  border: solid 1px;
+  border-radius: 15px 15px 15px 15px;
+  margin: 5px;
+}
+
+#labelFotoPrincipal2Y{
+    display: none;
+}
+
+.previewFoto{
+    max-height: calc(80% - 20px);
+    width: auto;
+}
+
+.img_class{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border: solid 1px gray;
+    border-radius: 10px;
+}

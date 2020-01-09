@@ -1,0 +1,8 @@
+#content-wrapper{
+  /*margin-top: 1rem;*/
+  padding-top: 1rem;
+}
+
+footer.sticky-footer {
+    width: 100%;
+}

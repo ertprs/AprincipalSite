@@ -1,0 +1,47 @@
+
+ #cardAp{
+   max-width: 510px !important;
+   width: 510px !important;
+   height:320px !important;
+   max-height:320px !important;
+ }
+
+
+ #nome_card{
+   color:#755608;
+   weight:bold;
+   font-size: 23px;
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: #fff;
+ }
+
+
+
+
+.logoAp {
+  width:90px;
+  height: 70px;
+  margin-top:25px;
+  margin-left:-10px;
+}
+
+#codBarras{
+  color:red;
+}
+
+#bar12{
+  font-size:35px;
+  color:red;
+}
+#bar22{
+  font-size:35px;
+  color:red;
+  margin-left:-5px;
+}
+
+
+.escala-x2 {
+    -webkit-transform: scale(2);
+       -moz-transform: scale(2);
+            transform: scale(2);
+}

@@ -1,0 +1,65 @@
+
+ #cardAp{
+   max-width: 320px !important;
+   width: 320px !important;
+   height:510px !important;
+   max-height:510px !important;
+ }
+
+ #cardApint{
+   max-width: 170px !important;
+   width: 170px !important;
+   height:190px !important;
+   max-height:190px !important;
+   margin-top: 51% !important;
+   margin-left: 23% !important;
+ }
+ #cardNome{
+   margin-top: 5px !important;
+   display: flex;
+   justify-content: center;
+   font-size: 18px;
+   font-family: "Comic Sans MS", "Comic Sans", cursive;
+   color:#f3138ffc;
+ }
+
+
+
+ #nome_card{
+   color:#755608;
+   weight:bold;
+   font-size: 23px;
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: #fff;
+ }
+
+
+
+
+.logoAp {
+  width:90px;
+  height: 70px;
+  margin-top:25px;
+  margin-left:-10px;
+}
+
+#codBarras{
+  color:red;
+}
+
+#bar12{
+  font-size:35px;
+  color:red;
+}
+#bar22{
+  font-size:35px;
+  color:red;
+  margin-left:-5px;
+}
+
+
+.escala-x2 {
+    -webkit-transform: scale(2);
+       -moz-transform: scale(2);
+            transform: scale(2);
+}

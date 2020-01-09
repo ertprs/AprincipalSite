@@ -1,0 +1,148 @@
+.bootstrap-select .bs-ok-default::after {
+    width: 0.3em;
+    height: 0.6em;
+    border-width: 0 0.1em 0.1em 0;
+    transform: rotate(45deg) translateY(0.5rem);
+}
+
+.btn.dropdown-toggle:focus {
+    outline: none !important;
+}
+
+.selectpicker{
+  display: none !important;
+}
+
+.open{
+  display: none !important;
+}
+
+.bootstrap-select{
+  margin-top: -20px;
+}
+
+#multiselect{
+  color: #000 !important;
+  background-color: #ffffff !important;
+  border-color: #ccc !important;
+}
+#midep{
+writing-mode: vertical-rl !important;
+color: black;
+}
+
+.colum_ctech {
+  display:flex;
+  border-left:solid 2px #808080;
+  height:100%;
+  max-height:100%;
+  width: 17%;
+  max-width: 17%;
+}
+
+.colum_ctech_text {
+  /* transform: rotate(270deg); */
+  writing-mode: vertical-rl;
+  margin: 5px;
+}
+
+.colum_ctech_text2 {
+  color:black;
+  text-align:center;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+.colum_ctech_text3 {
+  text-align:center;
+  writing-mode: vertical-rl;
+  font-size:10px;
+  font-weight: bold;
+  break-inside: avoid;
+}
+
+.ctech2{
+  color:black !important;
+  border:solid 1px !important;
+  text-align: center !important;
+}
+.ctech3{
+  text-align: center !important;
+  color:black !important;
+  border-bottom:solid 1px !important;
+}
+.aux-func{
+ margin-left: 50px;
+ margin-right: 50px;
+}
+.top_col{
+  color:black;
+  text-align:center;
+  border-right:solid 1px #000 !important;
+  border-bottom:solid 1px #000 !important;
+}
+.top_col2{
+  color:black;
+  text-align:center;
+  border-right:solid 1px #000 !important;
+  border-left:solid 1px #000 !important;
+  border-bottom:solid 1px #000 !important;
+
+}
+.col-ctech1{
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  padding-right: 0px !important;
+  padding-left: 10px !important;
+}
+.col-ctech2{
+  flex: 0 0 58.33333% !important;
+  max-width: 58.33333% !important;
+  padding-left: 0px !important;
+  padding-right: 10px !important;
+}
+.form_c{
+  font-size: 0.8rem !important;
+}
+
+.ind{
+  padding: 4px !important;
+  color:black;
+  text-align: center;
+  font-weight: 700;
+}
+
+.indVerde{
+  padding: 4px !important;
+  color:#358835;
+  text-align: center;
+  font-weight: 700;
+}
+
+.indVermelho{
+  padding: 4px !important;
+  color:#da542b;
+  text-align: center;
+  font-weight: 700;
+}
+.ba{
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.colum_ctech2 {
+  display:flex;
+  justify-content: center;
+}
+
+.col-xctech {
+  flex: 0 0 24%;
+  max-width: 24%;
+}
+
+  .col-xctech2 {
+    flex: 0 0 15%;
+    max-width: 15%;
+  }

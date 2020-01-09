@@ -1,0 +1,32 @@
+.tableModal{
+  width: 100%;
+}
+
+.tableModal, .thModal, .tdModal {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+caption{
+  border: 1px solid black;
+  border-collapse: collapse;
+  border-bottom: none;
+  padding-bottom: 0;
+  color: black;
+  text-align: center;
+  caption-side: top;
+  margin-top: 20px;
+}
+.thModal, .tdModal {
+  padding: 5px;
+  text-align: left;
+}
+
+.thModal{
+  font-style: italic;
+}
+
+.estilo-body {
+    font-size: 1em;
+}
