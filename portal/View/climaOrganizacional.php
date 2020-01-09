@@ -292,7 +292,7 @@
                                   <div id="legenda" style="width:100%;height:100px;display:flex">
                                     <div style="display:flex;margin-left: 20px;margin-right: 20px;width:49%;"><h3 style="margin-top:40px">Avaliações:</h3></div>
                                     <div class="colum_ctech" style="background-color:#a2eca2;"><h4 class="colum_ctech_text">Positiva</h4></div>
-                                    <div class="colum_ctech" style="background-color:#e6937a;"><h4 class="colum_ctech_text">Negativa</h4></div>
+                                    <div class="colum_ctech" style="fbackground-color:#e6937a;"><h4 class="colum_ctech_text">Negativa</h4></div>
                                     <div  class="colum_ctech" style="background-color:#f5e471;"><h4 class="colum_ctech_text" >Indiferente</h4></div>
                                   </div>
                                   <div id="qtn_resposta" style="width:100%;height:50px;border-top:solid 2px #808080;display:flex">

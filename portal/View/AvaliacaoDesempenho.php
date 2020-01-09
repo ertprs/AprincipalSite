@@ -237,33 +237,51 @@
                         <div id="tela_indicador" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
                           <br>
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title">Criar Pergunta</div>
-                                        <br>
-                                        <div class="basic-form">
-                                            <form>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-8">
-                                                        <label>Pergunta</label>
-                                                        <textarea type="text" id="pergunta" class="form-control" placeholder="Insira o Texto Aqui..."></textarea>
-                                                    </div>
-                                                    <div id="selectTIPO" class="form-group col-md-4">
-                                                        <label>Setor</label>
-                                                        <select id="inputTipo" class="form-control">
-                                                          <option value="0">Escolha</option>
-                                                          <option value="Escalonada">Escalonada</option>
-                                                          <option value="Dicotômica">Dicotômica</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <button type="button" onclick="SalvaPergunta()" class="btn btn-info">Cadastrar</button>
-                                            </form>
-                                        </div>
-                                    </div>
+                          <div class="card-body">
+                              <div class="card-title">Criar Indicadores</div>
+                              <br>
+                              <div class="basic-form">
+                                  <form>
+                                      <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                              <label>Titulo</label>
+                                              <input type="text" id="texto_indicador" class="form-control" placeholder="Insira o Texto Aqui..."></input>
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                              <label>Tipo</label>
+                                              <select id="tipo_indicador" class="form-control">
+                                              <option value="comp_gestor">Competencia Gestor</option>
+                                              <option value="comp_naogestor">Competencia Não Gestor</option>
+                                              <option value="pot_gestor">Potencial Gestor</option>
+                                              <option value="pot_naogestor">Potencial Não Gestor</option>
+                                            </select>
+                                          </div>
+                                      </div>
+                                      <button type="button" onclick="SalvaIndicador()" class="btn btn-info">Salvar Indicadores</button>
+                                  </form>
+                              </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="card-title">Perguntas</div>
+                              <br>
+                              <div class="basic-form">
+                                <div id="table">
+                                  <table id="indicadoresTable" style="width:100%" class="table table-striped table-bordered" >
+                                    <thead>
+                                      <tr>
+                                        <td>Id</td>
+                                        <td>Indicador</td>
+                                        <td>Tipo</td>
+                                        <td>Editar</td>
+                                        <td>Excluir</td>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                  </table>
                                 </div>
-                            </div>
+                              </div>
+                          </div>
                         </div>
                         <div id="tela_forms" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
@@ -274,31 +292,7 @@
                   </div>
 
 
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                              <div class="card-title">Perguntas</div>
-                                <br>
-                                <div class="basic-form">
-                                  <div id="table">
-                                    <table id="table3" style="width:100%" class="table table-striped table-bordered" >
-                                      <thead>
-                                        <tr>
-                                          <td>Id</td>
-                                          <td>Pergunta</td>
-                                          <td>Tipo</td>
-                                          <td>Editar</td>
-                                          <td>Excluir</td>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
@@ -480,6 +474,7 @@
     <script src="../js/plugins-init/chartjs-init.js"></script>
     <script>
     graficos("1");
+    listaForms();
     </script>
 </body>
 
