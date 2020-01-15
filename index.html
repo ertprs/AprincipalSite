@@ -10,17 +10,14 @@
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/sweetalert2.css">
+<link rel="stylesheet" type="text/css" href="styles/sweetalert2.min.css">
 <script src="js/Main.js"></script>
 
 </head>
 <body onload="produtos()" >
 
 <div class="super_container">
-
-	<!-- Menu -->
-
-
-
 	<!-- Home -->
 
 	<div class="home">
@@ -41,11 +38,11 @@
 									<div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
 										<div class="header_top_nav">
 											<ul class="d-flex flex-row align-items-center justify-content-start">
-												<li><a href="#">Duvidas Frequentes</a></li>
+												<li><a href="duvidas.html">Duvidas Frequentes</a></li>
 												<li><a href="franqueado.php">Seja Um Fraqueado</a></li>
-												<li><a href="#">Trabalhe Conosco</a></li>
+												<li><a href="trabalhe.html">Trabalhe Conosco</a></li>
 												<li><a href="portal/index.php">Portal Aprincipal</a></li>
-												<li><a href="#">Webmail</a></li>
+												<li><a href="trabalhe.html">Webmail</a></li>
 											</ul>
 										</div>
 										<div class="header_top_phone">
@@ -160,15 +157,18 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_title">Nossos Produtos</div>
-					<div class="section_subtitle">to choose from</div>
+					<div class="section_subtitle">Insira Um Texto Aqui</div>
 				</div>
 			</div>
-			<div class="row dept_row" id="aux">
-
-<h1>INSERIR SLIDE DE FOTOS DE PRODUTOS AQUI</h1>
+			<br><br>
+			<div class="row blog">
+				<div class="col-md-12" id="auxiliar">
+				</div>
 			</div>
 		</div>
 	</div>
+
+
 	<!-- Milestones -->
 
 	<div class="milestones">
@@ -284,11 +284,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Desen
 							<div class="footer_contact_form_container">
 								<form action="#" class="footer_contact_form" id="footer_contact_form">
 									<div class="d-flex flex-xl-row flex-column align-items-center justify-content-between">
-										<input type="text" class="footer_contact_input" placeholder="Nome" required="required">
-										<input type="email" class="footer_contact_input" placeholder="E-mail" required="required">
+										<input id="nome" type="text" class="footer_contact_input" placeholder="Nome" required="required">
+										<input id="email" type="email" class="footer_contact_input" placeholder="E-mail" required="required">
 									</div>
-									<textarea class="footer_contact_input footer_contact_textarea" placeholder="Messagem" required="required"></textarea>
-									<button class="footer_contact_button">Enviar Mensagem</button>
+									<textarea id="mensagem" class="footer_contact_input footer_contact_textarea" placeholder="Messagem" required="required"></textarea>
+									<button class="footer_contact_button" onclick="EnviaEmail()">Enviar Mensagem</button>
 								</form>
 							</div>
 						</div>
@@ -321,11 +321,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Desen
 						<div class="footer_bar_content d-flex flex-sm-row flex-column align-items-lg-center align-items-start justify-content-start">
 							<div class="footer_links">
 								<ul class="d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-									<li><a href="#">Duvidas Frequentes</a></li>
+									<li><a href="duvidas.html">Duvidas Frequentes</a></li>
 									<li><a href="franqueado.php">Seja Um Fraqueado</a></li>
-									<li><a href="#">Trabalhe Conosco</a></li>
-									<li><a href="#">Portal Aprincipal</a></li>
-									<li><a href="#">Webmail</a></li>
+									<li><a href="trabalhe.html">Trabalhe Conosco</a></li>
+									<li><a href="portal/index.php">Portal Aprincipal</a></li>
+									<li><a href="trabalhe.html">Webmail</a></li>
 								</ul>
 							</div>
 							<div class="footer_phone ml-lg-auto">
@@ -354,6 +354,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Desen
 <script src="plugins/greensock/animation.gsap.min.js"></script>
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="js/about.js"></script>
+<script src="js/Email.js"></script>
+<script src="js/sweetalert2.all.min.js"></script>
+<script src="js/sweetalert2.all.js"></script>
+<script src="js/sweetalert2.js"></script>
+<script src="js/sweetalert2.min.js"></script>
 <script>
 noticias();
 </script>

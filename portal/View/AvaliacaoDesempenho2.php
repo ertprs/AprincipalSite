@@ -2,26 +2,25 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Aprincipal Bebê e Mamãe</title>
-  <link rel="icon" type="../image/png" sizes="16x16" href="images/favicon.png">
-  <link href="../plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../plugins/chartist/css/chartist.min.css">
-  <link rel="stylesheet" href="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
-  <link href="../css/style.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../css/sweetalert2.css">
-  <link rel="stylesheet" type="text/css" href="../css/sweetalert2.min.css">
-  <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-  <link href="../css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
-  <link href="../css/select.dataTables.min.css" rel="stylesheet" type="text/css">
-  <link href="../css/dataTables.bootstrap4.css" rel="stylesheet">
-  <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
-  <link href="../css/select.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../js/bootstrap/bootstrap-select.css">
-  <link href="../css/desempenho.css" rel="stylesheet">
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aprincipal Bebê e Mamãe</title>
+    <link rel="icon" type="../image/png" sizes="16x16" href="images/favicon.png">
+    <link href="../plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert2.css">
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert2.min.css">
+    <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/select.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../css/select.css" rel="stylesheet">
+    <link href="../css/desempenho.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../js/bootstrap/bootstrap-select.css">
 
 <body>
 
@@ -32,7 +31,14 @@
             </svg>
         </div>
     </div>
+    <!--*******************
+        Preloader end
+    ********************-->
 
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
     <div id="main-wrapper">
 
         <!--**********************************
@@ -268,43 +274,6 @@
                                 </div>
                               </div>
                           </div>
-                          <div class="card-body">
-                            <div class="card-title">Níveis da Escala - Avaliação de Competências</div>
-                            <table class="table">
-                              <thead class="thead-dark">
-                                <tr>
-                                  <th scope="col" colspan="2">Notas:</th>
-                                  <th scope="col" colspan="2">Nível</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>9</td>
-                                  <td>10</td>
-                                  <td style="background-color:#4CAF50;color:white">Excelente</td>
-                                  <td>Excelente (9 a 10) - Supera as expectativas quanto ao padrão esperado de desempenho definido para a competência. Excede ao padrão esperado, demonstrando desempenho além das expectativas. Agrega melhorias e resultados visíveis, reconhecidos e confirmados no âmbito da entidade.</td>
-                                </tr>
-                                <tr>
-                                  <td>7</td>
-                                  <td>8</td>
-                                  <td style="background-color:#99ffcc;color:white">Bom</td>
-                                  <td>Bom (7 a 8) - Atende às expectativas quanto ao padrão esperado de desempenho definido para a competência avaliada. Alcança o padrão esperado, demonstrando resultado de desempenho plenamente satisfatório. Na maioria das vezes o gestor apenas valida o atendimento da competência em relação ao padrão.</td>
-                                </tr>
-                                <tr>
-                                  <td>5</td>
-                                  <td>6</td>
-                                  <td style="background-color:#ffff99;color:white">Regular</td>
-                                  <td>Regular (5 a 6) - Atende parcialmente às expectativas quanto ao padrão esperado de desempenho definido para a competência avaliada. O desempenho alterna entre atendimento e não atendimento. Precisa melhorar o desempenho.  Necessita de interferência do gestor com alguma frequência.</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>4</td>
-                                  <td style="background-color:#ff5050;color:white">Insatisfatório</td>
-                                  <td>Regular (5 a 6) - Atende parcialmente às expectativas quanto ao padrão esperado de desempenho definido para a competência avaliada. O desempenho alterna entre atendimento e não atendimento. Precisa melhorar o desempenho.  Necessita de interferência do gestor com alguma frequência.</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
                         </div>
                         <div id="tela_forms" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
@@ -417,8 +386,6 @@
     <script src="../js/bootstrap/popper.min.js"></script>
     <script src="../js/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../js/bootstrap/bootstrap-select.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <script type="text/javascript">
     $(function () {
         $('.selectpicker').selectpicker();
@@ -428,12 +395,8 @@
     <script src="../js/plugins-init/chartjs-init.js"></script>
     <script>
     graficos("1");
+    listaForms();
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
-    <script src="../js/html2canvas.js"></script>
-    <script src="../js/html2canvas.min.js"></script>
-    <script src="../js/html2canvas.svg.js"></script>
-    <script src="../js/html2canvas.svg.min.js"></script>
 </body>
 
 </html>

@@ -10,6 +10,7 @@
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/duvidas.css">
 </head>
 <body>
 
@@ -87,7 +88,7 @@
 				<div class="row">
 					<div class="col">
 						<div class="home_content">
-							<div class="home_title">Contatos</div>
+							<div class="home_title">Duvidas Frequentes</div>
 						</div>
 					</div>
 				</div>
@@ -102,24 +103,54 @@
 			<div class="row">
 
 				<!-- Contact form -->
-				<div class="col-lg-8 contact_col">
-					<div class="contact_form">
-						<div class="contact_title">Get in touch</div>
-						<div class="contact_form_container">
-							<form action="#" id="contact_form" class="contact_form">
-								<input type="text" id="contact_input" class="contact_input" placeholder="Your Name" required="required">
-								<input type="email" id="contact_email" class="contact_input" placeholder="Your E-mail" required="required">
-								<textarea class="contact_input contact_textarea" id="contact_textarea" placeholder="Message" required="required"></textarea>
-								<button class="contact_button" onclick="EnviaEmail()" id="contact_button">Enviar Mensagem</button>
-							</form>
+				<div class="col-lg-12 contact_col bloco">
+					<div class="duvidas">
+						<a onclick="duvidaAbrir(0)"  id="a0" class="titulo">
+							<i onclick="duvidaAbrir(0)" id="icon0" class="fa fa-plus icon_" aria-hidden="true"></i>
+							<h5 style="margin:5px;color:black">Porque Comprar Na A Principal?</h5>
+						</a>
+						<div class="texto_completo" id="corpo0" style="display:none">
+							<a>Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.</a>
+						</div>
+					</div>
+					<div class="duvidas">
+						<a onclick="duvidaAbrir(1)"  id="a1" class="titulo">
+							<i onclick="duvidaAbrir(1)" id="icon1" class="fa fa-plus icon_" aria-hidden="true"></i>
+							<h5 style="margin:5px;color:black">Porque Comprar Na A Principal?</h5>
+						</a>
+						<div class="texto_completo" id="corpo1" style="display:none">
+							<a>Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.</a>
+						</div>
+					</div>
+					<div class="duvidas">
+						<a onclick="duvidaAbrir(2)"  id="a2" class="titulo">
+							<i onclick="duvidaAbrir(2)" id="icon2" class="fa fa-plus icon_" aria-hidden="true"></i>
+							<h5 style="margin:5px;color:black">Porque Comprar Na A Principal?</h5>
+						</a>
+						<div class="texto_completo" id="corpo2" style="display:none">
+							<a>Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.</a>
+						</div>
+					</div>
+					<div class="duvidas">
+						<a onclick="duvidaAbrir(3)"  id="a3" class="titulo">
+							<i onclick="duvidaAbrir(3)" id="icon3" class="fa fa-plus icon_" aria-hidden="true"></i>
+							<h5 style="margin:5px;color:black">Porque Comprar Na A Principal?</h5>
+						</a>
+						<div class="texto_completo" id="corpo3" style="display:none">
+							<a>Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.</a>
+						</div>
+					</div>
+					<div class="duvidas">
+						<a onclick="duvidaAbrir(4)"  id="a4" class="titulo">
+							<i onclick="duvidaAbrir(4)" id="icon4" class="fa fa-plus icon_" aria-hidden="true"></i>
+							<h5 style="margin:5px;color:black">Porque Comprar Na A Principal?</h5>
+						</a>
+						<div class="texto_completo" id="corpo4" style="display:none">
+							<a>Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.Insira um texto com a resposta aqui.</a>
 						</div>
 					</div>
 				</div>
 
-				<!-- Make an Appointment -->
-				<div class="col-lg-4 contact_col">
-					<img style="margin:40px;margin-top:100px" width="100%" src="images/logo.png"><img>
-				</div>
 
 				<!-- contact info -->
 				<div class="contact_info">
@@ -218,6 +249,7 @@
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/duvidas.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
 <script src="plugins/easing/easing.js"></script>

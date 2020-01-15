@@ -1,0 +1,26 @@
+.duvidas{
+  border: solid 1px #F91D81;
+  border-radius: 6px;
+  margin: 15px;
+}
+
+.bloco{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.titulo{
+cursor: pointer;
+display: flex;
+justify-content: left;
+}
+
+.icon_{
+color: black;
+margin: 5px;
+cursor: pointer;
+}
+.texto_completo{
+
+}
