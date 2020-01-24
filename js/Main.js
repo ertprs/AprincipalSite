@@ -5,6 +5,7 @@ function produtos(){
     dataType: "json",
     success: function(data) {
       var tam = data.length;
+      var tam2 = tam;
       tam = tam/4;
       tam = Math.ceil(tam);
       var ol = document.createElement("ol");
@@ -38,30 +39,112 @@ function produtos(){
          var div1 = document.createElement("div"); var div2 = document.createElement("div"); var div3 = document.createElement("div"); var div4 = document.createElement("div");
          div1.className = "col-md-3";div2.className = "col-md-3"; div3.className = "col-md-3";div4.className = "col-md-3";
          var a1 = document.createElement("a"); var a2 = document.createElement("a"); var a3 = document.createElement("a");var a4 = document.createElement("a");
-         var img1 = document.createElement("img");var img2 = document.createElement("img"); var img3 = document.createElement("img");var img4 = document.createElement("img");
-         img1.alt = "Image";img2.alt = "Image";img3.alt = "Image";img4.alt = "Image";
-         img1.style.maxWidth = "100%";img2.style.maxWidth = "100%";img3.style.maxWidth = "100%";img4.style.maxWidth = "100%";
+
+
          if (i==0) {
-           img1.src = "portal/"+data[0].foto;
-           img2.src = "portal/"+data[1].foto;
-           img3.src = "portal/"+data[2].foto;
-           img4.src = "portal/"+data[3].foto;
+           if (tam2>=1) {
+             var img1 = document.createElement("img");
+             img1.alt = "Image";
+             img1.style.maxWidth = "100%";
+             img1.src = "portal/"+data[0].foto;
+             a1.appendChild(img1);
+           }
+           if (tam2>=2) {
+             var img2 = document.createElement("img");
+             img2.alt = "Image";
+             img2.style.maxWidth = "100%";
+             img2.src = "portal/"+data[1].foto;
+             a2.appendChild(img2);
+           }
+           if (tam2>=3) {
+             var img3 = document.createElement("img");
+             img3.alt = "Image";
+             img3.style.maxWidth = "100%";
+             img3.src = "portal/"+data[2].foto;
+             a3.appendChild(img3);
+           }
+           if (tam2>=4) {
+             var img4 = document.createElement("img");
+             img4.alt = "Image";
+             img4.style.maxWidth = "100%";
+             img4.src = "portal/"+data[3].foto;
+             a4.appendChild(img4);
+           }
+
+           div1.appendChild(a1);div2.appendChild(a2);div3.appendChild(a3);div4.appendChild(a4);
+           divRow.appendChild(div1);divRow.appendChild(div2);divRow.appendChild(div3);divRow.appendChild(div4);
+           div.appendChild(divRow);
+           divInner.appendChild(div);
          }else if(i==1){
-           img1.src = "portal/"+data[4].foto;
-           img2.src = "portal/"+data[5].foto;
-           // img3.src = "portal/"+data[6].foto;
-           // img4.src = "portal/"+data[7].foto;
+          if (tam2>=5) {
+            var img5 = document.createElement("img");
+            img5.alt = "Image";
+            img5.style.maxWidth = "100%";
+            img5.src = "portal/"+data[4].foto;
+            a1.appendChild(img5);
+          }
+           if (tam2>=6) {
+             var img6 = document.createElement("img");
+             img6.alt = "Image";
+             img6.style.maxWidth = "100%";
+             img6.src = "portal/"+data[5].foto;
+             a2.appendChild(img6);
+           }
+           if (tam2>=7) {
+             var img3 = document.createElement("img");
+             img7.alt = "Image";
+             img7.style.maxWidth = "100%";
+             img7.src = "portal/"+data[6].foto;
+             a3.appendChild(img7);
+           }
+           if (tam2>=8) {
+             var img8 = document.createElement("img");
+             img8.alt = "Image";
+             img8.style.maxWidth = "100%";
+             img8.src = "portal/"+data[7].foto;
+             a4.appendChild(img8);
+           }
+
+           div1.appendChild(a1);div2.appendChild(a2);div3.appendChild(a3);div4.appendChild(a4);
+           divRow.appendChild(div1);divRow.appendChild(div2);divRow.appendChild(div3);divRow.appendChild(div4);
+           div.appendChild(divRow);
+           divInner.appendChild(div);
          }else if(i==2){
-           img1.src = "portal/"+data[8].foto;
-           img2.src = "portal/"+data[9].foto;
-           img3.src = "portal/"+data[10].foto;
-           img4.src = "portal/"+data[11].foto;
+           if (tam2>=9) {
+             var img9 = document.createElement("img");
+             img9.alt = "Image";
+             img9.style.maxWidth = "100%";
+             img9.src = "portal/"+data[8].foto;
+             a1.appendChild(img9);
+           }
+            if (tam2>=10) {
+              var img10 = document.createElement("img");
+              img10.alt = "Image";
+              img10.style.maxWidth = "100%";
+              img10.src = "portal/"+data[9].foto;
+              a2.appendChild(img10);
+            }
+            if (tam2>=11) {
+              var img11 = document.createElement("img");
+              img11.alt = "Image";
+              img11.style.maxWidth = "100%";
+              img11.src = "portal/"+data[10].foto;
+              a3.appendChild(img11);
+            }
+            if (tam2>=12) {
+              var img12 = document.createElement("img");
+              img12.alt = "Image";
+              img12.style.maxWidth = "100%";
+              img12.src = "portal/"+data[11].foto;
+              a4.appendChild(img12);
+            }
+
+            div1.appendChild(a1);div2.appendChild(a2);div3.appendChild(a3);div4.appendChild(a4);
+            divRow.appendChild(div1);divRow.appendChild(div2);divRow.appendChild(div3);divRow.appendChild(div4);
+            div.appendChild(divRow);
+            divInner.appendChild(div);
          }
-         a1.appendChild(img1);a2.appendChild(img2);a3.appendChild(img3);a4.appendChild(img4);
-         div1.appendChild(a1);div2.appendChild(a2);div3.appendChild(a3);div4.appendChild(a4);
-         divRow.appendChild(div1);divRow.appendChild(div2);divRow.appendChild(div3);divRow.appendChild(div4);
-         div.appendChild(divRow);
-         divInner.appendChild(div);
+
        }
          divP.appendChild(divInner);
          $("#auxiliar").html(divP);
@@ -100,24 +183,8 @@ function noticias(){
         divtext.className = "info_text";
         var divtext2 = document.createTextNode(data[i].resumo);
         divtext.appendChild(divtext2);
-        var divButton = document.createElement("div");
-        divButton.className = "button info_button";
-        var a = document.createElement("a");
-        a.href = "#";
-        var t = document.createTextNode("Leia Mais");
-        var t2 = document.createTextNode("Leia Mais");
-        var span = document.createElement("span");
-        var span2 = document.createElement("span");
-        span.appendChild(t);
-        span2.appendChild(t2);
-        span.color = "white";
-        span2.color = "white";
-        a.appendChild(span);
-        a.appendChild(span2);
-        divButton.appendChild(a);
         div4.appendChild(divTitle);
         div4.appendChild(divtext);
-        div4.appendChild(divButton);
         div2.appendChild(div4);
         div.appendChild(div2);
         var br = document.createElement("br");
@@ -131,11 +198,25 @@ function noticias(){
   });
 }
 
-function noticias2(){
+function filtros(){
+  $.ajax({
+    type: 'POST',
+    url: "control/listaCat.php",
+    dataType: "json",
+    success: function(data) {
+      var array = []
+      for (var i = 0; i < data.length; i++) {
+        array.push(data[i].categoria);
+      }
+    }});
+}
+
+function noticias2(cat,id){
   $.ajax({
     type: 'POST',
     url: "control/listaNoticias2.php",
     dataType: "json",
+    data: {cat:cat,id:id},
     success: function(data) {
       var noticias = document.createElement("div");
       noticias.className = "news_posts";
@@ -164,12 +245,13 @@ function noticias2(){
         var li = document.createElement("li");
         var li2 = document.createElement("li");
         var a3 = document.createElement("a");
-        var aT3 = document.createTextNode(data[i].autor);
+        var aT3 = document.createTextNode(data[i].autor+" - ");
         a3.appendChild(aT3);
         var a4 = document.createElement("a");
         var aT4 = document.createTextNode(data[i].data);
         a4.appendChild(aT4);
         li.appendChild(a3);
+        li.className = "teste";
         li2.appendChild(a4);
         ul.appendChild(li);
         ul.appendChild(li2);
@@ -177,19 +259,26 @@ function noticias2(){
         var div3_4 = document.createElement("div");
         div3_4.className = "news_post_text";
         var p = document.createElement("p");
+        p.className = "block-with-text";
+        var idbutton = "text"+i;
+        var a = document.createElement("a");
+        a.id = "click"+i;
+        a.style.cursor = "pointer";
+        a.setAttribute("onclick","abrirNoticia("+i+")");
+        p.id = idbutton;
         var pT = document.createTextNode(data[i].texto);
         p.appendChild(pT);
         div3_4.appendChild(p);
         var divButton = document.createElement("div");
         divButton.className = "button news_post_button";
-        var a = document.createElement("a");
-        a.href = "#";
         var t = document.createTextNode("Leia Mais");
         var t2 = document.createTextNode("Leia Mais");
         var span = document.createElement("span");
         var span2 = document.createElement("span");
         span.appendChild(t);
         span2.appendChild(t2);
+        span.id = "button"+i;
+        span2.id = "buttonx"+i;
         span.color = "white";
         span2.color = "white";
         a.appendChild(span);
@@ -233,6 +322,28 @@ function noticias2(){
   });
 }
 
+function abrirNoticia(id){
+var idbutton = "text"+id;
+var button = "#button"+id;
+var buttonx = "#buttonx"+id;
+var click = "click"+id;
+document.getElementById(idbutton).className ="block-with-text2";
+$(button).html("Fechar");
+$(buttonx).html("Fechar");
+document.getElementById(click).setAttribute("onclick","fechaNoticia("+id+")");
+}
+
+function fechaNoticia(id){
+  var idbutton = "text"+id;
+  var button = "#button"+id;
+  var buttonx = "#buttonx"+id;
+  var click = "click"+id;
+  document.getElementById(idbutton).className ="block-with-text";
+  $(button).html("Ler Mais");
+  $(buttonx).html("Ler Mais");
+  document.getElementById(click).setAttribute("onclick","abrirNoticia("+id+")");
+}
+
 function noticias3(){
   $.ajax({
     type: 'POST',
@@ -259,16 +370,18 @@ function noticias3(){
         var a = document.createElement("a");
         var aT = document.createTextNode(data[i].titulo);
         a.appendChild(aT);
-        a.href = "#";
+        a.setAttribute("onclick", "noticias2('Todos',"+data[i].id+")");
+        a.style.cursor = "pointer";
         div4.appendChild(a);
         div3.appendChild(div4);
         var div5 = document.createElement("div");
         var ul = document.createElement("ul");
         ul.className = "d-flex flex-row align-items-start justify-content-start";
         var li = document.createElement("li");
+        li.className = "teste";
         var li2 = document.createElement("li");
         var a3 = document.createElement("a");
-        var aT3 = document.createTextNode(data[i].autor);
+        var aT3 = document.createTextNode(data[i].autor+" - ");
         a3.appendChild(aT3);
         var a4 = document.createElement("a");
         var aT4 = document.createTextNode(data[i].data);
@@ -279,15 +392,6 @@ function noticias3(){
         ul.appendChild(li2);
         div5.appendChild(ul);
         div3.appendChild(div5);
-
-        // var div6 = document.createElement("div");
-        // div6.className = "latest_title";
-        // var a5 = document.createElement("a");
-        // var aT5 = document.createTextNode(data[i].titulo);
-        // a5.appendChild(aT5);
-        // a5.href = "#";
-        // div6.appendChild(a5);
-        // div3.appendChild(div6);
 
         div.appendChild(div3);
         noticias.appendChild(div);

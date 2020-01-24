@@ -2190,3 +2190,21 @@ section
 	margin-top: 12px;
 	line-height: 1.2;
 }
+
+
+.teste{
+	padding-right: 5px;
+}
+
+
+.block-with-text {
+    overflow: hidden;
+    position: relative;
+    line-height: 2em;
+    max-height: 6em; /* aqui vc controla a altura da caixa de texto */
+    text-align: justify;
+}
+
+.block-with-text2 {
+  display: block;
+}

@@ -46,7 +46,7 @@
 												<li><a href="franqueado.php">Seja Um Fraqueado</a></li>
 												<li><a href="trabalhe.html">Trabalhe Conosco</a></li>
 												<li><a href="portal/index.php">Portal Aprincipal</a></li>
-												<li><a href="trabalhe.html">Webmail</a></li>
+												<li><a href="https://www.aprincipalbb.com.br/webmail">Webmail</a></li>
 											</ul>
 										</div>
 										<div class="header_top_phone">
@@ -508,7 +508,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Desen
 									<li><a href="franqueado.php">Seja Um Fraqueado</a></li>
 									<li><a href="trabalhe.html">Trabalhe Conosco</a></li>
 									<li><a href="portal/index.php">Portal Aprincipal</a></li>
-									<li><a href="trabalhe.html">Webmail</a></li>
+									<li><a href="https://www.aprincipalbb.com.br/webmail">Webmail</a></li>
 								</ul>
 							</div>
 							<div class="footer_phone ml-lg-auto">

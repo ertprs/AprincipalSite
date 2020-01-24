@@ -18,17 +18,19 @@
     <link rel="stylesheet" type="text/css" href="../css/sweetalert2.css">
     <link rel="stylesheet" type="text/css" href="../css/sweetalert2.min.css">
 
-    <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-    <link href="../css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
-    <link href="../css/select.dataTables.min.css" rel="stylesheet" type="text/css">
-    <link href="../css/dataTables.bootstrap4.css" rel="stylesheet">
-    <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+        <link href="../css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
+        <link href="../css/select.dataTables.min.css" rel="stylesheet" type="text/css">
+        <link href="../css/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="../css/vagas.css" rel="stylesheet">
 </head>
 
 <body onload="Init()">
   <script>
   function Init(){
-    listaProdutos();
+    Setor();
+    listaVagas();
   }
   </script>
 
@@ -144,6 +146,7 @@
                       <ul aria-expanded="false">
                         <li><a href="blog.php">Blog</a></li>
                         <li><a href="produtos.php">Produtos</a></li>
+
                       </ul>
                   </li>
                   <li>
@@ -191,7 +194,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="gerir_vagas.php">Criar Vaga</a></li>
-                            <li><a href="ediador.php">Ver Candidaturas</a></li>
+                            <li><a href="ver_vagas.php">Ver Candidaturas</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">EAD</li>
@@ -230,49 +233,70 @@
 
 
                     <div class="col-lg-12">
-                        <div class="card" style="display:flex !important">
+                        <div class="card">
                             <div class="card-body">
-                                <div class="card-title">Cadastrar Produtos</div>
+                                <div class="card-title">Disponibilizar Vaga</div>
                                 <br>
-                                <div class="row">
-                                  <div class="basic-form col-5">
-                                      <form>
-                                          <div class="form-row">
-                                              <div class="form-group col-md-12">
-                                                  <label>Titulo</label>
-                                                  <input type="text" id="titulo"  class="form-control" placeholder="Titulo" maxlength="50">
-                                              </div>
-                                              <div class="form-group col-md-12">
-                                                  <label>Imagem (Dimensões Necessarias: 510px por 668px)</label>
-                                                  <input type="file" id="imagem" class="form-control" accept="image/*">
-                                              </div>
-                                          </div>
-                                          <div style="display:flex;justify-content:space-between">
-                                            <button type="button" onclick="envia_()" class="btn btn-info col-5">Enviar Produto</button>
-                                          </div>
-                                      </form>
-                                  </div>
-                                  <div class="basic-form col-7">
-                                      <div id="tableNoticias">
-                                        <table id="table1" style="width:100%" class="table table-striped table-bordered" >
-                                          <thead>
-                                            <tr>
-                                              <td>Id</td>
-                                              <td>Foto</td>
-                                              <td>Titulo</td>
-                                              <td>Excluir</td>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                  </div>
+                                <div class="basic-form">
+                                    <form id="vagas_form">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Nome da Vaga</label>
+                                                <input type="text" id="nome" class="form-control" placeholder="Nome do Cargo Disponivel">
+                                            </div>
+                                            <div id="selectDepartamento" class="form-group col-md-6">
+                                                <label>Departamento</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Funções</label>
+                                                <textarea type="text" id="funcoes" class="form-control" placeholder="Responsabilidades"></textarea>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Requisitos</label>
+                                                <textarea type="text" id="requisitos" class="form-control" placeholder="Requisitos"></textarea>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Beneficios</label>
+                                                <textarea type="text" id="beneficios" class="form-control" placeholder="Beneficios"></textarea>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Carga Horaria Semanal</label>
+                                                <textarea type="text" id="jornada" class="form-control" placeholder="Jornada de Trabalho Semanal"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="button" onclick="SalvaVaga()" class="btn btn-dark">Cadastrar</button>
+                                    </form>
                                 </div>
                             </div>
-
+                            <div class="card-body">
+                                <div class="card-title">Vagas Criadas</div>
+                                <br>
+                                <div class="basic-form">
+                                    <div id="tableColaboradores">
+                                      <table id="table1" style="width:100%" class="table table-striped table-bordered" >
+                                        <thead>
+                                          <tr>
+                                            <td>Id</td>
+                                            <td>Nome</td>
+                                            <td>Funções</td>
+                                            <td>Departamento</td>
+                                            <td>Requisitos</td>
+                                            <td>Carga Horaria</td>
+                                            <td>Beneficios</td>
+                                            <td>Editar</td>
+                                            <td>Excluir</td>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
             <!-- #/ container -->
@@ -301,68 +325,17 @@
     <!--**********************************
         Scripts
     ***********************************-->
-
-    <!-- Modal Login -->
-    <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document" style="max-width:1000px !important">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="row">
-            <div class="basic-form col-7" style="margin:10px !important">
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Titulo</label>
-                            <input type="text" id="titulo4" onblur="editRefresh()" class="form-control" placeholder="Titulo" maxlength="50">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Resumo</label>
-                            <input type="text" id="resumo4"  onblur="editRefresh()" class="form-control" placeholder="Resumo" maxlength="130">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label>Texto</label>
-                            <textarea id="texto4" style="height:100px" class="form-control" placeholder="Conteudo"></textarea>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label>Imagem (Dimensões Necessarias: 690px por 468px)</label>
-                            <input type="file" id="imagem4" onchange="IMG()" class="form-control" accept="image/*">
-                        </div>
-                    </div>
-                    <input type="hidden" id="id4">
-                </form>
-            </div>
-            <div class="basic-form col-4"  style="margin:10px !important">
-              <div class="card-title" style="text-align:center;overflow: hidden;">Previa da Noticias</div>
-              <div id="card44" style="text-align:center;width:100%;background-color:#dee2e65c">
-                <img id="img24" class="col-12" display="block" style="width:100% !important;padding-right: 0px !important;padding-left:0px !important">
-                <h4 id="tituloX" display="block" style="text-align:center;overflow: hidden;margin-top:20px"></h4>
-                <h6 id="resumoX" display="block" style="text-align:justify;overflow: hidden;margin-left:15px;margin-right:15px"></h6>
-                <button type="button" class="wall btn btn-warning col-4">Ler Mais</button>
-                <br>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-dark" style="width:10rem" onclick="EditaNot()">Editar Noticia</button>
-          </div>'
-        </div>
-      </div>
-    </div>
     <script src="../plugins/common/common.min.js"></script>
     <script src="../js/custom.min.js"></script>
     <script src="../js/settings.js"></script>
     <script src="../js/gleek.js"></script>
     <script src="../js/styleSwitcher.js"></script>
-    <script src="../control/produtos.js"></script>
+    <script src="../control/gerir_vagas.js"></script>
     <script src="../js/sweetalert2.all.min.js"></script>
     <script src="../js/sweetalert2.all.js"></script>
     <script src="../js/sweetalert2.js"></script>
     <script src="../js/sweetalert2.min.js"></script>
-
+    <!-- DataTable -->
     <script src="../js/jquery-3.3.1.js"></script>
     <script src="../js/jquery.dataTables.min.js"></script>
     <script src="../js/dataTables.buttons.min.js"></script>

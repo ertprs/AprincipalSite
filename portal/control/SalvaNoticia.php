@@ -3,6 +3,7 @@
   $resumo = $_POST["resumo"];
   $texto = $_POST["texto"];
   $img = $_POST["img"];
+  $cat = $_POST["cat"];
   $calendario = date('d_m_Y');
   $hora = date('H_i_s');
   $nome = substr($titulo, 0, 10);
@@ -26,8 +27,8 @@
          }
 
 ///////////////////////////////////////////////////////////////////
-     $sql = "INSERT INTO noticias (titulo,resumo,texto, fotos,data)
-     VALUES ('$titulo', '$resumo', '$texto', '$file1','$calendario')";
+     $sql = "INSERT INTO noticias (titulo,resumo,texto, fotos,data,categoria)
+     VALUES ('$titulo', '$resumo', '$texto', '$file1','$calendario','$cat')";
      $status = mysqli_query($mysqli, $sql)  or die ("Erro ao buscar evento no banco. ".mysqli_error($mysqli));
        if ($status) {
          echo "1";

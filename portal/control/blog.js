@@ -90,15 +90,54 @@ function EditaNoticia(img){
     });
 }
 
+function autoComplete(cidade,data) {
+      var data = JSON.parse(data);
+      var array = [];
+      for (var i = 0; i < data.length; i++) {
+        array.push(data[i].categoria);
+      }
+      const destino = array;
+              return destino.filter((valor) => {
+                      const valorMinusculo = valor.toLowerCase()
+                      const cidadeMinusculo = cidade.toLowerCase()
+                      return valorMinusculo.includes(cidadeMinusculo)
+                })
+   }
+
+  const cat = document.querySelector('#cat');
+  const sugestoes = document.querySelector('.sugestoes');
+  $.ajax({
+    type: 'POST',
+    url: "../control/buscaCat.php",
+    success: function(data) {
+      cat.addEventListener('input', ({ target }) => {
+          const dadosDocat = target.value
+          if(dadosDocat.length) {
+             const autoCompleteValores = autoComplete(dadosDocat,data)
+             sugestoes.innerHTML = `
+                ${autoCompleteValores.map((value) => {
+                  var v= value+"";
+                    return ( `<li onclick="insere('${v}')">${value}</li>`  )
+                 }).join('')}`
+           }
+    })
+    }});
+
+
+function insere(value){
+  document.getElementById("cat").value = value;
+}
+
 function SalvaNoticia(img){
   var titulo = document.getElementById("titulo").value;
   var resumo = document.getElementById("resumo").value;
   var texto = document.getElementById("texto").value;
+  var cat = document.getElementById("cat").value;
 
   $.ajax({
     type: 'POST',
     url: "../control/SalvaNoticia.php",
-    data: {titulo:titulo,resumo:resumo,texto:texto,img:img},
+    data: {titulo:titulo,resumo:resumo,texto:texto,img:img,cat:cat},
     success: function(data) {
       if (data=="1") {
         const Toast = Swal.mixin({

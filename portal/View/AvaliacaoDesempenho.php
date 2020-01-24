@@ -21,10 +21,7 @@
   <link href="../css/select.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../js/bootstrap/bootstrap-select.css">
   <link href="../css/desempenho.css" rel="stylesheet">
-
-
 <body>
-
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -32,12 +29,7 @@
             </svg>
         </div>
     </div>
-
     <div id="main-wrapper">
-
-        <!--**********************************
-            Nav header start
-        ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="../home.php">
@@ -49,10 +41,8 @@
                 </a>
             </div>
         </div>
-
         <div class="header">
             <div class="header-content clearfix">
-
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
@@ -149,7 +139,7 @@
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="aborador.php">Criar Vaga</a></li>
+                            <li><a href="gerir_vagas.php">Criar Vaga</a></li>
                             <li><a href="ediador.php">Ver Candidaturas</a></li>
                         </ul>
                     </li>
@@ -197,7 +187,9 @@
                                   <button  type="button" onclick="graficos(3)" class="btn btn-info col-xctech2">Colaborador</button>
                                   <button  type="button" onclick="graficos(4)" class="btn btn-info col-xctech2">Evolução</button>
                                   <button  type="button" onclick="graficos(5)" class="btn btn-info col-xctech2">Indicadores</button>
+                                  <button  type="button" onclick="graficos(7)" class="btn btn-info col-xctech2">Matriz</button>
                                   <button  type="button" onclick="graficos(6)" class="btn btn-info col-xctech2">Formulários</button>
+
                             </div>
                             <br>
                             <div class="row" id="filtros" style="display:flex;justify-content:space-between">
@@ -236,10 +228,10 @@
                                           <div class="form-group col-md-6">
                                               <label>Tipo</label>
                                               <select id="tipo_indicador" class="form-control">
-                                              <option value="comp_gestor">Competencia Gestor</option>
-                                              <option value="comp_naogestor">Competencia Não Gestor</option>
-                                              <option value="tec_gestor">Potencial Gestor</option>
-                                              <option value="tec_naogestor">Potencial Não Gestor</option>
+                                              <option value="1">Competencia Gestor</option>
+                                              <option value="2">Competencia Não Gestor</option>
+                                              <option value="3">Potencial Gestor</option>
+                                              <option value="4">Potencial Não Gestor</option>
                                             </select>
                                           </div>
                                       </div>
@@ -247,8 +239,9 @@
                                   </form>
                               </div>
                           </div>
+
                           <div class="card-body">
-                            <div class="card-title">Perguntas</div>
+                            <div class="card-title">Grupos de Indicadores de Competencia de Gestores</div>
                               <br>
                               <div class="basic-form">
                                 <div id="table">
@@ -269,8 +262,33 @@
                               </div>
                           </div>
                           <div class="card-body">
+                            <div class="card-title">Grupos de Indicadores de Competencia de Não Gestores</div>
+                              <br>
+                              <div class="basic-form">
+                                <div id="table">
+                                  <table id="table5"  style="width:100%" class="table table-striped table-bordered" >
+                                    <thead >
+                                      <tr >
+                                        <td>Id</td>
+                                        <td>Indicador</td>
+                                        <td>Tipo</td>
+                                        <td>Editar</td>
+                                        <td>Excluir</td>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                          </div>
+                          <hr style="border: solid 1px;color:#cec7c7">
+
+                          <div class="card-body">
                             <div class="card-title">Níveis da Escala - Avaliação de Competências</div>
-                            <table class="table">
+                            <button type="button" onclick="SalvaNiveis()" class="btn btn-info">Salvar Niveis</button>
+                            <br><br>
+                            <table class="table" style="border:solid 1px">
                               <thead class="thead-dark">
                                 <tr>
                                   <th scope="col" colspan="2">Notas:</th>
@@ -279,36 +297,184 @@
                               </thead>
                               <tbody>
                                 <tr>
-                                  <td>9</td>
-                                  <td>10</td>
+                                  <td><input class="limite" id="exc_min"></input></td>
+                                  <td><input class="limite" id="exc_max"></input></td>
                                   <td style="background-color:#4CAF50;color:white">Excelente</td>
-                                  <td>Excelente (9 a 10) - Supera as expectativas quanto ao padrão esperado de desempenho definido para a competência. Excede ao padrão esperado, demonstrando desempenho além das expectativas. Agrega melhorias e resultados visíveis, reconhecidos e confirmados no âmbito da entidade.</td>
+                                  <td><textarea class="texto_limite" id="exc_text"></textarea></td>
                                 </tr>
                                 <tr>
-                                  <td>7</td>
-                                  <td>8</td>
-                                  <td style="background-color:#99ffcc;color:white">Bom</td>
-                                  <td>Bom (7 a 8) - Atende às expectativas quanto ao padrão esperado de desempenho definido para a competência avaliada. Alcança o padrão esperado, demonstrando resultado de desempenho plenamente satisfatório. Na maioria das vezes o gestor apenas valida o atendimento da competência em relação ao padrão.</td>
+                                  <td><input class="limite" id="bom_min"></td>
+                                  <td><input class="limite" id="bom_max"></td>
+                                  <td style="background-color:#99ffcc;color:black">Bom</td>
+                                  <td><textarea class="texto_limite" id="bom_text"></textarea></td>
                                 </tr>
                                 <tr>
-                                  <td>5</td>
-                                  <td>6</td>
-                                  <td style="background-color:#ffff99;color:white">Regular</td>
-                                  <td>Regular (5 a 6) - Atende parcialmente às expectativas quanto ao padrão esperado de desempenho definido para a competência avaliada. O desempenho alterna entre atendimento e não atendimento. Precisa melhorar o desempenho.  Necessita de interferência do gestor com alguma frequência.</td>
+                                  <td><input class="limite" id="reg_min"></td>
+                                  <td><input class="limite" id="reg_max"></td>
+                                  <td style="background-color:#ffff99;color:black">Regular</td>
+                                  <td><textarea class="texto_limite" id="reg_text"></textarea></td>
                                 </tr>
                                 <tr>
-                                  <td>1</td>
-                                  <td>4</td>
-                                  <td style="background-color:#ff5050;color:white">Insatisfatório</td>
-                                  <td>Regular (5 a 6) - Atende parcialmente às expectativas quanto ao padrão esperado de desempenho definido para a competência avaliada. O desempenho alterna entre atendimento e não atendimento. Precisa melhorar o desempenho.  Necessita de interferência do gestor com alguma frequência.</td>
+                                  <td><input class="limite" id="ins_min"></td>
+                                  <td><input class="limite" id="ins_max"></td>
+                                  <td style="background-color:#ff5050;color:black">Insatisfatório</td>
+                                  <td><textarea class="texto_limite" id="ins_text"></textarea></td>
                                 </tr>
                               </tbody>
                             </table>
+
                           </div>
                         </div>
                         <div id="tela_forms" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
                           <br>
+                        </div>
+                        <div id="tela_matriz" style="display:block">
+                          <hr style="border: solid 1px;color:#cec7c7">
+
+
+                            <div class="form-group col-6">
+                              <label for="tam_matriz">Tamanho da Matriz</label>
+                              <select class="form-control" id="tam_matriz" onchange="MudaMatriz()">
+                                <option value="0">Selecione</option>
+                                <option value="2">2x2</option>
+                                <option value="3">3x3</option>
+                              </select>
+                            </div>
+
+
+                          <br>
+                          <div  id="matriz3">
+                            <table class="table">
+                              <tr>
+                                <th rowspan="5"><h4 class="t_vertical">Competências Técnicas</h4></th>
+                                <td class="table_matriz">Alto</td>
+                                <td id="al1c1" class="bloco_matriz">Treinamentos</td>
+                                <td id="al1c2" class="bloco_matriz">Aumentar Desafios</td>
+                                <td id="al1c3" class="bloco_matriz">Promover</td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz">Médio</td>
+                                <td id="al2c1" class="bloco_matriz">Realocar</td>
+                                <td id="al2c2" class="bloco_matriz">Treinamentos</td>
+                                <td id="al2c3" class="bloco_matriz">Aumentar Desafios</td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz">Baixo</td>
+                                <td id="al3c1" class="bloco_matriz">Demissão</td>
+                                <td id="al3c2" class="bloco_matriz">Realocar</td>
+                                <td id="al3c3" class="bloco_matriz">Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td class="table_matriz">Baixo</td>
+                                <td class="table_matriz">Médio</td>
+                                <td class="table_matriz">Alto</td>
+                              </tr>
+                              <tr>
+                                <th colspan="4"><h4 style="text-align: center;">Competências Comportamentais</h4></th>
+                              </tr>
+                            </table>
+                            <br>
+                            <table class="table">
+                             <thead class="thead-dark">
+                               <tr>
+                                 <th >ID</th>
+                                 <th >Orientação</th>
+                               </tr>
+                             </thead>
+                            <tbody>
+                              <tr>
+                                <td id="al1c1x">AB</td>
+                                <td>Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td id="al1c2x">AM</td>
+                                <td>Aumentar Desafios</td>
+                              </tr>
+                              <tr>
+                                <td id="al1c3x">AA</td>
+                                <td>Promover</td>
+                              </tr>
+                              <tr>
+                                <td id="al2c1x">MB</td>
+                                <td>Realocar</td>
+                              </tr>
+                              <tr>
+                                <td id="al2c2x">MM</td>
+                                <td>Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td id="al2c3x">MA</td>
+                                <td>Aumentar Desafios</td>
+                              </tr>
+                              <tr>
+                                <td id="al3c1x">BB</td>
+                                <td>Demitir</td>
+                              </tr>
+                              <tr>
+                                <td id="al3c2x">BM</td>
+                                <td>Realocar</td>
+                              </tr>
+                              <tr>
+                                <td id="al3c3x">BA</td>
+                                <td>Treinamentos</td>
+                              </tr>
+                            </tbody>
+                            </table>
+                          </div>
+                          <div  id="matriz2">
+                            <table class="table">
+                              <tr>
+                                <th rowspan="4"><h4 class="t_vertical">Competências Técnicas</h4></th>
+                                <td class="table_matriz">Alto</td>
+                                <td id="l1c1" class="bloco_matriz2">Treinamentos</td>
+                                <td id="l1c2" class="bloco_matriz2">Promover</td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz">Baixo</td>
+                                <td id="l2c1" class="bloco_matriz2">Demissão</td>
+                                <td id="l2c2" class="bloco_matriz2">Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td class="table_matriz">Baixo</td>
+                                <td class="table_matriz">Alto</td>
+                              </tr>
+                              <tr>
+                                <th colspan="3"><h4 style="text-align: center;">Competências Comportamentais</h4></th>
+                              </tr>
+                            </table>
+                            <br>
+                            <table class="table">
+                             <thead class="thead-dark">
+                               <tr>
+                                 <th >ID</th>
+                                 <th >Orientação</th>
+                               </tr>
+                             </thead>
+                            <tbody>
+                              <tr>
+                                <td id="l1c1x">AB</td>
+                                <td>Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td id="l1c2x">AA</td>
+                                <td>Aumentar Desafios</td>
+                              </tr>
+                              <tr>
+                                <td id="l2c1x">BB</td>
+                                <td>Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td id="l2c2x">BA</td>
+                                <td>Treinamentos</td>
+                              </tr>
+                            </tbody>
+                            </table>
+                          </div>
+                          <br>
+                          <button  type="button" onclick="SalvaMatriz()" class="col-4 btn btn-info">Salva Matriz</button>
                         </div>
 
                       </div>
@@ -369,19 +535,7 @@
           <hr style="border: solid 1px;color:#cec7c7">
           <div class="modal-body mx-3">
             <div id="table_indicador">
-              <table id="table4"  class="table table-striped table-bordered">
-                <thead>
-                  <tr>
-                    <td>Id</td>
-                    <td>Titulo</td>
-                    <td>Texto</td>
-                    <td>Editar</td>
-                    <td>Excluir</td>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
+
             </div>
           </div>
 
@@ -400,6 +554,7 @@
     <script src="../js/gleek.js"></script>
     <script src="../js/styleSwitcher.js"></script>
     <script src="../control/AvaliacaoDesempenho.js"></script>
+    <script src="../control/matriz.js"></script>
     <script src="../js/sweetalert2.all.min.js"></script>
     <script src="../js/sweetalert2.all.js"></script>
     <script src="../js/sweetalert2.js"></script>

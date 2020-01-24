@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
+<link rel="stylesheet" type="text/css" href="control/vagas.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
 </head>
 <body>
@@ -41,7 +42,7 @@
 												<li><a href="franqueado.php">Seja Um Fraqueado</a></li>
 												<li><a href="trabalhe.html">Trabalhe Conosco</a></li>
 												<li><a href="portal/index.php">Portal Aprincipal</a></li>
-												<li><a href="trabalhe.html">Webmail</a></li>
+												<li><a href="https://www.aprincipalbb.com.br/webmail">Webmail</a></li>
 											</ul>
 										</div>
 										<div class="header_top_phone">
@@ -87,7 +88,7 @@
 				<div class="row">
 					<div class="col">
 						<div class="home_content">
-							<div class="home_title">Pagina em construção!</div>
+							<div class="home_title">Confira as Vagas Abertas</div>
 						</div>
 					</div>
 				</div>
@@ -99,17 +100,187 @@
 
 	<div class="contact">
 		<div class="container">
-			<div class="row">
+			<div id="VagasAbertas">
 
-
-
-
-	<!-- Footer -->
+			</div>
+			<div id="VagasAbertas2" style="display:none">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="bloco_vaga">
+							<div class="card_vaga">
+								<i class="fa fa-reply"style="cursor:pointer" aria-hidden="true" onclick="Voltar()"></i>
+								<h5 class="card-title colorFontx" id="nome_vaga">Jovem Aprendiz Centro de Distribuição</h5>
+								<div style="display: flex;">
+									<h6 class="card-text colorFont2" style="padding-left: 10px;" id="cidade_vaga">Vaga para: Marabá - PA /</h6>
+									<h6 class="card-text font_vaga" style="padding-left: 10px;" id="endereco_vaga">Av. Antônio Maia, 1405 - Velha Marabá, Marabá - PA, 68500-005</h6>
+								</div>
+								<a onclick="saibamais(1)" style="color:#f91d8199;margin-left: 20px;cursor: pointer;">Saiba Mais</a>
+								<div class="form-row" style="margin:20px">
+									<div class="col-6">
+										<label data-error="wrong" data-success="right" for="cpf_modal">Se Você Já Usou Nossa Plataforma, Insira Seu CPF Aqui</label>
+										<input type="text" id="cpf_modal" class="form-control validate" ></input>
+									</div>
+									<div class="col-2">
+										<label data-error="wrong" data-success="right" for="botaoCPF">Confirme</label>
+										<a class="btn btn-primary btn_vagas2" id="botaoCPF" onclick="verificaCPF()" style="cursor: pointer;">Usar CPF</a>
+									</div>
+								</div>
+								<div class="form-row"  style="margin:20px">
+									<div class="col-6">
+										<label data-error="wrong" data-success="right" for="nome_modal">Nome</label>
+										<input type="text" id="nome_modal" class="form-control validate"></input>
+									</div>
+									<div class="col-6">
+										<label data-error="wrong" data-success="right" for="cpf_modal2">CPF</label>
+										<input type="text" id="cpf_modal2" class="form-control validate"></input>
+									</div>
+									<div class="col-6">
+										<label data-error="wrong" data-success="right" for="endereco_modal">Endereço</label>
+										<input type="text" id="endereco_modal" class="form-control validate"></input>
+									</div>
+									<div class="col-6">
+										<label data-error="wrong" data-success="right" for="escolaridade_modal">Escolaridade</label>
+										<input type="text" id="escolaridade_modal" class="form-control validate"></input>
+									</div>
+									<div class="col-6">
+										<label data-error="wrong" data-success="right" for="curriculo_modal">Curriculo em PDF - Max 4MB</label>
+										<input type="file" id="curriculo_modal" class="form-control validate" onchange="getPDF1(this)"></input>
+									</div>
+									<input type="hidden" name="curriculo_modal2" id="curriculo_modal2" />
+								</div>
+								<input type="hidden" id="inputaux2"></input>
+								<a class="btn btn-primary btn_vagas" onclick="inscreva()" style="cursor: pointer;margin-left:20px">Enviar Candidatura</a>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
 
 
 		<!-- Footer -->
 
+		<footer class="footer">
+			<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/footer.jpg" data-speed="0.8"></div>
+			<div class="footer_content">
+				<div class="container">
+					<div class="row">
 
+						<!-- Footer About -->
+						<div class="col-lg-3 footer_col">
+							<div class="footer_about">
+								<div class="logo">
+									<a href="#">Aprincipal</a>
+								</div>
+								<div class="footer_social">
+									<ul class="d-flex flex-row align-items-center justify-content-start">
+										<li><a href="https://www.instagram.com/aprincipalbebe/"><i class="rodape_ fa fa-instagram" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="rodape_ fa fa-facebook" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="rodape_ fa fa-twitter" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="rodape_ fa fa-linkedin" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+								<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+	Copyright &copy;<script>document.write(new Date().getFullYear());</script> Desenvolvido <i class="fa fa-heart-o" aria-hidden="true"></i> Por <a href="#" target="_blank">Aprincipal</a>
+	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+	</div>
+							</div>
+						</div>
+
+						<!-- Footer Contact -->
+						<div class="col-lg-5 footer_col">
+							<div class="footer_contact">
+								<div class="footer_contact_title">Contato</div>
+								<div class="footer_contact_form_container">
+									<form action="#" class="footer_contact_form" id="footer_contact_form">
+										<div class="d-flex flex-xl-row flex-column align-items-center justify-content-between">
+											<input type="text" class="footer_contact_input" placeholder="Nome" required="required">
+											<input type="email" class="footer_contact_input" placeholder="E-mail" required="required">
+										</div>
+										<textarea class="footer_contact_input footer_contact_textarea" placeholder="Messagem" required="required"></textarea>
+										<button class="footer_contact_button" onclick="EnviaEmail()">Enviar Mensagem</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<!-- Footer Hours -->
+						<div class="col-lg-4 footer_col">
+							<div class="footer_hours">
+								<div class="footer_hours_title">Horario de Funcionamento</div>
+								<ul class="hours_list">
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div>Segunda – Sexta</div>
+										<div class="ml-auto">8:00 – 18:00</div>
+									</li>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div>Sabado</div>
+										<div class="ml-auto">8:00 - 12:00</div>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer_bar">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="footer_bar_content d-flex flex-sm-row flex-column align-items-lg-center align-items-start justify-content-start">
+								<div class="footer_links">
+									<ul class="d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+										<li><a href="duvidas.html">Duvidas Frequentes</a></li>
+										<li><a href="franqueado.php">Seja Um Fraqueado</a></li>
+										<li><a href="trabalhe.html">Trabalhe Conosco</a></li>
+										<li><a href="portal/index.php">Portal Aprincipal</a></li>
+										<li><a href="https://www.aprincipalbb.com.br/webmail">Webmail</a></li>
+									</ul>
+								</div>
+								<div class="footer_phone ml-lg-auto">
+									<i class="fa fa-phone" aria-hidden="true"></i>
+									<span>+34 586 778 8892</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade bd-example-modal-lg" id="ModalLongoExemplo"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" style="color:#484444 !important" id="TituloModalLongoExemplo">Título do modal</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<h4 style="color:#484444 !important" id="cidade"></h4>
+				<h5 id="endereco"></h5>
+				<hr style="height:2px; border:2px;background: #f91d8199;"></hr>
+				<h4 style="color:#484444 !important" >Responsabilidades:</h4>
+				<h5 id="resp"></h5>
+				<hr style="height:2px; border:2px;background: #f91d8199;"></hr>
+				<h4 style="color:#484444 !important" >Requisitos:</h4>
+				<h5 id="req"></h5>
+				<hr style="height:2px; border:2px;background: #f91d8199;"></hr>
+				<h4 style="color:#484444 !important" >Beneficios:</h4>
+				<h5 id="ben"></h5>
+				<hr style="height:2px; border:2px;background: #f91d8199;"></hr>
+			</div>
+			<div class="modal-footer">
+				<input type="hidden" id="inputaux"></input>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+				<button type="button" class="btn btn-primary btn_vagas" onclick="inscreva(1)">Inscreva-se</button>
+			</div>
+    </div>
+  </div>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>
@@ -119,5 +290,9 @@
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 <script src="js/contact.js"></script>
+<script src="control/ver_vagas.js"></script>
+<script>
+	listaVagas();
+</script>
 </body>
 </html>

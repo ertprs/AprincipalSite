@@ -189,7 +189,7 @@
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="aborador.php">Criar Vaga</a></li>
+                            <li><a href="gerir_vagas.php">Criar Vaga</a></li>
                             <li><a href="ediador.php">Ver Candidaturas</a></li>
                         </ul>
                     </li>

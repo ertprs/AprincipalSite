@@ -190,7 +190,7 @@
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="aborador.php">Criar Vaga</a></li>
+                            <li><a href="gerir_vagas.php">Criar Vaga</a></li>
                             <li><a href="ediador.php">Ver Candidaturas</a></li>
                         </ul>
                     </li>
@@ -243,6 +243,11 @@
                                                   <input type="text" id="titulo" onblur="previa3()" class="form-control" placeholder="Titulo" maxlength="50">
                                               </div>
                                               <div class="form-group col-md-6">
+                                                  <label>Categoria</label>
+                                                  <input type="text" id="cat" class="form-control" placeholder="Categoria" maxlength="50">
+                                                  <ul class="sugestoes"></ul>
+                                              </div>
+                                              <div class="form-group col-md-12">
                                                   <label>Resumo</label>
                                                   <input type="text" id="resumo" onblur="previa3()" class="form-control" placeholder="Resumo" maxlength="130">
                                               </div>

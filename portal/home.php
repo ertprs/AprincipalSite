@@ -179,7 +179,7 @@
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./View/cadastrar_colabrador.php">Criar Vaga</a></li>
+                            <li><a href="./View/gerir_vagas.php">Criar Vaga</a></li>
                             <li><a href="./View/editar_colabdor.php">Ver Candidaturas</a></li>
                         </ul>
                     </li>

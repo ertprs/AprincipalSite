@@ -1,0 +1,38 @@
+tbody tr td.my_class{
+  display: -webkit-box !important;
+  -webkit-line-clamp: 6 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.bloco_vaga{
+  margin-bottom: 30px !important;
+  border: 0px !important;
+  border-radius: 0.625rem !important;
+  box-shadow: 2px 2px 2px 2px #a99de7 !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+}
+
+#PainelVagas{
+justify-content: center;
+text-align: center;
+align-items: center;
+}
+
+.btn_vagas{
+margin: 5px;
+color: white !important;
+}
+.card_vaga{
+  padding: 1.0rem 1.0rem !important;
+  flex: 1 1 auto !important;
+}
+.font_vaga{
+font-size: 13px !important;
+}

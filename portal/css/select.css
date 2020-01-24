@@ -155,6 +155,29 @@ color: black;
 }
 
   .col-xctech2 {
-    flex: 0 0 15%;
-    max-width: 15%;
+    flex: 0 0 12%;
+    max-width: 12%;
   }
+
+.table_matriz{
+
+}
+
+.t_vertical{
+  align-items: right;
+  writing-mode: vertical-rl !important;
+  text-align: center;
+}
+.bloco_matriz{
+  margin: 10px !important;
+  width: 250px !important;
+  height: 100px !important;
+  color: black !important;
+}
+
+.bloco_matriz2{
+  margin: 10px !important;
+  width: 350px !important;
+  height: 120px !important;
+  color: black !important;
+}
