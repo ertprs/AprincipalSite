@@ -13,6 +13,9 @@
   display: none !important;
 }
 
+.swal2-popup {
+    width: 50%  !important;
+}
 /* .table{
   width: 100% !important;
 }

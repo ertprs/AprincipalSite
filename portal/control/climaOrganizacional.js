@@ -911,7 +911,7 @@ function Evolution2(){
                               options: {
                                 title: {
                                   display: true,
-                                  text: 'Ranking de Departamentos Com Maior Indice de Satisfação'
+                                  text: 'Grafico de Evolução'
                                 }
                                 }
                               });
@@ -1059,7 +1059,7 @@ $("#graficoEvolucao").html(canvas);
       options: {
         title: {
           display: true,
-          text: 'Ranking de Departamentos Com Maior Indice de Satisfação'
+          text: 'Grafico de Evolução'
         }
         }
       });
@@ -2371,8 +2371,41 @@ function EditaPergunta(){
 
 
 ////////////////////////////////////////////////////////////////
-
+//Essa função é o POP-UP que pergunta qual relatorio vai ser gerado
 function Relatorio(){
+  Swal.fire({
+            title: 'Tipo de Relatorio',
+            html: '<div style="display:flex">'+
+                  '<input style="margin-left:15px;margin-right:10px;margin-top:8px" type="checkbox" id="geral"/><h3>Geral</h3>'+
+                  '<input style="margin-left:15px;margin-right:10px;margin-top:8px" type="checkbox" id="departamento"/><h3>Departamento</h3>'+
+                  '<input style="margin-left:15px;margin-right:10px;margin-top:8px" type="checkbox" id="colaboradores" /><h3>Colaboradores</h3>'+
+                  '<input style="margin-left:15px;margin-right:10px;margin-top:8px" type="checkbox" id="evolucao" /><h3>Evolução</h3></div>',
+            confirmButtonText: 'Gerar Relatorio',
+            preConfirm: () => {
+              var geral = Swal.getPopup().querySelector('#geral').checked
+              var departamento = Swal.getPopup().querySelector('#departamento').checked
+              var colaboradores = Swal.getPopup().querySelector('#colaboradores').checked
+              var evolucao = Swal.getPopup().querySelector('#evolucao').checked
+              return {geral: geral, departamento: departamento,colaboradores: colaboradores, evolucao: evolucao}
+            }
+          }).then((result) => {
+            RelatorioX(result);
+          })
+}
+
+//essa funcção recebe o resultado do pop up e chama a funcção que de gerar relatorio
+function RelatorioX(result){
+  console.log(result.value);
+  if (result.value.geral==true) {
+    //aqui gera o Relatorio quando o geral ta selecionado
+    Relatorio1();
+  }else if (result.value.geral==false) {
+    ////fazer os graficos para os demais casos
+  }
+}
+
+
+function Relatorio1(){
   html2canvas($("#linha1"), {
     onrendered: function(canvas) {
       var myImage = canvas.toDataURL("img/jpg",1.0);
@@ -2408,4 +2441,3 @@ function Relatorio3(){
     }
   });
 }
-
