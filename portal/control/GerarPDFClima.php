@@ -5,7 +5,7 @@ $figura1 = $_POST['figura1'];
 $figura2 = $_POST['figura2'];
 $figura3 = $_POST['figura3'];
 $figura4 = $_POST['figura4'];
-$figura4 = $_POST['figura5'];
+$figura5 = $_POST['figura5'];
 $nomeClientePdf = "Teste";
 use Dompdf\Dompdf;
 
@@ -26,16 +26,16 @@ $style = "
 	width: 190px !important;
 	max-height: 195px !important;
 	height: 195px !important;
-	margin: 15px;
+	margin: 10px;
   }
 
 .figura{
-		max-width: 750px !important;
-		width: 750px !important;
-		max-height: 200px !important;
-		height: 200px !important;
-		margin: 15px;
-	}
+	max-width: 750px !important;
+	width: 750px !important;
+	max-height: 200px !important;
+	height: 200px !important;
+	margin: 10px;
+}
 
 .figura2{
 	max-width: 140px !important;
@@ -43,24 +43,38 @@ $style = "
 	max-height: 90px !important;
 	height: 90px !important;
 }
+
+.figura3{
+	max-width: 750px !important;
+	width: 750px !important;
+	max-height: 300px !important;
+	height: 300px !important;
+	margin: 20px;
+}
 	</style>
 ";
 
 
 $figura = "<div class='titulo'>
-							<img class='figura2' src='../img/logo.png' alt='sing up image'>
-						</div>
-						<div class='titulo'>
-							<h2 style='margin:10px'>Relatorio Geral de Clima Organizacional</h2>
-						</div>
-						<hr style='border: solid 1px;color:#cec7c7;margin:5px;'>
-						<div class='row' style='max-width:100%;width:100%;'>
-  						<img  class='figura'  src='".$figura1."' alt='sing up image'>
-						</div>
-						";
+				<img class='figura2' src='../img/logo.png' alt='sing up image'>
+			</div>
+			<div class='titulo'>
+				<h2 style='margin:5px'>Relatório Geral de Clima Organizacional</h2>
+			</div>
+			<hr style='border: solid 1px;color:#cec7c7;margin:5px;'>
+			<div class='row' style='max-width:100%;width:100%;'>
+				<img  class='figura'  src='".$figura1."' alt='sing up image'>
+			</div>
+			<div class='row' style='max-width:100%;width:100%;'>
+				<img  class='figura3'  src='".$figura2."' alt='sing up image'>
+			</div>
+			<div class='row' style='max-width:100%;width:100%;'>
+				<img  class='figura3'  src='".$figura3."' alt='sing up image'>
+			</div>
+			";
 
 
-$pagina1 = "<div style='padding-left:-9px !important;max-width:819px !important;width:819px !important;height:1122px;'>.$figura.</div>";
+	$pagina1 = "<div style='padding-left:-9px !important;max-width:819px !important;width:819px !important;height:1122px;'>.$figura.</div>";
 	$html = $style.$pagina1;
 	$dompdf->loadHtml($html);
 	ob_clean();
