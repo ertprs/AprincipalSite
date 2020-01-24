@@ -9,7 +9,6 @@ function Valida_Senha(){
           type: "POST",
           data: {login:user,senha:senha2},
           success: function(data) {
-            alert(data)
             if (data=="1") {
                 window.location.href="home.php";
             }else if (data=="2") {

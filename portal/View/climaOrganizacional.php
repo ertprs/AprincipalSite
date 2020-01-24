@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Aprincipal Bebê e Mamãe</title>
-    <!-- Favicon icon -->
     <link rel="icon" type="../image/png" sizes="16x16" href="images/favicon.png">
-
     <link href="../plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../plugins/chartist/css/chartist.min.css">
     <link rel="stylesheet" href="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
@@ -979,7 +977,6 @@
         $('.selectpicker').selectpicker();
     });
     </script>
-
     <script src="../plugins/chart.js/Chart.bundle.min.js"></script>
     <script src="../js/plugins-init/chartjs-init.js"></script>
     <script>

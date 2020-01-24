@@ -4,56 +4,67 @@ function produtos(){
     url: "control/listaProdutos.php",
     dataType: "json",
     success: function(data) {
+      var tam = data.length;
+      tam = tam/4;
+      tam = Math.ceil(tam);
+      var ol = document.createElement("ol");
+      ol.className = "carousel-indicators";
+      for (var i = 0; i < tam; i++) {
+        var li = document.createElement("li");
+        li.setAttribute("data-target", "#blogCarousel");
+        li.setAttribute("data-slide-to", i);
+        if (i==0) {
+          li.className = "active";
+        }
+        ol.appendChild(li);
+      }
+      var divP = document.createElement("div");
+      divP.className = "carousel slide"
+      divP.id = "blogCarousel";
+      divP.dataRide ="carousel";
+      divP.appendChild(ol);
 
-// var slide_produtos = document.createElement("div");
-// slide_produtos.className = "owl-carousel owl-theme dept_slider";
-//       data.map(function(item,index){
-//         var div1 = document.createElement("div");
-//         div1.className = "owl-item dept_item";
-//         div1.style.display = "block !important";
-//         var div2 = document.createElement("div");
-//         div2.className = "dept_image";
-//         var img = document.createElement("img");
-//         img.src = "portal/"+item.foto;
-//         img.alt = "";
-//         div2.appendChild(img);
-//         div1.appendChild(div2);
-//         var div3 = document.createElement("div");
-//         div3.className = "dept_content";
-//         var div4 = document.createElement("div");
-//         div4.className = "dept_title";
-//         var div5 = document.createElement("div");
-//         div5.className = "dept_link";
-//         var a = document.createElement("a");
-//         var aT = document.createTextNode("");
-//         a.appendChild(aT);
-//         div5.appendChild(a);
-//
-//         var divT = document.createTextNode(item.titulo)
-//         div4.appendChild(divT);
-//         div3.appendChild(div4);
-//         div3.appendChild(div5);
-//         div1.appendChild(div3);
-//         slide_produtos.appendChild(div1);
-//       });
-//       var slide = document.createElement("div");
-//       slide.className = "dept_slider_container";
-//       slide.appendChild(slide_produtos);
-//       var slide2 = document.createElement("div");
-//       slide2.className = "dept_slider_container_outer";
-//       slide2.appendChild(slide);
-//       var slideAux = document.createElement("div");
-//       slideAux.className = "dept_slider_nav";
-//       var i7 = document.createElement("i");
-//       i7.className = "fa fa-chevron-right";
-//       i7.ariaHidden = "true";
-//       slideAux.appendChild(i7);
-//       slide2.appendChild(slideAux);
-//       var slide3 = document.createElement("div");
-//       slide3.className = "col";
-//       slide3.appendChild(slide2);
-//       document.getElementById("aux").appendChild(slide3);
-//       console.log(slide3);
+      var divInner = document.createElement("div");
+      divInner.className = "carousel-inner";
+       for (var i = 0; i < tam; i++) {
+         var div = document.createElement("div");
+         if (i==0) {
+           div.className = "carousel-item active"
+         }else {
+           div.className = "carousel-item"
+         }
+         var divRow = document.createElement("div");
+         divRow.className = "row"
+         var div1 = document.createElement("div"); var div2 = document.createElement("div"); var div3 = document.createElement("div"); var div4 = document.createElement("div");
+         div1.className = "col-md-3";div2.className = "col-md-3"; div3.className = "col-md-3";div4.className = "col-md-3";
+         var a1 = document.createElement("a"); var a2 = document.createElement("a"); var a3 = document.createElement("a");var a4 = document.createElement("a");
+         var img1 = document.createElement("img");var img2 = document.createElement("img"); var img3 = document.createElement("img");var img4 = document.createElement("img");
+         img1.alt = "Image";img2.alt = "Image";img3.alt = "Image";img4.alt = "Image";
+         img1.style.maxWidth = "100%";img2.style.maxWidth = "100%";img3.style.maxWidth = "100%";img4.style.maxWidth = "100%";
+         if (i==0) {
+           img1.src = "portal/"+data[0].foto;
+           img2.src = "portal/"+data[1].foto;
+           img3.src = "portal/"+data[2].foto;
+           img4.src = "portal/"+data[3].foto;
+         }else if(i==1){
+           img1.src = "portal/"+data[4].foto;
+           img2.src = "portal/"+data[5].foto;
+           // img3.src = "portal/"+data[6].foto;
+           // img4.src = "portal/"+data[7].foto;
+         }else if(i==2){
+           img1.src = "portal/"+data[8].foto;
+           img2.src = "portal/"+data[9].foto;
+           img3.src = "portal/"+data[10].foto;
+           img4.src = "portal/"+data[11].foto;
+         }
+         a1.appendChild(img1);a2.appendChild(img2);a3.appendChild(img3);a4.appendChild(img4);
+         div1.appendChild(a1);div2.appendChild(a2);div3.appendChild(a3);div4.appendChild(a4);
+         divRow.appendChild(div1);divRow.appendChild(div2);divRow.appendChild(div3);divRow.appendChild(div4);
+         div.appendChild(divRow);
+         divInner.appendChild(div);
+       }
+         divP.appendChild(divInner);
+         $("#auxiliar").html(divP);
     }
   });
 }

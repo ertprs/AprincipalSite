@@ -13,6 +13,18 @@
   display: none !important;
 }
 
+/* .table{
+  width: 100% !important;
+}
+.dataTables_scrollHeadInner{
+  width: 100% !important;
+}
+.dataTables_scrollHead{
+  width: 100% !important;
+}
+.dataTables_scroll{
+  width: 100% !important;
+} */
 .open{
   display: none !important;
 }

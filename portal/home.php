@@ -168,7 +168,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./View/climaOrganizacional.php">Clima Organizacional</a></li>
-                            <li><a href="AvaliacaoDesempenho.php">Avaliação de Desempenho</a></li>
+                            <li><a href="./View/AvaliacaoDesempenho.php">Avaliação de Desempenho</a></li>
                             <li><a href="./View/chart-chartjs.html">Outros</a></li>
                             <li><a href="./View/chart-chartist.html">Novo Formulario</a></li>
                             <li><a href="./View/departamentos.php">Departamentos</a></li>
@@ -222,7 +222,7 @@
                             <div class="card-body">
                                 <h3 class="card-title text-white">Clima Organizacional</h3>
                                 <div class="d-inline-block">
-                                    <h2 class="text-white">70%</h2>
+                                    <h2 class="text-white" id="climaOrg"></h2>
                                     <p class="text-white mb-0">Jan/2019</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
@@ -454,7 +454,6 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
-
     <!-- Chartjs -->
     <script src="./plugins/chart.js/Chart.bundle.min.js"></script>
     <!-- Circle progress -->
@@ -472,10 +471,9 @@
     <!-- ChartistJS -->
     <script src="./plugins/chartist/js/chartist.min.js"></script>
     <script src="./plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-
-
-
+    <script src="control/home.js"></script>
     <script src="./js/dashboard/dashboard-1.js"></script>
+    <script>Indicadores()</script>
 
 </body>
 

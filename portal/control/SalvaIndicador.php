@@ -1,7 +1,8 @@
 <?php
   $texto = $_POST["texto"];
   $tipo = $_POST["tipo"];
-  $json = "";
+  $json = $_POST["json"];
+  $json = json_encode($json);
      include_once 'connect.php';
      $conexao = new Conexao();
      $mysqli = $conexao->getConexao();
