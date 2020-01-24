@@ -236,9 +236,9 @@
                           <div class="card-body">
                             <div class="row" style="display:flex;justify-content:space-between">
                                   <button  type="button" onclick="graficos(1)" class="btn btn-info col-xctech">Geral</button>
-                                  <button  type="button" onclick="graficos(2)" class="btn btn-info col-xctech">Departamento</button>
+                                  <button  type="button" onclick="graficos(2)" class="btn btn-info col-xctech" id="btn_dep">Departamento</button>
                                   <button  type="button" onclick="graficos(3)" class="btn btn-info col-xctech">Colaboradores</button>
-                                  <button  type="button" onclick="graficos(4)" class="btn btn-info col-xctech">Evolução</button>
+                                  <button  type="button" onclick="graficos(4)" class="btn btn-info col-xctech" id="btn_evo">Evolução</button>
                             </div>
                             <br>
                             <div class="row" id="filtros" style="display:flex;justify-content:space-between">
@@ -249,7 +249,7 @@
                                 <input name="figura3" id="figura3" type="hidden" />
                                 <input name="figura4" id="figura4" type="hidden" />
                                 <input name="figura5" id="figura5" type="hidden" />
-
+                                <input name="figura6" id="figura6" type="hidden" />
                               </form>
                             </div>
                               <br>
@@ -257,36 +257,36 @@
                               <hr style="border: solid 1px;color:#cec7c7">
                               <div class="basic-form" style="display:flex;justify-content:space-between" id="linha1">
                                 <div id="Painel_Pizza_Clima" style="width:250px;height:250px">
-                                  <canvas id="doughnut-chart"  style="width:250px;height:250px"></canvas>
+                                    <canvas id="doughnut-chart"  style="width:250px;height:250px"></canvas>
                                 </div>
                                 <div id="Painel_Bar_Clima" style="width:250px;height:250px">
-                                  <canvas id="bar-chart-horizontal"  style="width:250px;height:250px"></canvas>
+                                    <canvas id="bar-chart-horizontal"  style="width:250px;height:250px"></canvas>
                                 </div>
                                 <div  id="Painel_Clima" style="margin:10px">
-                                  <table class="table table-bordered" style="color: black;margin-top:30px !important;border: solid 1px">
-                                    <thead>
-                                    <tr>
-                                      <th scope="col" style="color: black;border: solid 1px">Avaliações</th>
-                                      <th scope="col" style="color: black;margin: 10px;border: solid 1px;background-color:#a2eca2;">Positiva</th>
-                                      <th scope="col" style="color: black;margin: 10px;border: solid 1px;background-color:#e6937a">Negativa</th>
-                                      <th scope="col" style="color: black;margin: 10px;border: solid 1px;background-color:#ecec3b">Indiferente</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                      <th  style="color: black;border: solid 1px;" scope="row">Quantidade de Respostas:</th>
-                                      <td style="color: black;border: solid 1px;"><h6 style="color: black;margin-top: 10px;margin-left: 10px;text-align:center" id="pos_qtn"></h6></td>
-                                      <td style="color: black;border: solid 1px;"><h6 style="color: black;margin-top: 10px;margin-left: 10px;text-align:center" id="neg_qtn"></h6></td>
-                                      <td style="color: black;border: solid 1px;"><h6 style="color: black;margin-top: 10px;margin-left: 10px;text-align:center" id="ind_qtn"></h6></td>
-                                    </tr>
-                                    <tr>
-                                      <th  style="color: black;border: solid 1px;" scope="row">% De Respostas:</th>
-                                      <td style="color: black;border: solid 1px;"><h5 style="color: black;margin-top: 10px;text-align:center" id="pos_qtn2"></h5></td>
-                                      <td style="color: black;border: solid 1px;"><h5 style="color: black;margin-top: 10px;text-align:center" id="neg_qtn2"></h5></td>
-                                      <td style="color: black;border: solid 1px;"><h5 style="color: black;margin-top: 10px;text-align:center" id="ind_qtn2"></h5></td>
-                                    </tr>
-                                    </tbody>
-                                  </table>
+                                    <table class="table table-bordered" style="color: black;margin-top:30px !important;border: solid 1px">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="color: black;border: solid 1px">Avaliações</th>
+                                                <th scope="col" style="color: black;margin: 10px;border: solid 1px;background-color:#a2eca2;">Positiva</th>
+                                                <th scope="col" style="color: black;margin: 10px;border: solid 1px;background-color:#e6937a">Negativa</th>
+                                                <th scope="col" style="color: black;margin: 10px;border: solid 1px;background-color:#ecec3b">Indiferente</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th  style="color: black;border: solid 1px;" scope="row">Quantidade de Respostas:</th>
+                                                <td style="color: black;border: solid 1px;"><h6 style="color: black;margin-top: 10px;margin-left: 10px;text-align:center" id="pos_qtn"></h6></td>
+                                                <td style="color: black;border: solid 1px;"><h6 style="color: black;margin-top: 10px;margin-left: 10px;text-align:center" id="neg_qtn"></h6></td>
+                                                <td style="color: black;border: solid 1px;"><h6 style="color: black;margin-top: 10px;margin-left: 10px;text-align:center" id="ind_qtn"></h6></td>
+                                            </tr>
+                                        <tr>
+                                            <th  style="color: black;border: solid 1px;" scope="row">% De Respostas:</th>
+                                            <td style="color: black;border: solid 1px;"><h5 style="color: black;margin-top: 10px;text-align:center" id="pos_qtn2"></h5></td>
+                                            <td style="color: black;border: solid 1px;"><h5 style="color: black;margin-top: 10px;text-align:center" id="neg_qtn2"></h5></td>
+                                            <td style="color: black;border: solid 1px;"><h5 style="color: black;margin-top: 10px;text-align:center" id="ind_qtn2"></h5></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <!-- <div id="Painel_Clima" style="width:400px;height:200px;border:solid 2px #808080;margin-top:25px">
                                   <div id="legenda" style="width:100%;height:100px;display:flex">
@@ -313,7 +313,7 @@
                               <div id="ranking">
                               <hr style="border: solid 1px;color:#cec7c7">
                               <br>
-                              <div   style="display:flex;justify-content:space-between">
+                              <div   style="display:flex;justify-content:space-between" id="linha2">
                                   <div id="ranking_escalonada_boa"  class="col-lg-6">
                                               <div class="table-responsive">
                                                   <table class="table table-striped" id="corpo_table_ranking_bom">

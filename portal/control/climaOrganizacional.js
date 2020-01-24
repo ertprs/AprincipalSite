@@ -2371,47 +2371,41 @@ function EditaPergunta(){
 
 
 ////////////////////////////////////////////////////////////////
-function pdf(){
-  var img1 = document.getElementById("figura2").value;
-  var img2 = document.getElementById("figura3").value;
-  var img3 = document.getElementById("figura1").value;
-  var doc = new jsPDF();
-  doc.addImage('../img/logo.png', 'png', 80, 4, 50, 32);
-  doc.setFontSize(25);
-  doc.text(25, 45, "Relatorio Geral de Clima Organizacional");
-  doc.addImage(img1, 'png', 20, 52, 50, 50);
-  doc.addImage(img2, 'png', 110, 52, 60, 50);
-  doc.addImage(img3, 'png', 20, 110, 180, 60);
-  doc.save('a4.pdf')
-}
-
 
 function Relatorio(){
   html2canvas($("#linha1"), {
     onrendered: function(canvas) {
-      var myImage = canvas.toDataURL("img/png",1.0);
+      var myImage = canvas.toDataURL("img/jpg",1.0);
       document.getElementById("figura1").value = myImage;
-      pdfClima.submit();
+      $("#btn_dep").click();
+      setTimeout(function(){
+        Relatorio2();
+      }, 500);
     }
   });
 }
 
 function Relatorio2(){
-  html2canvas($("#Painel_Bar_Clima"), {
+  html2canvas($("#Painel_Dep"), {
     onrendered: function(canvas) {
-      var myImage = canvas.toDataURL("img/png",1.0);
+      var myImage = canvas.toDataURL("img/jpg",1.0);
       document.getElementById("figura2").value = myImage;
-      Relatorio3();
+      $("#btn_evo").click();
+      setTimeout(function(){
+        Relatorio3();
+      }, 500);
     }
   });
 }
 
 function Relatorio3(){
-  html2canvas($("#Painel_Clima"), {
+  html2canvas($("#graficoEvolucao"), {
     onrendered: function(canvas) {
       var myImage = canvas.toDataURL("img/png",1.0);
       document.getElementById("figura3").value = myImage;
+      console.log(myImage);
       pdfClima.submit();
     }
   });
 }
+
