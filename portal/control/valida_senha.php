@@ -7,7 +7,7 @@ session_start();
   include_once 'connect.php';
   $conexao = new Conexao();
   $mysqli = $conexao->getConexao();
-  $sql = "SELECT * FROM usuario WHERE (nome = '$login')";
+  $sql = "SELECT * FROM colaborador WHERE (user = '$login')";
   $dados = mysqli_query($mysqli, $sql) or die ("Erro ao buscar evento no banco. ".mysqli_error($mysqli));
   while($row = $dados->fetch_array(MYSQLI_ASSOC)){
       $senha1 = $row['senha'];
@@ -18,12 +18,7 @@ session_start();
             $_SESSION['login'] = $login;
             $_SESSION['senha'] = $senha;
             $_SESSION['root'] = $root;
-            if ($root=="0") {
-              echo "2";
-            }
-            if ($root=="1") {
               echo "1";
-            }
           }else{
               echo "0";
           }

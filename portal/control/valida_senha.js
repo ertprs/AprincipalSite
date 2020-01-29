@@ -11,8 +11,6 @@ function Valida_Senha(){
           success: function(data) {
             if (data=="1") {
                 window.location.href="home.php";
-            }else if (data=="2") {
-              window.location.href="init.php";
             }else{
               Swal.fire({
                 type: 'error',

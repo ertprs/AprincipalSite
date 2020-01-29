@@ -90,7 +90,7 @@ function listaVagas(){
       data1.push({"id":data[i].id,"nome":data[i].nome,"funcoes":data[i].funcoes,"departamento":data[i].departamento,
       "requisitos":data[i].requisitos,"carga":data[i].carga,"beneficios":data[i].beneficios,
       "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='Edita("+data[i].id+","+aux2+")'></button>",
-      "botao2":"<button class='btn btn-warning fa fa-times' type='button' onclick='ExcluiColaborador("+data[i].id+")'></button>"
+      "botao2":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiColaborador("+data[i].id+")'></button>"
       });
     }
 criarTabela(data1);

@@ -58,7 +58,7 @@ function listaVagas(){
 
 function saibamais(item){
   if (item==1) {
-    item = document.getElementById("inputaux2").value;
+    item = document.getElementById("inputaux").value;
     item = JSON.parse(item);
   }
   $("#ModalLongoExemplo").modal();
@@ -83,7 +83,80 @@ $("#nome_vaga").html(item.nome);
 $("#endereco_vaga").html(item.endereco);
 $("#cidade_vaga").html(item.cidade);
 var aux2 = JSON.stringify(item);
-$("#inputaux2").val(aux2);
+$("#inputaux").val(aux2);
+}
+
+function inscreva2(){
+  var id = document.getElementById("inputaux").value;
+  id = JSON.parse(id);
+  id = id.id;
+  console.log(id);
+  var nome_modal = document.getElementById("nome_modal").value;
+  var cpf_modal2 = document.getElementById("cpf_modal2").value;
+  var endereco_modal = document.getElementById("endereco_modal").value;
+  var escolaridade_modal = document.getElementById("escolaridade_modal").value;
+  var curriculo = document.getElementById("curriculo_modal2").value;
+  var email = document.getElementById("email").value;
+  if (nome_modal==""||cpf_modal2==""||endereco_modal==""||escolaridade_modal==""||email=="") {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000
+      })
+
+      Toast.fire({
+        type: 'error',
+        title: 'Preencha Todos Os Campos'
+      })
+  }else if (curriculo=="") {
+      const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2000
+        })
+
+        Toast.fire({
+          type: 'error',
+          title: 'Faça Upload do Curriculo'
+        })
+    }else {
+      $.ajax({
+        type: 'POST',
+        url: "portal/control/salvaCandidato.php",
+        dataType: "json",
+        data:{id:id,nome:nome_modal,cpf:cpf_modal2,endereco:endereco_modal,
+        escolaridade:escolaridade_modal,curriculo:curriculo,email:email},
+        success: function(data) {
+          if (data == "1") {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000
+              })
+
+              Toast.fire({
+                type: 'success',
+                title: 'Candidatura Feita Com Sucesso. Aguarde Contato'
+              })
+              window.location.reload();
+          } else {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000
+              })
+              Toast.fire({
+                type: 'error',
+                title: 'Falha Ao Tentar Candidatar-se'
+              })
+          }
+        }});
+    }
+
 
 }
 
@@ -95,6 +168,22 @@ listaVagas();
 
 function verificaCPF(){
   var cpf = document.getElementById("cpf_modal").value;
+  var id = document.getElementById("inputaux").value;
+  id = JSON.parse(id);
+  id = id.id;
+
+  $.ajax({
+    type: 'POST',
+    url: "portal/control/buscaCandidato.php",
+    dataType: "json",
+    data:{id:id,cpf:cpf},
+    success: function(data) {
+      $("#nome_modal").val(data[0].nome);
+      $("#cpf_modal2").val(data[0].cpf);
+      $("#endereco_modal").val(data[0].endereco);
+      $("#escolaridade_modal").val(data[0].escolaridade);
+      $("#email").val(data[0].email);
+    }});
 }
 
 

@@ -66,7 +66,7 @@ function listaProdutos(){
       var aux2 = JSON.stringify(data);
     for (var i = 0; i <data.length; i++) {
       data1.push({"id":data[i].id,"fotos":data[i].foto,"titulo":data[i].titulo,
-      "botao2":"<button class='btn btn-warning fa fa-times' type='button' onclick='ExcluiNoticias("+data[i].id+")'></button>"
+      "botao2":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiNoticias("+data[i].id+")'></button>"
       });
     }
 criarTabela(data1);

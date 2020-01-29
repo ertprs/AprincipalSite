@@ -148,7 +148,7 @@ function listaForms(){
          }else {
            data1.push({"id":data[i].id,"texto":data[i].texto,"categoria":data[i].categoria,
            "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='Edita("+data[i].id+","+aux2+")'></button>",
-           "botao2":"<button class='btn btn-warning fa fa-times' type='button' onclick='ExcluiPergunta("+data[i].id+")'></button>"
+           "botao2":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiPergunta("+data[i].id+")'></button>"
            });
          }
         }
@@ -178,7 +178,7 @@ function listaForms2(){
          }else {
            data1.push({"id":data[i].id,"texto":data[i].texto,"categoria":data[i].categoria,
            "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='Edita("+data[i].id+","+aux2+")'></button>",
-           "botao2":"<button class='btn btn-warning fa fa-times' type='button' onclick='ExcluiPergunta("+data[i].id+")'></button>"
+           "botao2":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiPergunta("+data[i].id+")'></button>"
            });
          }
         }
@@ -280,7 +280,7 @@ function table_indicador(id){
       aux2.map(function(item,index){
         data1.push({"id":index,"titulo":item.titulo,"texto":item.texto,
         "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='EditaConteudo("+index+","+aux2+")'></button>",
-        "botao2":"<button class='btn btn-warning fa fa-times' type='button' onclick='ExcluiConteudo("+index+")'></button>"
+        "botao2":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiConteudo("+index+")'></button>"
         });
       });
   criarTabela2(data1);

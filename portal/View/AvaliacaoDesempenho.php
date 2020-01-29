@@ -1,3 +1,22 @@
+<?php
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  unset($_SESSION['root']);
+  header('location:../index.php');
+}else if (($_SESSION['root'] == "4")||($_SESSION['root'] == "3")) {
+  $logado = $_SESSION['login'];
+  $root = $_SESSION['root'];
+}else {
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  unset($_SESSION['root']);
+  header('location:../index.php');
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,151 +40,209 @@
   <link href="../css/select.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../js/bootstrap/bootstrap-select.css">
   <link href="../css/desempenho.css" rel="stylesheet">
-<body>
-    <div id="preloader">
-        <div class="loader">
-            <svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
-            </svg>
-        </div>
-    </div>
-    <div id="main-wrapper">
-        <div class="nav-header">
-            <div class="brand-logo">
-                <a href="../home.php">
-                    <b class="logo-abbr"><h1 style="color:white">A</h1></b>
-                    <span class="logo-compact"><img src="../images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                      <h2 style="color:white">APrincipal</h2>
-                    </span>
-                </a>
-            </div>
-        </div>
-        <div class="header">
-            <div class="header-content clearfix">
-                <div class="nav-control">
-                    <div class="hamburger">
-                        <span class="toggle-icon"><i class="icon-menu"></i></span>
-                    </div>
-                </div>
 
-                <div class="header-right">
-                    <ul class="clearfix">
-                        <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
-                                <span class="activity active"></span>
-                                <img src="../images/user/1.png" height="40" width="40" alt="">
-                            </div>
-                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="../app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
-                                            </a>
-                                        </li>
+          <script src="../control/main.js"></script>
+  </head>
 
-                                        <hr class="my-2">
-                                        <li>
-                                            <a href="../page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
-                                        <li><a href="../page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
+  <body onload="valida(<?php echo $root?>)">
+  <!--*******************
+      Preloader start
+  ********************-->
+  <div id="preloader">
+      <div class="loader">
+          <svg class="circular" viewBox="25 25 50 50">
+              <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+          </svg>
+      </div>
+  </div>
+  <!--*******************
+      Preloader end
+  ********************-->
+
+
+  <!--**********************************
+      Main wrapper start
+  ***********************************-->
+  <div id="main-wrapper">
+
+      <!--**********************************
+          Nav header start
+      ***********************************-->
+      <div class="nav-header">
+          <div class="brand-logo">
+              <a href="../home.php" style="justify-content: center;display: flex;">
+                <img class="logo_apbbmm" src="../images/logo.png" alt="">
+              </a>
+          </div>
+      </div>
+      <!--**********************************
+          Nav header end
+      ***********************************-->
+
+      <!--**********************************
+          Header start
+      ***********************************-->
+      <div class="header">
+          <div class="header-content clearfix">
+
+              <div class="nav-control">
+                  <div class="hamburger">
+                      <span class="toggle-icon"><i class="icon-menu"></i></span>
+                  </div>
+              </div>
+              <!-- <div class="header-left">
+                  <div class="input-group icons">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                      </div>
+                      <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                      <div class="drop-down animated flipInX d-md-none">
+                          <form action="#">
+                              <input type="text" class="form-control" placeholder="Search">
+                          </form>
+                      </div>
+                  </div>
+              </div> -->
+              <div class="header-right">
+                  <ul class="clearfix">
+                      <li class="icons dropdown">
+                          <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                              <span class="activity active"></span>
+                              <img src="../images/user/1.png" height="40" width="40" alt="">
+                          </div>
+                          <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                              <div class="dropdown-content-body">
+                                  <ul>
+                                      <li>
+                                          <a href="../app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                      </li>
+                                      <li>
+                                          <a href="javascript:void()">
+                                              <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
+                                          </a>
+                                      </li>
+
+                                      <hr class="my-2">
+                                      <li>
+                                          <a href="../page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                      </li>
+                                      <li><a href="../page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <!--**********************************
+          Header end ti-comment-alt
+      ***********************************-->
+
+      <!--**********************************
+          Sidebar start
+      ***********************************-->
+      <div class="nk-sidebar">
+          <div class="nk-nav-scroll">
+              <ul class="metismenu" id="menu">
+                <li id="cabecalho_marketing" style="display:none" class="nav-label">Marketing</li>
+                <li  id="marketing1" style="display:none">
+                    <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
+                        <i class="icon-user menu-icon"></i> <span class="nav-text">Site</span>
+                    </a>
+                    <ul aria-expanded="false">
+                      <li><a href="blog.php">Blog</a></li>
+                      <li><a href="produtos.php">Produtos</a></li>
+
                     </ul>
-                </div>
-            </div>
-        </div>
+                </li>
+                  <li  id="marketing2" style="display:none">
+                    <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
+                        <i class="icon-user menu-icon"></i> <span class="nav-text">Cartões</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="baby+.php">baby +</a></li>
+                        <li><a href="cartao_vendedores.php">Vendedores</a></li>
+                    </ul>
+                </li>
+                <li  id="marketing3" style="display:none">
 
-        <div class="nk-sidebar">
-            <div class="nk-nav-scroll">
-                <ul class="metismenu" id="menu">
-                  <li class="nav-label">Marketing</li>
-                  <li>
+                    <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
+                        <i class="icon-user menu-icon"></i> <span class="nav-text">Landing Pages</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="baby+.php">Wifi Social</a></li>
+                    </ul>
+                </li>
+                <li  id="cabecalho_rh"class="nav-label"  style="display:none">RH</li>
+                <li id="rh1"  style="display:none">
                       <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                          <i class="icon-user menu-icon"></i> <span class="nav-text">Site</span>
+                          <i class="icon-user menu-icon"></i> <span class="nav-text">Colaboradores</span>
                       </a>
                       <ul aria-expanded="false">
-                        <li><a href="blog.php">Blog</a></li>
-                        <li><a href="produtos.php">Produtos</a></li>
+                          <li><a href="cadastrar_colaborador.php">Cadastrar</a></li>
+                          <li><a href="editar_colaborador.php">Editar</a></li>
                       </ul>
                   </li>
-                  <li>
-                      <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                          <i class="icon-user menu-icon"></i> <span class="nav-text">Cartões</span>
+                      <li id="rh2"  style="display:none">
+                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                          <i class="icon-graph menu-icon"></i> <span class="nav-text">Formulario</span>
                       </a>
                       <ul aria-expanded="false">
-                          <li><a href="baby+.php">baby +</a></li>
-                          <li><a href="cartao_vendedores.php">Vendedores</a></li>
+                          <li><a href="climaOrganizacional.php">Clima Organizacional</a></li>
+                          <li><a href="AvaliacaoDesempenho.php">Avaliação de Desempenho</a></li>
+                          <li><a href="chart-chartjs.html">Outros</a></li>
+                          <li><a href="chart-chartist.html">Novo Formulario</a></li>
+                          <li><a href="departamentos.php">Departamentos</a></li>
                       </ul>
                   </li>
-                  <li>
-                      <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                          <i class="icon-user menu-icon"></i> <span class="nav-text">Landing Pages</span>
+                  <li id="rh3"  style="display:none">
+                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                          <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
                       </a>
                       <ul aria-expanded="false">
-                          <li><a href="baby+.php">Wifi Social</a></li>
+                          <li><a href="gerir_vagas.php">Criar Vaga</a></li>
+                          <li><a href="ver_vagas.php">Ver Candidaturas</a></li>
                       </ul>
                   </li>
-                    <li class="nav-label">RH</li>
-                    <li>
-                        <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i> <span class="nav-text">Colaboradores</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="cadastrar_colaborador.php">Cadastrar</a></li>
-                            <li><a href="editar_colaborador.php">Editar</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Formulario</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="climaOrganizacional.php">Clima Organizacional</a></li>
-                            <li><a href="AvaliacaoDesempenho.php">Avaliação de Desempenho</a></li>
-                            <li><a href="chart-chartjs.html">Outros</a></li>
-                            <li><a href="chart-chartist.html">Novo Formulario</a></li>
-                            <li><a href="departamentos.php">Departamentos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="gerir_vagas.php">Criar Vaga</a></li>
-                            <li><a href="ediador.php">Ver Candidaturas</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">EAD</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i> <span class="nav-text">Material</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="laborador.php">Criar Curso</a></li>
-                            <li><a href="ecodor.php">Gerir Curso</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Resultados</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="aborador.php">Geral</a></li>
-                            <li><a href="chart-morris.html">Setor</a></li>
-                        </ul>
-                    </li>
+                  <li id="cabecalho_ead" class="nav-label"  style="display:none">EAD</li>
+                  <li id="ead1"  style="display:none">
+                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                          <i class="icon-user menu-icon"></i> <span class="nav-text">Material</span>
+                      </a>
+                      <ul aria-expanded="false">
+                          <li><a href="laborador.php">Criar Curso</a></li>
+                          <li><a href="ecodor.php">Gerir Curso</a></li>
+                      </ul>
+                  </li>
+                  <li id="ead2"  style="display:none">
+                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                          <i class="icon-graph menu-icon"></i> <span class="nav-text">Resultados</span>
+                      </a>
+                      <ul aria-expanded="false">
+                          <li><a href="aborador.php">Geral</a></li>
+                          <li><a href="chart-morris.html">Setor</a></li>
+                      </ul>
+                  </li>
+                  <li id="ead3"  style="display:none">
+                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                          <i class="icon-graph menu-icon"></i> <span class="nav-text">Cursos</span>
+                      </a>
+                      <ul aria-expanded="false">
+                          <li><a href="./View/cadastrolaborador.php">Geral</a></li>
+                          <li><a href="./chart-morris.html">Setor</a></li>
+                      </ul>
+                  </li>
+                  <li id="cabecalho_configuracao" class="nav-label"  style="display:none">Configurações</li>
+                  <li id="configuracao1"  style="display:none">
+                      <a class="has-arrow"  href="./View/acesso.php" aria-expanded="false">
+                          <i class="icon-user menu-icon"></i> <span class="nav-text">Acesso</span>
+                      </a>
+                  </li>
 
-                </ul>
-            </div>
-        </div>
+              </ul>
+          </div>
+      </div>
         <!--**********************************
             Content body start
         ***********************************-->
@@ -339,44 +416,163 @@
                                 <option value="0">Selecione</option>
                                 <option value="2">2x2</option>
                                 <option value="3">3x3</option>
+                                <option value="4">4x4</option>
                               </select>
                             </div>
 
 
                           <br>
+                          <div  id="matriz4">
+                            <table class="table">
+                              <tr>
+                                <th rowspan="6"><h4 class="t_vertical">Competências Técnicas</h4></th>
+                                <td class="table_matriz">Alto (8 a 10)</td>
+                                <td  style="background-color:rgba(220, 80, 80, 0.8)"  id="bl1c1" class="bloco_matriz3">Demissão</td>
+                                <td style="background-color:rgba(220, 80, 80, 0.8)"   id="bl1c2" class="bloco_matriz3">Demissão</td>
+                                <td style="background-color:rgba(255, 255, 153, 0.5)"   id="bl1c3" class="bloco_matriz3">Feedback Positivo</td>
+                                <td style="background-color:rgb(153, 255, 204,0.8)"   id="bl1c4" class="bloco_matriz3">Promoção</td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz">Médio Alto (6 a 7)</td>
+                                <td style="background-color:rgba(220, 80, 80, 0.8)"   id="bl2c1" class="bloco_matriz3">Demissão</td>
+                                <td style="background-color:rgba(220, 80, 80, 0.8)"   id="bl2c2" class="bloco_matriz3">Demissão</td>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"  id="bl2c3" class="bloco_matriz3">Feedback Construtivo</td>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"  id="bl2c4" class="bloco_matriz3">Feedback Positivo</td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz">Médio Baixo (4 a 5)</td>
+                                <td style="background-color:rgba(220, 80, 80, 0.8)"   id="bl3c1" class="bloco_matriz3">Demissão</td>
+                                <td  style="background-color:rgba(220, 80, 80, 0.8)"  id="bl3c2" class="bloco_matriz3">Demissão</td>
+                                <td style="background-color:rgba(255, 255, 153, 0.5)" id="bl3c3" class="bloco_matriz3">Treinamentos</td>
+                                <td style="background-color:rgba(255, 255, 153, 0.5)"   id="bl3c4" class="bloco_matriz3">Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz">Baixo (1 a 3)</td>
+                                <td style="background-color:rgba(220, 80, 80, 0.8)"   id="bl4c1" class="bloco_matriz3">Demissão</td>
+                                <td  style="background-color:rgba(220, 80, 80, 0.8)"  id="bl4c2" class="bloco_matriz3">Demissão</td>
+                                <td style="background-color:rgba(255, 255, 153, 0.5)" id="bl4c3" class="bloco_matriz3">Advertência</td>
+                                <td style="background-color:rgba(255, 255, 153, 0.5)" id="bl4c4" class="bloco_matriz3">Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td class="table_matriz">Baixo (1 a 3)</td>
+                                <td class="table_matriz">Médio Baixo (4 a 5)</td>
+                                <td class="table_matriz">Médio Alto (6 a 7)</td>
+                                <td class="table_matriz">Alto (8 a 10)</td>
+                              </tr>
+                              <tr>
+                                <th colspan="5"><h4 style="text-align: center;">Competências Comportamentais</h4></th>
+                              </tr>
+                            </table>
+                            <br>
+                            <!-- <table class="table">
+                             <thead class="thead-dark">
+                               <tr>
+                                 <th >ID</th>
+                                 <th >Orientação</th>
+                               </tr>
+                             </thead>
+                            <tbody>
+                              <tr>
+                                <td  style="background-color:rgba(220, 80, 80, 0.8)"   id="bl1c1x">A-B</td>
+                                <td>Demissão</td>
+                              </tr>
+                              <tr>
+                                <td   style="background-color:rgba(220, 80, 80, 0.8)"  id="bl1c2x">A-MB</td>
+                                <td>Demissão</td>
+                              </tr>
+                              <tr>
+                                <td   style="background-color:rgba(255, 255, 153, 0.5)"  id="bl1c3x">A-MA</td>
+                                <td>Feedback Positivo</td>
+                              </tr>
+                              <tr>
+                                <td   style="background-color:rgb(153, 255, 204,0.8)"  id="bl1c4x">A-A</td>
+                                <td>Promoção</td>
+                              </tr>
+                              <tr>
+                                <td   style="background-color:rgba(220, 80, 80, 0.8)"  id="bl2c1x">MA-B</td>
+                                <td>Demissão</td>
+                              </tr>
+                              <tr>
+                                <td   style="background-color:rgba(220, 80, 80, 0.8)"  id="bl2c2x">MA-MB</td>
+                                <td>Demissão</td>
+                              </tr>
+                              <tr>
+                                <td   style="background-color:rgba(255, 255, 153, 0.5)"  id="bl2c3x">MA-MA</td>
+                                <td>Feedback Construtivo</td>
+                              </tr>
+                              <tr>
+                                <td   style="background-color:rgba(255, 255, 153, 0.5)"  id="bl2c4x">MA-A</td>
+                                <td>Feedback Positivo</td>
+                              </tr>
+                              <tr>
+                                <td   style="background-color:rgba(220, 80, 80, 0.8)"  id="bl3c1x">MB-B</td>
+                                <td>Demissão</td>
+                              </tr>
+                              <tr>
+                                <td  style="background-color:rgba(220, 80, 80, 0.8)"   id="bl3c2x">MB-MB</td>
+                                <td>Demissão</td>
+                              </tr>
+                              <tr>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"  id="bl3c3x">MB-MA</td>
+                                <td>Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"  id="bl3c4x">MB-A</td>
+                                <td>Treinamentos</td>
+                              </tr>
+                              <tr>
+                                <td  style="background-color:rgba(220, 80, 80, 0.8)"  id="bl4c1x">B-B</td>
+                                <td>Demissão</td>
+                              </tr>
+                              <tr>
+                                <td  style="background-color:rgba(220, 80, 80, 0.8)"  id="bl4c2x">B-MB</td>
+                                <td>Demissão</td>
+                              </tr>
+                              <tr>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"  id="bl4c3x">B-MA</td>
+                                <td>Advertência</td>
+                              </tr>
+                              <tr>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"  id="bl4c4x">B-A</td>
+                                <td>Treinamentos</td>
+                              </tr>
+                            </tbody>
+                            </table> -->
+                          </div>
                           <div  id="matriz3">
                             <table class="table">
                               <tr>
                                 <th rowspan="5"><h4 class="t_vertical">Competências Técnicas</h4></th>
-                                <td class="table_matriz">Alto</td>
-                                <td id="al1c1" class="bloco_matriz">Treinamentos</td>
-                                <td id="al1c2" class="bloco_matriz">Aumentar Desafios</td>
-                                <td id="al1c3" class="bloco_matriz">Promover</td>
+                                <td class="table_matriz">Alto (8 a 10)</td>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"  id="al1c1" class="bloco_matriz">Treinamentos</td>
+                                <td style="background-color:rgb(153, 255, 204,0.5)"   id="al1c2" class="bloco_matriz">Aumentar Desafios</td>
+                                <td style="background-color:rgb(153, 255, 204,0.8)"   id="al1c3" class="bloco_matriz">Promover</td>
                               </tr>
                               <tr>
-                                <td class="table_matriz">Médio</td>
-                                <td id="al2c1" class="bloco_matriz">Realocar</td>
-                                <td id="al2c2" class="bloco_matriz">Treinamentos</td>
-                                <td id="al2c3" class="bloco_matriz">Aumentar Desafios</td>
+                                <td class="table_matriz">Médio (6 a 7)</td>
+                                <td style="background-color:rgba(220, 80, 80, 0.4)"   id="al2c1" class="bloco_matriz">Realocar</td>
+                                <td style="background-color:rgba(255, 255, 153, 0.5)"   id="al2c2" class="bloco_matriz">Treinamentos</td>
+                                <td  style="background-color:rgb(153, 255, 204,0.5)"  id="al2c3" class="bloco_matriz">Aumentar Desafios</td>
                               </tr>
                               <tr>
-                                <td class="table_matriz">Baixo</td>
-                                <td id="al3c1" class="bloco_matriz">Demissão</td>
-                                <td id="al3c2" class="bloco_matriz">Realocar</td>
-                                <td id="al3c3" class="bloco_matriz">Treinamentos</td>
+                                <td class="table_matriz">Baixo (1 a 5)</td>
+                                <td style="background-color:rgba(220, 80, 80, 0.8)"   id="al3c1" class="bloco_matriz">Demissão</td>
+                                <td  style="background-color:rgba(220, 80, 80, 0.4)"  id="al3c2" class="bloco_matriz">Realocar</td>
+                                <td style="background-color:rgba(255, 255, 153, 0.5)"   id="al3c3" class="bloco_matriz">Treinamentos</td>
                               </tr>
                               <tr>
                                 <td></td>
-                                <td class="table_matriz">Baixo</td>
-                                <td class="table_matriz">Médio</td>
-                                <td class="table_matriz">Alto</td>
+                                <td class="table_matriz">Baixo (1 a 5)</td>
+                                <td class="table_matriz">Médio (6 a 7)</td>
+                                <td class="table_matriz">Alto (8 a 10)</td>
                               </tr>
                               <tr>
                                 <th colspan="4"><h4 style="text-align: center;">Competências Comportamentais</h4></th>
                               </tr>
                             </table>
                             <br>
-                            <table class="table">
+                            <!-- <table class="table">
                              <thead class="thead-dark">
                                <tr>
                                  <th >ID</th>
@@ -385,68 +581,68 @@
                              </thead>
                             <tbody>
                               <tr>
-                                <td id="al1c1x">AB</td>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"   id="al1c1x">A-B</td>
                                 <td>Treinamentos</td>
                               </tr>
                               <tr>
-                                <td id="al1c2x">AM</td>
+                                <td   style="background-color:rgb(153, 255, 204,0.5)"  id="al1c2x">A-M</td>
                                 <td>Aumentar Desafios</td>
                               </tr>
                               <tr>
-                                <td id="al1c3x">AA</td>
+                                <td   style="background-color:rgb(153, 255, 204,0.8)"  id="al1c3x">A-A</td>
                                 <td>Promover</td>
                               </tr>
                               <tr>
-                                <td id="al2c1x">MB</td>
+                                <td   style="background-color:rgba(220, 80, 80, 0.4)"  id="al2c1x">M-B</td>
                                 <td>Realocar</td>
                               </tr>
                               <tr>
-                                <td id="al2c2x">MM</td>
+                                <td   style="background-color:rgba(255, 255, 153, 0.5)"  id="al2c2x">M-M</td>
                                 <td>Treinamentos</td>
                               </tr>
                               <tr>
-                                <td id="al2c3x">MA</td>
+                                <td   style="background-color:rgb(153, 255, 204,0.5)"  id="al2c3x">M-A</td>
                                 <td>Aumentar Desafios</td>
                               </tr>
                               <tr>
-                                <td id="al3c1x">BB</td>
+                                <td   style="background-color:rgba(220, 80, 80, 0.8)"  id="al3c1x">B-B</td>
                                 <td>Demitir</td>
                               </tr>
                               <tr>
-                                <td id="al3c2x">BM</td>
+                                <td  style="background-color:rgba(220, 80, 80, 0.4)"   id="al3c2x">B-M</td>
                                 <td>Realocar</td>
                               </tr>
                               <tr>
-                                <td id="al3c3x">BA</td>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"  id="al3c3x">B-A</td>
                                 <td>Treinamentos</td>
                               </tr>
                             </tbody>
-                            </table>
+                            </table> -->
                           </div>
                           <div  id="matriz2">
                             <table class="table">
                               <tr>
                                 <th rowspan="4"><h4 class="t_vertical">Competências Técnicas</h4></th>
-                                <td class="table_matriz">Alto</td>
-                                <td id="l1c1" class="bloco_matriz2">Treinamentos</td>
-                                <td id="l1c2" class="bloco_matriz2">Promover</td>
+                                <td class="table_matriz">Alto (7 a 10)</td>
+                                <td id="l1c1" style="background-color:rgba(255, 255, 153, 0.5)" class="bloco_matriz2">Treinamentos</td>
+                                <td id="l1c2" style="background-color:rgb(153, 255, 204,0.5)" class="bloco_matriz2">Promover</td>
                               </tr>
                               <tr>
-                                <td class="table_matriz">Baixo</td>
-                                <td id="l2c1" class="bloco_matriz2">Demissão</td>
-                                <td id="l2c2" class="bloco_matriz2">Treinamentos</td>
+                                <td class="table_matriz">Baixo (1 a 6)</td>
+                                <td id="l2c1" style="background-color:rgba(220, 80, 80, 0.4)"  class="bloco_matriz2">Demissão</td>
+                                <td id="l2c2" style="background-color:rgba(255, 255, 153, 0.5)"  class="bloco_matriz2">Treinamentos</td>
                               </tr>
                               <tr>
                                 <td></td>
-                                <td class="table_matriz">Baixo</td>
-                                <td class="table_matriz">Alto</td>
+                                <td class="table_matriz">Baixo (1 a 6)</td>
+                                <td class="table_matriz">Alto (7 a 10)</td>
                               </tr>
                               <tr>
                                 <th colspan="3"><h4 style="text-align: center;">Competências Comportamentais</h4></th>
                               </tr>
                             </table>
                             <br>
-                            <table class="table">
+                            <!-- <table class="table">
                              <thead class="thead-dark">
                                <tr>
                                  <th >ID</th>
@@ -455,23 +651,102 @@
                              </thead>
                             <tbody>
                               <tr>
-                                <td id="l1c1x">AB</td>
+                                <td style="background-color:rgba(255, 255, 153, 0.5)"   id="l1c1x">A-B</td>
                                 <td>Treinamentos</td>
                               </tr>
                               <tr>
-                                <td id="l1c2x">AA</td>
+                                <td  style="background-color:rgb(153, 255, 204,0.5)"  id="l1c2x">A-A</td>
                                 <td>Aumentar Desafios</td>
                               </tr>
                               <tr>
-                                <td id="l2c1x">BB</td>
+                                <td  style="background-color:rgba(220, 80, 80, 0.4)"  id="l2c1x">B-B</td>
                                 <td>Treinamentos</td>
                               </tr>
                               <tr>
-                                <td id="l2c2x">BA</td>
+                                <td  style="background-color:rgba(255, 255, 153, 0.5)"  id="l2c2x">B-A</td>
                                 <td>Treinamentos</td>
                               </tr>
                             </tbody>
-                            </table>
+                            </table> -->
+
+                            <form class="row">
+                              <div class="form-group col-4">
+                                <label for="l1c1INPUT">Alta Tecnica e Baixo Comportamento</label>
+                                <input type="text" class="form-control" id="l1c1INPUT" placeholder="Insira o Texto Descritivo">
+                              </div>
+                              <div class="form-group col-2">
+                                <label for="l1c1COR">COR</label>
+                                <select class="form-control" id="l1c1COR">
+                                  <option value="0">Selecione</option>
+                                  <option value="rgba(220, 80, 80, 0.8)" style="background-color:rgba(220, 80, 80, 0.8)">Vermelho Escuro</option>
+                                  <option value="rgba(220, 80, 80, 0.4)" style="background-color:rgba(220, 80, 80, 0.4)">Vermelho Claro</option>
+                                  <option value="rgba(255, 255, 153, 0.5)" style="background-color:rgba(255, 255, 153, 0.5)">Amarelo</option>
+                                  <option value="rgb(153, 255, 204,0.5)" style="background-color:rgb(153, 255, 204,0.5)">Verde Claro</option>
+                                  <option value="rgb(153, 255, 204,0.8)" style="background-color:rgb(153, 255, 204,0.8)">Verde Escuro</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-4">
+                                <label for="l1c2INPUT">Alta Tecnica e Alto Comportamento</label>
+                                <input type="text" class="form-control" id="l1c2INPUT" placeholder="Insira o Texto Descritivo">
+                              </div>
+                              <div class="form-group col-2">
+                                <label for="l1c2COR">COR</label>
+                                <select class="form-control" id="l1c1COR">
+                                  <option value="0">Selecione</option>
+                                  <option value="rgba(220, 80, 80, 0.8)" style="background-color:rgba(220, 80, 80, 0.8)">Vermelho Escuro</option>
+                                  <option value="rgba(220, 80, 80, 0.4)" style="background-color:rgba(220, 80, 80, 0.4)">Vermelho Claro</option>
+                                  <option value="rgba(255, 255, 153, 0.5)" style="background-color:rgba(255, 255, 153, 0.5)">Amarelo</option>
+                                  <option value="rgb(153, 255, 204,0.5)" style="background-color:rgb(153, 255, 204,0.5)">Verde Claro</option>
+                                  <option value="rgb(153, 255, 204,0.8)" style="background-color:rgb(153, 255, 204,0.8)">Verde Escuro</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-4">
+                                <label for="l2c1INPUT">Baixa Tecnica e Baixo Comportamento</label>
+                                <input type="text" class="form-control" id="l2c1INPUT" placeholder="Insira o Texto Descritivo">
+                              </div>
+                              <div class="form-group col-2">
+                                <label for="l1c2COR">COR</label>
+                                <select class="form-control" id="l2c1COR">
+                                  <option value="0">Selecione</option>
+                                  <option value="rgba(220, 80, 80, 0.8)" style="background-color:rgba(220, 80, 80, 0.8)">Vermelho Escuro</option>
+                                  <option value="rgba(220, 80, 80, 0.4)" style="background-color:rgba(220, 80, 80, 0.4)">Vermelho Claro</option>
+                                  <option value="rgba(255, 255, 153, 0.5)" style="background-color:rgba(255, 255, 153, 0.5)">Amarelo</option>
+                                  <option value="rgb(153, 255, 204,0.5)" style="background-color:rgb(153, 255, 204,0.5)">Verde Claro</option>
+                                  <option value="rgb(153, 255, 204,0.8)" style="background-color:rgb(153, 255, 204,0.8)">Verde Escuro</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-4">
+                                <label for="l2c2INPUT">Baixa Tecnica e Alto Comportamento</label>
+                                <input type="text" class="form-control" id="l2c2INPUT" placeholder="Insira o Texto Descritivo">
+                              </div>
+                              <div class="form-group col-2">
+                                <label for="l1c2COR">COR</label>
+                                <select class="form-control" id="l2c2COR">
+                                  <option value="0">Selecione</option>
+                                  <option value="rgba(220, 80, 80, 0.8)" style="background-color:rgba(220, 80, 80, 0.8)">Vermelho Escuro</option>
+                                  <option value="rgba(220, 80, 80, 0.4)" style="background-color:rgba(220, 80, 80, 0.4)">Vermelho Claro</option>
+                                  <option value="rgba(255, 255, 153, 0.5)" style="background-color:rgba(255, 255, 153, 0.5)">Amarelo</option>
+                                  <option value="rgb(153, 255, 204,0.5)" style="background-color:rgb(153, 255, 204,0.5)">Verde Claro</option>
+                                  <option value="rgb(153, 255, 204,0.8)" style="background-color:rgb(153, 255, 204,0.8)">Verde Escuro</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-3">
+                                <label for="intervalo_2_baixo">Intervalo Baixo Inicio</label>
+                                <input type="number" class="form-control" id="intervalo_2_baixoi">
+                              </div>
+                              <div class="form-group col-3">
+                                <label for="intervalo_2_alto">Intervalo Baixo Fim</label>
+                                <input type="number" class="form-control" id="intervalo_2_baixof">
+                              </div>
+                              <div class="form-group col-3">
+                                <label for="intervalo_2_baixo">Intervalo Alto Inicio</label>
+                                <input type="number" class="form-control" id="intervalo_2_altoi" >
+                              </div>
+                              <div class="form-group col-3">
+                                <label for="intervalo_2_alto">Intervalo Alto Fim</label>
+                                <input type="number" class="form-control" id="intervalo_2_altof">
+                              </div>
+                            </form>
                           </div>
                           <br>
                           <button  type="button" onclick="SalvaMatriz()" class="col-4 btn btn-info">Salva Matriz</button>

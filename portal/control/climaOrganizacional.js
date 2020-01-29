@@ -2101,7 +2101,7 @@ function listaForms(){
     for (var i = 0; i <data.length; i++) {
       data1.push({"id":data[i].id,"pergunta":data[i].pergunta,"tipo":data[i].tipo,
       "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='Edita("+data[i].id+","+aux2+")'></button>",
-      "botao2":"<button class='btn btn-warning fa fa-times' type='button' onclick='ExcluiPergunta("+data[i].id+")'></button>"
+      "botao2":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiPergunta("+data[i].id+")'></button>"
       });
     }
 criarTabela(data1);

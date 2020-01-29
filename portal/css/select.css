@@ -12,7 +12,10 @@
 .selectpicker{
   display: none !important;
 }
-
+.btn-primary{
+  background-color: #f91d81cc !important;
+  border-color: #f91d81cc !important;
+}
 .swal2-popup {
     width: 50%  !important;
 }
@@ -181,6 +184,13 @@ color: black;
 .bloco_matriz2{
   margin: 10px !important;
   width: 350px !important;
+  height: 120px !important;
+  color: black !important;
+}
+
+.bloco_matriz3{
+  margin: 10px !important;
+  width: 195px !important;
   height: 120px !important;
   color: black !important;
 }

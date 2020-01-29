@@ -1,0 +1,399 @@
+<?php
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  unset($_SESSION['root']);
+  header('location:../index.php');
+}else if (($_SESSION['root'] == "4"){
+  $logado = $_SESSION['login'];
+  $root = $_SESSION['root'];
+}else {
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  unset($_SESSION['root']);
+  header('location:../index.php');
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aprincipal Bebê e Mamãe</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="../image/png" sizes="16x16" href="images/favicon.png">
+    <!-- Pignose Calender -->
+    <link href="../plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="../plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <!-- Custom Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert2.css">
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert2.min.css">
+    <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/select.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
+
+            <script src="../control/main.js"></script>
+    </head>
+
+    <body onload="valida(<?php echo $root?>)">
+
+    <!--*******************
+        Preloader start
+    ********************-->
+
+        <!--*******************
+            Preloader start
+        ********************-->
+        <div id="preloader">
+            <div class="loader">
+                <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>
+        <!--*******************
+            Preloader end
+        ********************-->
+
+
+        <!--**********************************
+            Main wrapper start
+        ***********************************-->
+        <div id="main-wrapper">
+
+            <!--**********************************
+                Nav header start
+            ***********************************-->
+            <div class="nav-header">
+                <div class="brand-logo">
+                    <a href="../home.php" style="justify-content: center;display: flex;">
+                      <img class="logo_apbbmm" src="../images/logo.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <!--**********************************
+                Nav header end
+            ***********************************-->
+
+            <!--**********************************
+                Header start
+            ***********************************-->
+            <div class="header">
+                <div class="header-content clearfix">
+
+                    <div class="nav-control">
+                        <div class="hamburger">
+                            <span class="toggle-icon"><i class="icon-menu"></i></span>
+                        </div>
+                    </div>
+                    <!-- <div class="header-left">
+                        <div class="input-group icons">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                            </div>
+                            <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                            <div class="drop-down animated flipInX d-md-none">
+                                <form action="#">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </form>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="header-right">
+                        <ul class="clearfix">
+                            <li class="icons dropdown">
+                                <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                                    <span class="activity active"></span>
+                                    <img src="../images/user/1.png" height="40" width="40" alt="">
+                                </div>
+                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="../app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void()">
+                                                    <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
+                                                </a>
+                                            </li>
+
+                                            <hr class="my-2">
+                                            <li>
+                                                <a href="../page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                            </li>
+                                            <li><a href="../page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--**********************************
+                Header end ti-comment-alt
+            ***********************************-->
+
+            <!--**********************************
+                Sidebar start
+            ***********************************-->
+            <div class="nk-sidebar">
+                <div class="nk-nav-scroll">
+                    <ul class="metismenu" id="menu">
+                      <li id="cabecalho_marketing" style="display:none" class="nav-label">Marketing</li>
+                      <li  id="marketing1" style="display:none">
+                          <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
+                              <i class="icon-user menu-icon"></i> <span class="nav-text">Site</span>
+                          </a>
+                          <ul aria-expanded="false">
+                            <li><a href="blog.php">Blog</a></li>
+                            <li><a href="produtos.php">Produtos</a></li>
+
+                          </ul>
+                      </li>
+                        <li  id="marketing2" style="display:none">
+                          <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
+                              <i class="icon-user menu-icon"></i> <span class="nav-text">Cartões</span>
+                          </a>
+                          <ul aria-expanded="false">
+                              <li><a href="baby+.php">baby +</a></li>
+                              <li><a href="cartao_vendedores.php">Vendedores</a></li>
+                          </ul>
+                      </li>
+                      <li  id="marketing3" style="display:none">
+
+                          <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
+                              <i class="icon-user menu-icon"></i> <span class="nav-text">Landing Pages</span>
+                          </a>
+                          <ul aria-expanded="false">
+                              <li><a href="baby+.php">Wifi Social</a></li>
+                          </ul>
+                      </li>
+                      <li  id="cabecalho_rh"class="nav-label"  style="display:none">RH</li>
+                      <li id="rh1"  style="display:none">
+                            <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
+                                <i class="icon-user menu-icon"></i> <span class="nav-text">Colaboradores</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="cadastrar_colaborador.php">Cadastrar</a></li>
+                                <li><a href="editar_colaborador.php">Editar</a></li>
+                            </ul>
+                        </li>
+                            <li id="rh2"  style="display:none">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon-graph menu-icon"></i> <span class="nav-text">Formulario</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="climaOrganizacional.php">Clima Organizacional</a></li>
+                                <li><a href="AvaliacaoDesempenho.php">Avaliação de Desempenho</a></li>
+                                <li><a href="chart-chartjs.html">Outros</a></li>
+                                <li><a href="chart-chartist.html">Novo Formulario</a></li>
+                                <li><a href="departamentos.php">Departamentos</a></li>
+                            </ul>
+                        </li>
+                        <li id="rh3"  style="display:none">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="gerir_vagas.php">Criar Vaga</a></li>
+                                <li><a href="ver_vagas.php">Ver Candidaturas</a></li>
+                            </ul>
+                        </li>
+                        <li id="cabecalho_ead" class="nav-label"  style="display:none">EAD</li>
+                        <li id="ead1"  style="display:none">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon-user menu-icon"></i> <span class="nav-text">Material</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="laborador.php">Criar Curso</a></li>
+                                <li><a href="ecodor.php">Gerir Curso</a></li>
+                            </ul>
+                        </li>
+                        <li id="ead2"  style="display:none">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon-graph menu-icon"></i> <span class="nav-text">Resultados</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="aborador.php">Geral</a></li>
+                                <li><a href="chart-morris.html">Setor</a></li>
+                            </ul>
+                        </li>
+                        <li id="ead3"  style="display:none">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon-graph menu-icon"></i> <span class="nav-text">Cursos</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="./View/cadastrolaborador.php">Geral</a></li>
+                                <li><a href="./chart-morris.html">Setor</a></li>
+                            </ul>
+                        </li>
+                        <li id="cabecalho_configuracao" class="nav-label"  style="display:none">Configurações</li>
+                        <li id="configuracao1"  style="display:none">
+                            <a class="has-arrow"  href="./View/acesso.php" aria-expanded="false">
+                                <i class="icon-user menu-icon"></i> <span class="nav-text">Acesso</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+
+            <div class="container-fluid">
+                <div class="row">
+
+
+
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">Controle de Acesso ao Sistema</div>
+                                <br>
+                                <table class="table table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">Nivel</th>
+                                      <th scope="col">Acesso</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">4</th>
+                                      <td>Acesso irrestrito ao sistema</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">3</th>
+                                      <td>Acesso ao RH</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">2</th>
+                                      <td>Acesso ao Marketing e EAD</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">1</th>
+                                      <td>Acesso apenas a mensagens gerais e direcionadas, responder pesquisas e fazer cursos</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <br>
+
+                                <div id="table">
+                                  <table id="table3"  style="width:100%" class="table table-striped table-bordered" >
+                                    <thead >
+                                      <tr >
+                                        <td>Nome</td>
+                                        <td>Setor</td>
+                                        <td>Nivel de Acesso</td>
+                                        <td>Editar</td>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                  </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+            ***********************************-->
+            <div class="footer">
+                <div class="copyright">
+                    <p>Desenvolvido Por <a href="https://www.portalctech.com.br">CTECH</a> 2020</p>
+                </div>
+            </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Modal Login -->
+    <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title" id="TituloModalCentralizado"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3" style="display:flex;justify-content:space-between">
+            <div class="col-12">
+              <label data-error="wrong" data-success="right" for="defaultForm-email">Nivel de Acesso</label>
+              <input type="number" id="nivel_acesso" class="form-control validate" ></input>
+              <input type="hidden" id="id_acesso" class="form-control validate" ></input>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:center">
+            <button class="btn btn-info" style="width:10rem" onclick="SalvaAcesso()">Alterar Nivel</button>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script src="../plugins/common/common.min.js"></script>
+    <script src="../js/custom.min.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/gleek.js"></script>
+    <script src="../js/styleSwitcher.js"></script>
+    <script src="../control/acesso.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+    <script src="../js/sweetalert2.all.js"></script>
+    <script src="../js/sweetalert2.js"></script>
+    <script src="../js/sweetalert2.min.js"></script>
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script src="../js/jquery.dataTables.min.js"></script>
+    <script src="../js/dataTables.buttons.min.js"></script>
+    <script src="../js/buttons.flash.min.js"></script>
+    <script src="../js/jszip.min.js"></script>
+    <script src="../js/pdfmake.min.js"></script>
+    <script src="../js/vfs_fonts.js"></script>
+    <script src="../js/buttons.html5.min.js"></script>
+    <script src="../js/buttons.print.min.js"></script>
+    <script src="../js/bootstrap/popper.js"></script>
+    <script src="../js/bootstrap/popper.min.js"></script>
+    <script src="../js/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap/bootstrap-select.js"></script>
+    <script>
+    listacol();
+    </script>
+
+</body>
+
+</html>

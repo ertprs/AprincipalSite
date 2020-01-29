@@ -38,7 +38,10 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 .gradient-5 {
   background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%); }
-
+.logo_apbbmm{
+  width: 59%;
+  margin-top: -25px;
+}
 .customSwalBtn{
 		background-color: rgb(221, 51, 51);
     border: 0;
@@ -51,6 +54,21 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     padding: 10px 10px 10px 10px;
     margin: 2px 2px 2px 2px;
 	}
+  .btn-primary{
+    background-color: #f91d81cc !important;
+    border-color: #f91d81cc !important;
+  }
+  .btn-info{
+    background-color: #f91d81cc !important;
+    border-color: #f91d81cc !important;
+  }
+  .btn-warning{
+    background-color: #333333 !important;
+    border-color: #333333 !important;
+  }
+.nav-header {
+    background-color: #f91d81cc !important;
+}
   .customSwalBtn2{
       background-color: rgb(221, 197, 51);
       border: 0;

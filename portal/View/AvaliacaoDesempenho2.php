@@ -1,3 +1,21 @@
+<?php
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  unset($_SESSION['root']);
+  header('location:../index.php');
+}else if (($_SESSION['root'] != "4")||($_SESSION['root'] != "3")) {
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  unset($_SESSION['root']);
+  header('location:../index.php');
+}
+$logado = $_SESSION['login'];
+$root = $_SESSION['root'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,12 +64,8 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="../home.php">
-                    <b class="logo-abbr"><h1 style="color:white">A</h1></b>
-                    <span class="logo-compact"><img src="../images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                      <h2 style="color:white">APrincipal</h2>
-                    </span>
+                <a href="../home.php" style="justify-content: center;display: flex;">
+                  <img class="logo_apbbmm" src="../images/logo.png" alt="">
                 </a>
             </div>
         </div>

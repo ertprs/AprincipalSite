@@ -1,3 +1,22 @@
+<?php
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  unset($_SESSION['root']);
+  header('location:../index.php');
+}else if (($_SESSION['root'] == "4")||($_SESSION['root'] == "3")) {
+  $logado = $_SESSION['login'];
+  $root = $_SESSION['root'];
+}else {
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  unset($_SESSION['root']);
+  header('location:../index.php');
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,9 +43,11 @@
         <link href="../css/dataTables.bootstrap4.css" rel="stylesheet">
         <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
         <link href="../css/vagas.css" rel="stylesheet">
+
+        <script src="../control/main.js"></script>
 </head>
 
-<body>
+<body onload="valida(<?php echo $root?>)">
 
     <!--*******************
         Preloader start
@@ -53,12 +74,8 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="../home.php">
-                    <b class="logo-abbr"><h1 style="color:white">A</h1></b>
-                    <span class="logo-compact"><img src="../images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                      <h2 style="color:white">APrincipal</h2>
-                    </span>
+                <a href="../home.php" style="justify-content: center;display: flex;">
+                  <img class="logo_apbbmm" src="../images/logo.png" alt="">
                 </a>
             </div>
         </div>
@@ -132,8 +149,8 @@
         <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                  <li class="nav-label">Marketing</li>
-                  <li>
+                  <li id="cabecalho_marketing" style="display:none" class="nav-label">Marketing</li>
+                  <li  id="marketing1" style="display:none">
                       <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
                           <i class="icon-user menu-icon"></i> <span class="nav-text">Site</span>
                       </a>
@@ -143,7 +160,7 @@
 
                       </ul>
                   </li>
-                  <li>
+                    <li  id="marketing2" style="display:none">
                       <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
                           <i class="icon-user menu-icon"></i> <span class="nav-text">Cartões</span>
                       </a>
@@ -152,7 +169,8 @@
                           <li><a href="cartao_vendedores.php">Vendedores</a></li>
                       </ul>
                   </li>
-                  <li>
+                  <li  id="marketing3" style="display:none">
+
                       <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
                           <i class="icon-user menu-icon"></i> <span class="nav-text">Landing Pages</span>
                       </a>
@@ -160,8 +178,8 @@
                           <li><a href="baby+.php">Wifi Social</a></li>
                       </ul>
                   </li>
-                    <li class="nav-label">RH</li>
-                    <li>
+                  <li  id="cabecalho_rh"class="nav-label"  style="display:none">RH</li>
+                  <li id="rh1"  style="display:none">
                         <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Colaboradores</span>
                         </a>
@@ -170,7 +188,7 @@
                             <li><a href="editar_colaborador.php">Editar</a></li>
                         </ul>
                     </li>
-                    <li>
+                        <li id="rh2"  style="display:none">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-graph menu-icon"></i> <span class="nav-text">Formulario</span>
                         </a>
@@ -182,7 +200,7 @@
                             <li><a href="departamentos.php">Departamentos</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li id="rh3"  style="display:none">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
                         </a>
@@ -191,8 +209,8 @@
                             <li><a href="ver_vagas.php">Ver Candidaturas</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">EAD</li>
-                    <li>
+                    <li id="cabecalho_ead" class="nav-label"  style="display:none">EAD</li>
+                    <li id="ead1"  style="display:none">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Material</span>
                         </a>
@@ -201,7 +219,7 @@
                             <li><a href="ecodor.php">Gerir Curso</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li id="ead2"  style="display:none">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-graph menu-icon"></i> <span class="nav-text">Resultados</span>
                         </a>
@@ -209,6 +227,21 @@
                             <li><a href="aborador.php">Geral</a></li>
                             <li><a href="chart-morris.html">Setor</a></li>
                         </ul>
+                    </li>
+                    <li id="ead3"  style="display:none">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Cursos</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./View/cadastrolaborador.php">Geral</a></li>
+                            <li><a href="./chart-morris.html">Setor</a></li>
+                        </ul>
+                    </li>
+                    <li id="cabecalho_configuracao" class="nav-label"  style="display:none">Configurações</li>
+                    <li id="configuracao1"  style="display:none">
+                        <a class="has-arrow"  href="./View/acesso.php" aria-expanded="false">
+                            <i class="icon-user menu-icon"></i> <span class="nav-text">Acesso</span>
+                        </a>
                     </li>
 
                 </ul>

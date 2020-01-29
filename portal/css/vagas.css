@@ -9,7 +9,7 @@ tbody tr td.my_class{
   margin-bottom: 30px !important;
   border: 0px !important;
   border-radius: 0.625rem !important;
-  box-shadow: 2px 2px 2px 2px #a99de7 !important;
+  box-shadow: 2px 2px 2px 2px #f91d8199  !important;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,10 @@ align-items: center;
 .btn_vagas{
 margin: 5px;
 color: white !important;
+}
+.btn-primary{
+  background-color: #f91d81cc !important;
+  border-color: #f91d81cc !important;
 }
 .card_vaga{
   padding: 1.0rem 1.0rem !important;

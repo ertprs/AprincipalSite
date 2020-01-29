@@ -1,3 +1,16 @@
+<?php
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  unset($_SESSION['root']);
+  header('location:index.php');
+}
+$logado = $_SESSION['login'];
+$root = $_SESSION['root'];
+$senha = $_SESSION['senha'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,14 +28,19 @@
     <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert2.css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/swalExtend.css">
+    <script src="control/main.js"></script>
 
 </head>
 
-<body>
-
+<body onload="valida(<?php echo $root?>)">
     <!--*******************
         Preloader start
     ********************-->
+    <input id="login_user" type="hidden" value="<?php echo $logado?>"></input>
+    <input id="senha_user" type="hidden" value="<?php echo $senha?>"></input>
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -45,12 +63,8 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="home.php">
-                    <b class="logo-abbr"><h1 style="color:white">A</h1></b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                      <h2 style="color:white">APrincipal</h2>
-                    </span>
+                <a href="home.php" style="justify-content: center;display: flex;">
+                  <img class="logo_apbbmm" src="images/logo.png" alt="">
                 </a>
             </div>
         </div>
@@ -124,8 +138,8 @@
         <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                  <li class="nav-label">Marketing</li>
-                  <li>
+                  <li id="cabecalho_marketing" style="display:none" class="nav-label">Marketing</li>
+                  <li  id="marketing1" style="display:none">
                       <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
                           <i class="icon-user menu-icon"></i> <span class="nav-text">Site</span>
                       </a>
@@ -135,7 +149,7 @@
 
                       </ul>
                   </li>
-                  <li>
+                  <li  id="marketing2" style="display:none">
                       <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
                           <i class="icon-user menu-icon"></i> <span class="nav-text">Cartões</span>
                       </a>
@@ -144,7 +158,7 @@
                           <li><a href="./View/cartao_vendedores.php">Vendedores</a></li>
                       </ul>
                   </li>
-                  <li>
+                  <li  id="marketing3" style="display:none">
                       <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
                           <i class="icon-user menu-icon"></i> <span class="nav-text">Landing Pages</span>
                       </a>
@@ -152,8 +166,8 @@
                           <li><a href="./View/baby+.php">Wifi Social</a></li>
                       </ul>
                   </li>
-                    <li class="nav-label">RH</li>
-                    <li>
+                    <li  id="cabecalho_rh"class="nav-label"  style="display:none">RH</li>
+                    <li id="rh1"  style="display:none">
                         <a class="has-arrow" href="./View/excluir_colaborador.php" aria-expanded="false">
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Colaboradores</span>
                         </a>
@@ -162,7 +176,7 @@
                             <li><a href="./View/editar_colaborador.php">Editar</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li id="rh2"  style="display:none">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-graph menu-icon"></i> <span class="nav-text">Formulario</span>
                         </a>
@@ -170,21 +184,20 @@
                             <li><a href="./View/climaOrganizacional.php">Clima Organizacional</a></li>
                             <li><a href="./View/AvaliacaoDesempenho.php">Avaliação de Desempenho</a></li>
                             <li><a href="./View/chart-chartjs.html">Outros</a></li>
-                            <li><a href="./View/chart-chartist.html">Novo Formulario</a></li>
                             <li><a href="./View/departamentos.php">Departamentos</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li id="rh3"  style="display:none">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./View/gerir_vagas.php">Criar Vaga</a></li>
-                            <li><a href="./View/editar_colabdor.php">Ver Candidaturas</a></li>
+                            <li><a href="./View/ver_vagas.php">Ver Candidaturas</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">EAD</li>
-                    <li>
+                    <li id="cabecalho_ead" class="nav-label"  style="display:none">EAD</li>
+                    <li id="ead1"  style="display:none">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-user menu-icon"></i> <span class="nav-text">Material</span>
                         </a>
@@ -193,7 +206,7 @@
                             <li><a href="./View/edicolaborador.php">Gerir Curso</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li id="ead2"  style="display:none">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-graph menu-icon"></i> <span class="nav-text">Resultados</span>
                         </a>
@@ -202,7 +215,21 @@
                             <li><a href="./chart-morris.html">Setor</a></li>
                         </ul>
                     </li>
-
+                    <li id="ead3"  style="display:none">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Cursos</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./View/cadastrolaborador.php">Geral</a></li>
+                            <li><a href="./chart-morris.html">Setor</a></li>
+                        </ul>
+                    </li>
+                    <li id="cabecalho_configuracao" class="nav-label"  style="display:none">Configurações</li>
+                    <li id="configuracao1"  style="display:none">
+                        <a class="has-arrow"  href="./View/acesso.php" aria-expanded="false">
+                            <i class="icon-user menu-icon"></i> <span class="nav-text">Acesso</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -216,7 +243,8 @@
         <div class="content-body">
 
             <div class="container-fluid mt-3">
-                <div class="row">
+
+                <div class="row" id="indicadores_geral" style="display:none">
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-1">
                             <div class="card-body">
@@ -266,35 +294,22 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body pb-0 d-flex justify-content-between">
-                                        <div>
-                                            <h4 class="mb-1">Evolução do Clima Organizacional</h4>
-                                            <h5 class="m-0">2 Pesquisas</h5>
-                                        </div>
-                                        <div>
-                                        </div>
-                                    </div>
-                                    <div class="chart-wrapper">
-                                        <canvas id="chart_widget_2"></canvas>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <hr style="border: solid 1px;color:#cec7c7">
+                <h3 style="color:#cec7c7;text-align:center;">Pesquisas</h3>
+                <div id="tela_dash2" style="display:flex;justify-content:center">
+                </div>
+                <hr style="border: solid 1px;color:#cec7c7">
+                <div id="tela_dash">
+                </div>
+                <hr style="border: solid 1px;color:#cec7c7">
+                <h3 style="color:#cec7c7;text-align:center;">Avisos</h3>
+                <div id="tela_avisos2" style="display:flex;justify-content:center">
+                </div>
+                <hr style="border: solid 1px;color:#cec7c7">
+                <div id="tela_avisos">
                 </div>
 
-
-
-
-
-                <div class="row">
+              <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
@@ -473,7 +488,14 @@
     <script src="./plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
     <script src="control/home.js"></script>
     <script src="./js/dashboard/dashboard-1.js"></script>
-    <script>Indicadores()</script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/sweetalert2.all.js"></script>
+    <script src="js/sweetalert2.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
+    <script src="js/swalExtend.js"></script>
+    <script>
+    Indicadores(<?php echo $root?>);
+    </script>
 
 </body>
 

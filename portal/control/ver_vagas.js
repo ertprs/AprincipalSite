@@ -110,7 +110,7 @@ function Exclui(id){
 function listaVagas(){
   $.ajax({
     type: 'POST',
-    url: "portal/control/listaVagas.php",
+    url: "../control/listaVagas.php",
     dataType: "json",
     success: function(data) {
       var aux = document.createElement("div");
@@ -332,7 +332,7 @@ function listaCandidatos(id){
       "botao1":"<a style='color:white !important' class='btn btn-info fa fa-download' type='button'"
        +"href='../curriculos/"+data[i].curriculo+"' download='curriculo "+data[i].nome+".pdf'></a>",
        "botao2":"<button class='btn btn-warning fa fa-edit' type='button' onclick='AbrirCandidato("+data[i].id+","+aux2+")'></button>",
-      "botao3":"<button class='btn btn-warning fa fa-times' type='button' onclick='ExcluiCandidato("+data[i].id+")'></button>"
+      "botao3":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiCandidato("+data[i].id+")'></button>"
       });
     }
 criarTabela(data1);

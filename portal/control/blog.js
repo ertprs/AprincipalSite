@@ -186,7 +186,7 @@ function listaNoticias(){
     for (var i = 0; i <data.length; i++) {
       data1.push({"id":data[i].id,"fotos":data[i].fotos,"data":data[i].data,"titulo":data[i].titulo,"resumo":data[i].resumo,
       "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='Edita("+data[i].id+","+aux2+")'></button>",
-      "botao2":"<button class='btn btn-warning fa fa-times' type='button' onclick='ExcluiNoticias("+data[i].id+")'></button>"
+      "botao2":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiNoticias("+data[i].id+")'></button>"
       });
     }
 criarTabela(data1);
