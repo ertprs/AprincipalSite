@@ -139,25 +139,8 @@
 							<!-- Categories -->
 							<div class="sidebar_categories">
 								<div class="sidebar_title">Categorias</div>
-								<div class="categories">
-									<ul>
-										<li><a href="#"><div class="d-flex flex-row align-items-center justify-content-start">
-											<div>Medicine</div>
-											<div class="ml-auto">(11)</div>
-										</div></a></li>
-										<li><a href="#"><div class="d-flex flex-row align-items-center justify-content-start">
-											<div>Pharmacy</div>
-											<div class="ml-auto">(23)</div>
-										</div></a></li>
-										<li><a href="#"><div class="d-flex flex-row align-items-center justify-content-start">
-											<div>Uncategorized</div>
-											<div class="ml-auto">(6)</div>
-										</div></a></li>
-										<li><a href="#"><div class="d-flex flex-row align-items-center justify-content-start">
-											<div>Doctors</div>
-											<div class="ml-auto">(9)</div>
-										</div></a></li>
-									</ul>
+								<div class="categories" id="lista_categoria">
+
 								</div>
 							</div>
 
@@ -279,9 +262,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Desen
 <script src="js/news.js"></script>
 <script src="js/Main.js"></script>
 <script>
-noticias2("Todos","Todos");
+noticias2("Todos",1);
 noticias3();
 filtros();
+categoria();
+pagination();
 </script>
 
 </body>

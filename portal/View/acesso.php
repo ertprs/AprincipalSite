@@ -1,20 +1,3 @@
-<?php
-session_start();
-if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
-  unset($_SESSION['login']);
-  unset($_SESSION['senha']);
-  unset($_SESSION['root']);
-  header('location:../index.php');
-}else if (($_SESSION['root'] == "4"){
-  $logado = $_SESSION['login'];
-  $root = $_SESSION['root'];
-}else {
-  unset($_SESSION['login']);
-  unset($_SESSION['senha']);
-  unset($_SESSION['root']);
-  header('location:../index.php');
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,216 +21,19 @@ if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == tru
     <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="../css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="../css/select.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/select.css" rel="stylesheet" type="text/css">
     <link href="../css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
 
             <script src="../control/main.js"></script>
     </head>
 
-    <body onload="valida(<?php echo $root?>)">
+    <body >
 
-    <!--*******************
-        Preloader start
-    ********************-->
+          <?php
+          require_once("menu2.php");
+          ?>
 
-        <!--*******************
-            Preloader start
-        ********************-->
-        <div id="preloader">
-            <div class="loader">
-                <svg class="circular" viewBox="25 25 50 50">
-                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
-                </svg>
-            </div>
-        </div>
-        <!--*******************
-            Preloader end
-        ********************-->
-
-
-        <!--**********************************
-            Main wrapper start
-        ***********************************-->
-        <div id="main-wrapper">
-
-            <!--**********************************
-                Nav header start
-            ***********************************-->
-            <div class="nav-header">
-                <div class="brand-logo">
-                    <a href="../home.php" style="justify-content: center;display: flex;">
-                      <img class="logo_apbbmm" src="../images/logo.png" alt="">
-                    </a>
-                </div>
-            </div>
-            <!--**********************************
-                Nav header end
-            ***********************************-->
-
-            <!--**********************************
-                Header start
-            ***********************************-->
-            <div class="header">
-                <div class="header-content clearfix">
-
-                    <div class="nav-control">
-                        <div class="hamburger">
-                            <span class="toggle-icon"><i class="icon-menu"></i></span>
-                        </div>
-                    </div>
-                    <!-- <div class="header-left">
-                        <div class="input-group icons">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                            </div>
-                            <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                            <div class="drop-down animated flipInX d-md-none">
-                                <form action="#">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </form>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="header-right">
-                        <ul class="clearfix">
-                            <li class="icons dropdown">
-                                <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
-                                    <span class="activity active"></span>
-                                    <img src="../images/user/1.png" height="40" width="40" alt="">
-                                </div>
-                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                    <div class="dropdown-content-body">
-                                        <ul>
-                                            <li>
-                                                <a href="../app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void()">
-                                                    <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
-                                                </a>
-                                            </li>
-
-                                            <hr class="my-2">
-                                            <li>
-                                                <a href="../page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                            </li>
-                                            <li><a href="../page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!--**********************************
-                Header end ti-comment-alt
-            ***********************************-->
-
-            <!--**********************************
-                Sidebar start
-            ***********************************-->
-            <div class="nk-sidebar">
-                <div class="nk-nav-scroll">
-                    <ul class="metismenu" id="menu">
-                      <li id="cabecalho_marketing" style="display:none" class="nav-label">Marketing</li>
-                      <li  id="marketing1" style="display:none">
-                          <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                              <i class="icon-user menu-icon"></i> <span class="nav-text">Site</span>
-                          </a>
-                          <ul aria-expanded="false">
-                            <li><a href="blog.php">Blog</a></li>
-                            <li><a href="produtos.php">Produtos</a></li>
-
-                          </ul>
-                      </li>
-                        <li  id="marketing2" style="display:none">
-                          <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                              <i class="icon-user menu-icon"></i> <span class="nav-text">Cartões</span>
-                          </a>
-                          <ul aria-expanded="false">
-                              <li><a href="baby+.php">baby +</a></li>
-                              <li><a href="cartao_vendedores.php">Vendedores</a></li>
-                          </ul>
-                      </li>
-                      <li  id="marketing3" style="display:none">
-
-                          <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                              <i class="icon-user menu-icon"></i> <span class="nav-text">Landing Pages</span>
-                          </a>
-                          <ul aria-expanded="false">
-                              <li><a href="baby+.php">Wifi Social</a></li>
-                          </ul>
-                      </li>
-                      <li  id="cabecalho_rh"class="nav-label"  style="display:none">RH</li>
-                      <li id="rh1"  style="display:none">
-                            <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                                <i class="icon-user menu-icon"></i> <span class="nav-text">Colaboradores</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><a href="cadastrar_colaborador.php">Cadastrar</a></li>
-                                <li><a href="editar_colaborador.php">Editar</a></li>
-                            </ul>
-                        </li>
-                            <li id="rh2"  style="display:none">
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-graph menu-icon"></i> <span class="nav-text">Formulario</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><a href="climaOrganizacional.php">Clima Organizacional</a></li>
-                                <li><a href="AvaliacaoDesempenho.php">Avaliação de Desempenho</a></li>
-                                <li><a href="chart-chartjs.html">Outros</a></li>
-                                <li><a href="chart-chartist.html">Novo Formulario</a></li>
-                                <li><a href="departamentos.php">Departamentos</a></li>
-                            </ul>
-                        </li>
-                        <li id="rh3"  style="display:none">
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><a href="gerir_vagas.php">Criar Vaga</a></li>
-                                <li><a href="ver_vagas.php">Ver Candidaturas</a></li>
-                            </ul>
-                        </li>
-                        <li id="cabecalho_ead" class="nav-label"  style="display:none">EAD</li>
-                        <li id="ead1"  style="display:none">
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-user menu-icon"></i> <span class="nav-text">Material</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><a href="laborador.php">Criar Curso</a></li>
-                                <li><a href="ecodor.php">Gerir Curso</a></li>
-                            </ul>
-                        </li>
-                        <li id="ead2"  style="display:none">
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-graph menu-icon"></i> <span class="nav-text">Resultados</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><a href="aborador.php">Geral</a></li>
-                                <li><a href="chart-morris.html">Setor</a></li>
-                            </ul>
-                        </li>
-                        <li id="ead3"  style="display:none">
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-graph menu-icon"></i> <span class="nav-text">Cursos</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><a href="./View/cadastrolaborador.php">Geral</a></li>
-                                <li><a href="./chart-morris.html">Setor</a></li>
-                            </ul>
-                        </li>
-                        <li id="cabecalho_configuracao" class="nav-label"  style="display:none">Configurações</li>
-                        <li id="configuracao1"  style="display:none">
-                            <a class="has-arrow"  href="./View/acesso.php" aria-expanded="false">
-                                <i class="icon-user menu-icon"></i> <span class="nav-text">Acesso</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
         <!--**********************************
             Content body start
         ***********************************-->
@@ -263,36 +49,6 @@ if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == tru
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="card-title">Controle de Acesso ao Sistema</div>
-                                <br>
-                                <table class="table table-striped">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Nivel</th>
-                                      <th scope="col">Acesso</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <th scope="row">4</th>
-                                      <td>Acesso irrestrito ao sistema</td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">3</th>
-                                      <td>Acesso ao RH</td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">2</th>
-                                      <td>Acesso ao Marketing e EAD</td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">1</th>
-                                      <td>Acesso apenas a mensagens gerais e direcionadas, responder pesquisas e fazer cursos</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <br>
-
                                 <div id="table">
                                   <table id="table3"  style="width:100%" class="table table-striped table-bordered" >
                                     <thead >
@@ -342,21 +98,223 @@ if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == tru
     ***********************************-->
     <!-- Modal Login -->
     <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog aux" role="document">
         <div class="modal-content">
-          <div class="modal-header text-center">
+          <div class="modal-header text-center" style="display:flex;text-align:center;justify-content:center">
             <h5 class="modal-title" id="TituloModalCentralizado"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body mx-3" style="display:flex;justify-content:space-between">
-            <div class="col-12">
-              <label data-error="wrong" data-success="right" for="defaultForm-email">Nivel de Acesso</label>
-              <input type="number" id="nivel_acesso" class="form-control validate" ></input>
-              <input type="hidden" id="id_acesso" class="form-control validate" ></input>
+          <div class="modal-body">
+            <div class="row" style="text-align: center;">
+
+              <div class="col-3" style="text-align:left;">
+                <span style="text-align: left;font-size:20px;color:#808080">Marketing</span>
+                <div class="form-check" style="margin:5px" id="site">
+                  <input class="form-check-input" type="checkbox" value="" onchange="check()" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Site
+                  </label>
+                </div>
+                    <div class="form-check" style="display: none;margin-left:25px" id="site_1">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1_1">
+                      <label class="form-check-label" for="defaultCheck1_1">
+                        Blog
+                      </label>
+                    </div>
+                    <div class="form-check" style="display: none;margin-left:25px"  id="site_2">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1_2">
+                      <label class="form-check-label" for="defaultCheck1_2">
+                        Produtos
+                      </label>
+                    </div>
+                <div class="form-check" style="margin:5px" id="design">
+                  <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck2">
+                  <label class="form-check-label" for="defaultCheck2">
+                    Design
+                  </label>
+                </div>
+                    <div class="form-check" style="display: none;margin-left:25px" id="design_1">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2_1">
+                      <label class="form-check-label" for="defaultCheck2_1">
+                        Baby +
+                      </label>
+                    </div>
+                    <div class="form-check" style="display: none;margin-left:25px"  id="design_2">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2_2">
+                      <label class="form-check-label" for="defaultCheck2_2">
+                        Vendedores
+                      </label>
+                    </div>
+                    <div class="form-check" style="display: none;margin-left:25px"  id="design_3">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2_3">
+                      <label class="form-check-label" for="defaultCheck2_3">
+                        Certificado
+                      </label>
+                    </div>
+                <div class="form-check" style="margin:5px" id="landing">
+                  <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck3">
+                  <label class="form-check-label" for="defaultCheck3">
+                    Landing Page
+                  </label>
+                </div>
+                  <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="landing_1">
+                    <input class="form-check-input"  type="checkbox" value="" id="defaultCheck3_1">
+                    <label class="form-check-label" for="defaultCheck3_1">
+                      Wifi Social
+                    </label>
+                  </div>
+              </div>
+
+              <div class="col-3" style="text-align:left;">
+                <span style="text-align: left;font-size:20px;color:#808080">RH</span>
+                  <div class="form-check" style="margin:5px" id="colaborador">
+                    <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck4">
+                    <label class="form-check-label" for="defaultCheck4">
+                      Colaboradores
+                    </label>
+                  </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px"  id="colaborador1">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck4_1">
+                        <label class="form-check-label" for="defaultCheck4_1">
+                          Cadastrar
+                        </label>
+                      </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px"  id="colaborador2">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck4_2">
+                        <label class="form-check-label" for="defaultCheck4_2">
+                          Editar
+                        </label>
+                      </div>
+                  <div class="form-check" style="margin:5px" id="forms">
+                    <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck5">
+                    <label class="form-check-label" for="defaultCheck5">
+                      Formularios
+                    </label>
+                  </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="forms1">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck5_1">
+                        <label class="form-check-label" for="defaultCheck5_1">
+                          Clima Organizacional
+                        </label>
+                      </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="forms2">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck5_2">
+                        <label class="form-check-label" for="defaultCheck5_2">
+                          Avaliação Desempenho
+                        </label>
+                      </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="forms3">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck5_3">
+                        <label class="form-check-label" for="defaultCheck5_3">
+                          Outros
+                        </label>
+                      </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="forms4">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck5_4">
+                        <label class="form-check-label" for="defaultCheck5_4">
+                          Departamentos
+                        </label>
+                      </div>
+
+                  <div class="form-check" style="margin:5px" id="vagas">
+                    <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck6">
+                    <label class="form-check-label" for="defaultCheck6">
+                      Gerir Vagas
+                    </label>
+                  </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="vagas1">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck6_1">
+                        <label class="form-check-label" for="defaultCheck6_1">
+                          Gerir Vagas
+                        </label>
+                      </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="vagas2">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck6_2">
+                        <label class="form-check-label" for="defaultCheck6_2">
+                          Gerir Vagas
+                        </label>
+                      </div>
+              </div>
+
+              <div class="col-3" style="text-align:left;">
+                <span style="text-align: left;font-size:20px;color:#808080">EAD</span>
+                  <div class="form-check" style="margin:5px" id="Material">
+                    <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck7">
+                    <label class="form-check-label" for="defaultCheck7">
+                      criar Material
+                    </label>
+                  </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="Material1">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck7_1">
+                        <label class="form-check-label" for="defaultCheck7_1">
+                          Criar Curso
+                        </label>
+                      </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="Material2">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck7_2">
+                        <label class="form-check-label" for="defaultCheck7_2">
+                          Gerir Curso
+                        </label>
+                      </div>
+                  <div class="form-check" style="margin:5px" id="resultados">
+                    <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck8">
+                    <label class="form-check-label" for="defaultCheck8">
+                      Resultados
+                    </label>
+                  </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="resultados1">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck8_1">
+                        <label class="form-check-label" for="defaultCheck8_1">
+                          Geral
+                        </label>
+                      </div>
+                      <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="resultados2">
+                        <input class="form-check-input"  type="checkbox" value="" id="defaultCheck8_2">
+                        <label class="form-check-label" for="defaultCheck8_2">
+                          Setor
+                        </label>
+                      </div>
+                      <div class="form-check" style="margin:5px" id="curso">
+                        <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck10">
+                        <label class="form-check-label" for="defaultCheck8">
+                          Cursos
+                        </label>
+                      </div>
+                          <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="curso1">
+                            <input class="form-check-input"  type="checkbox" value="" id="defaultCheck10_1">
+                            <label class="form-check-label" for="defaultCheck10_1">
+                              Geral
+                            </label>
+                          </div>
+                          <div class="form-check" style="display: none;margin:5px;margin-left:25px" id="curso2">
+                            <input class="form-check-input"  type="checkbox" value="" id="defaultCheck10_2">
+                            <label class="form-check-label" for="defaultCheck10_2">
+                              Setor
+                            </label>
+                          </div>
+                </div>
+
+                <div class="col-3" style="text-align:left;">
+                <span style="text-align: left;font-size:20px;color:#808080" >
+                  Configurações</span>
+                  <div class="form-check" style="margin:5px" id="config">
+                    <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck9">
+                    <label class="form-check-label" for="defaultCheck9">
+                      Acesso
+                    </label>
+                  </div>
+                  <div class="form-check" style="margin:5px" id="config1">
+                    <input class="form-check-input" onchange="check()" type="checkbox" value="" id="defaultCheck9_1">
+                    <label class="form-check-label" for="defaultCheck9_1">
+                      Indicadores Gerais
+                    </label>
+                  </div>
+              </div>
             </div>
-          </div>
+            <br><br>
+            <input type="hidden" id="id_acesso"></input>
           <div style="display:flex;justify-content:center">
             <button class="btn btn-info" style="width:10rem" onclick="SalvaAcesso()">Alterar Nivel</button>
           </div>
@@ -364,6 +322,7 @@ if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == tru
         </div>
       </div>
     </div>
+  </div>
 
 
 

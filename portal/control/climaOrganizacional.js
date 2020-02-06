@@ -2202,8 +2202,12 @@ function IniciarPesquisa(){
   var selectedVal = $("#multiselect").val();
   var indicador = document.getElementById("indicador").value;
   var responsavel = document.getElementById("responsavel").value;
-  var inicio = document.getElementById("data_init").value;
-  var fim = document.getElementById("data_end").value;
+  var inicio2 = document.getElementById("data_init").value;
+  var fim2 = document.getElementById("data_end").value;
+  var fim = fim2.split("-");
+  var inicio = inicio2.split("-");
+  fim = fim[2]+"/"+fim[1]+"/"+fim[0];
+  inicio = inicio[2]+"/"+inicio[1]+"/"+inicio[0];
   selectedVal = JSON.stringify(selectedVal);
     $.ajax({
       url: "../control/SalvaPesquisa.php",

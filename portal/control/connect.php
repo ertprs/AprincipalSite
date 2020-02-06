@@ -4,10 +4,10 @@
 
 class Conexao
  {
-    // private $usuario = "port5718_admin";
-    // private $senha = "40028922";
-    // private $caminho = "162.241.2.87";
-    // private $banco = "port5718_Aprincipal";
+    // private $usuario = "aprincip_admin";
+    // private $senha = "BBMM@bbmm@123";
+    // private $caminho = "localhost";
+    // private $banco = "aprincip_aprincipal";
     // private $mysqli;
     private $usuario = "root";
     private $senha = "";

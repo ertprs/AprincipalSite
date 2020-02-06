@@ -4,7 +4,7 @@ include_once 'connect.php';
 $conexao = new Conexao();
 $mysqli = $conexao->getConexao();
 
-$query = "SELECT * FROM colaborador";
+$query = "SELECT DISTINCT categoria FROM noticias";
 $result = mysqli_query($mysqli, $query);
 $data = array();
 

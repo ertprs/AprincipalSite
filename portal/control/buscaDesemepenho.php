@@ -4,7 +4,7 @@ include_once 'connect.php';
 $conexao = new Conexao();
 $mysqli = $conexao->getConexao();
 
-$query = "SELECT * FROM colaborador";
+$query = "SELECT * FROM pesquisadesempenho";
 $result = mysqli_query($mysqli, $query);
 $data = array();
 

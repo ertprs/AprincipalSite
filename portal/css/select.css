@@ -19,6 +19,9 @@
 .swal2-popup {
     width: 50%  !important;
 }
+.swal2Teste{
+  width: 100%  !important;
+}
 /* .table{
   width: 100% !important;
 }
@@ -193,4 +196,20 @@ color: black;
   width: 195px !important;
   height: 120px !important;
   color: black !important;
+}
+
+
+input[type="checkbox"]:checked:after {
+    width: 1.2rem;
+    height: 1.2rem;
+    display: block;
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    color: #f91d81cc !important;
+    font-weight: 100;
+    text-align: center;
+}
+
+.aux {
+    max-width: 90% !important;
 }

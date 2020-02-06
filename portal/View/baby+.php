@@ -1,20 +1,3 @@
-<?php
-session_start();
-if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){
-  unset($_SESSION['login']);
-  unset($_SESSION['senha']);
-  unset($_SESSION['root']);
-  header('location:../index.php');
-}else if (($_SESSION['root'] == "4")||($_SESSION['root'] == "2")) {
-  $logado = $_SESSION['login'];
-  $root = $_SESSION['root'];
-}else {
-  unset($_SESSION['login']);
-  unset($_SESSION['senha']);
-  unset($_SESSION['root']);
-  header('location:../index.php');
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +30,6 @@ if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == tru
   <script>
   function Init(){
     cod();
-    valida(<?php echo $root?>);
   }
   </script>
   <!--*******************
@@ -147,107 +129,9 @@ if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == tru
       <!--**********************************
           Sidebar start
       ***********************************-->
-      <div class="nk-sidebar">
-          <div class="nk-nav-scroll">
-              <ul class="metismenu" id="menu">
-                <li id="cabecalho_marketing" style="display:none" class="nav-label">Marketing</li>
-                <li  id="marketing1" style="display:none">
-                    <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                        <i class="icon-user menu-icon"></i> <span class="nav-text">Site</span>
-                    </a>
-                    <ul aria-expanded="false">
-                      <li><a href="blog.php">Blog</a></li>
-                      <li><a href="produtos.php">Produtos</a></li>
-
-                    </ul>
-                </li>
-                  <li  id="marketing2" style="display:none">
-                    <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                        <i class="icon-user menu-icon"></i> <span class="nav-text">Cartões</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="baby+.php">baby +</a></li>
-                        <li><a href="cartao_vendedores.php">Vendedores</a></li>
-                    </ul>
-                </li>
-                <li  id="marketing3" style="display:none">
-
-                    <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                        <i class="icon-user menu-icon"></i> <span class="nav-text">Landing Pages</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="baby+.php">Wifi Social</a></li>
-                    </ul>
-                </li>
-                <li  id="cabecalho_rh"class="nav-label"  style="display:none">RH</li>
-                <li id="rh1"  style="display:none">
-                      <a class="has-arrow" href="excluir_colaborador.php" aria-expanded="false">
-                          <i class="icon-user menu-icon"></i> <span class="nav-text">Colaboradores</span>
-                      </a>
-                      <ul aria-expanded="false">
-                          <li><a href="cadastrar_colaborador.php">Cadastrar</a></li>
-                          <li><a href="editar_colaborador.php">Editar</a></li>
-                      </ul>
-                  </li>
-                      <li id="rh2"  style="display:none">
-                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                          <i class="icon-graph menu-icon"></i> <span class="nav-text">Formulario</span>
-                      </a>
-                      <ul aria-expanded="false">
-                          <li><a href="climaOrganizacional.php">Clima Organizacional</a></li>
-                          <li><a href="AvaliacaoDesempenho.php">Avaliação de Desempenho</a></li>
-                          <li><a href="chart-chartjs.html">Outros</a></li>
-                          <li><a href="chart-chartist.html">Novo Formulario</a></li>
-                          <li><a href="departamentos.php">Departamentos</a></li>
-                      </ul>
-                  </li>
-                  <li id="rh3"  style="display:none">
-                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                          <i class="icon-user menu-icon"></i> <span class="nav-text">Gerir Vagas</span>
-                      </a>
-                      <ul aria-expanded="false">
-                          <li><a href="gerir_vagas.php">Criar Vaga</a></li>
-                          <li><a href="ver_vagas.php">Ver Candidaturas</a></li>
-                      </ul>
-                  </li>
-                  <li id="cabecalho_ead" class="nav-label"  style="display:none">EAD</li>
-                  <li id="ead1"  style="display:none">
-                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                          <i class="icon-user menu-icon"></i> <span class="nav-text">Material</span>
-                      </a>
-                      <ul aria-expanded="false">
-                          <li><a href="laborador.php">Criar Curso</a></li>
-                          <li><a href="ecodor.php">Gerir Curso</a></li>
-                      </ul>
-                  </li>
-                  <li id="ead2"  style="display:none">
-                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                          <i class="icon-graph menu-icon"></i> <span class="nav-text">Resultados</span>
-                      </a>
-                      <ul aria-expanded="false">
-                          <li><a href="aborador.php">Geral</a></li>
-                          <li><a href="chart-morris.html">Setor</a></li>
-                      </ul>
-                  </li>
-                  <li id="ead3"  style="display:none">
-                      <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                          <i class="icon-graph menu-icon"></i> <span class="nav-text">Cursos</span>
-                      </a>
-                      <ul aria-expanded="false">
-                          <li><a href="./View/cadastrolaborador.php">Geral</a></li>
-                          <li><a href="./chart-morris.html">Setor</a></li>
-                      </ul>
-                  </li>
-                  <li id="cabecalho_configuracao" class="nav-label"  style="display:none">Configurações</li>
-                  <li id="configuracao1"  style="display:none">
-                      <a class="has-arrow"  href="./View/acesso.php" aria-expanded="false">
-                          <i class="icon-user menu-icon"></i> <span class="nav-text">Acesso</span>
-                      </a>
-                  </li>
-
-              </ul>
-          </div>
-      </div>
+      <?php
+      require_once("menu2.php");
+      ?>
         <!--**********************************
             Content body start
         ***********************************-->

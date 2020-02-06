@@ -1,10 +1,10 @@
 <?php
-
+$id = $_POST["id"];
 include_once 'connect.php';
 $conexao = new Conexao();
 $mysqli = $conexao->getConexao();
 
-$query = "SELECT * FROM colaborador";
+$query = "SELECT * FROM pesquisadesempenho where id = '$id'";
 $result = mysqli_query($mysqli, $query);
 $data = array();
 

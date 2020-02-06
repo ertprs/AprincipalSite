@@ -11,10 +11,10 @@
      $conexao = new Conexao();
      $mysqli = $conexao->getConexao();
 
-$aux = "CLIMA";
+$aux = "DESEMPENHO";
 ///////////////////////////////////////////////////////////////////
-     $sql = "INSERT INTO pesquisaclima (indicador, responsavel, inicio, fim, setores,respostas,perguntas,verifica)
-     VALUES ('$indicador', '$responsavel', '$inicio', '$fim', '$json', '$json2', '$json','$aux')";
+     $sql = "INSERT INTO pesquisadesempenho (indicador, responsavel, inicio, fim, setores,respostas,perguntas,verifica)
+     VALUES ('$indicador', '$responsavel', '$inicio', '$fim', '$json', '$json2','$json','$aux')";
      $status = mysqli_query($mysqli, $sql)  or die ("Erro ao buscar evento no banco. ".mysqli_error($mysqli));
        if ($status) {
          echo "1";

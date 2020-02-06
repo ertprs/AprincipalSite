@@ -211,13 +211,169 @@ function filtros(){
     }});
 }
 
-function noticias2(cat,id){
+function categoria(){
+
+  $.ajax({
+    type: 'POST',
+    url: "control/listaCategoria.php",
+    dataType: "json",
+    success: function(data) {
+      var list = document.createElement("ul");
+      data.map(function(item,index){
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        var categoria = [];
+        categoria.push(item.categoria);
+        var cat = JSON.stringify(categoria);
+        a.setAttribute("onclick","FiltroCat("+cat+")");
+        a.style.cursor = "pointer";
+        var div1 = document.createElement("div");
+        div1.className="d-flex flex-row align-items-center justify-content-start";
+        var div2 = document.createElement("div");
+        var div2T = document.createTextNode(item.categoria);
+        div2.appendChild(div2T);
+        var div3 = document.createElement("div");
+        div3.className = "ml-auto";
+        div1.appendChild(div2);
+        div1.appendChild(div3);
+        a.appendChild(div1);
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      $("#lista_categoria").html(list);
+    }});
+}
+
+function FiltroCat(cat){
+  var categoria = cat[0];
+noticiasCat(categoria);
+}
+
+function noticiasCat(categoria){
+
+    $.ajax({
+      type: 'POST',
+      url: "control/listaNoticias4.php",
+      dataType: "json",
+      data: {cat:categoria},
+      success: function(data) {
+        data.sort((a,b)=>{
+          return b.id - a.id;
+        })
+        var noticias = document.createElement("div");
+        noticias.className = "news_posts";
+        for (var i = 0; i < data.length; i++) {
+          var div1 = document.createElement("div");
+          div1.className = "news_post";
+          var img = document.createElement("img");
+          img.src = "portal/"+data[i].fotos;
+          var div2 = document.createElement("div");
+          div2.className = "news_post_image";
+          div2.appendChild(img);
+          div1.appendChild(div2);
+          var div3 = document.createElement("div");
+          div3.className = "news_post_content";
+
+          var a2 = document.createElement("a");
+          var aT2 = document.createTextNode(data[i].titulo);
+          a2.appendChild(aT2);
+          a2.href = "#";
+          var div3_2 = document.createElement("div");
+          div3_2.className = "news_post_title";
+          div3_2.appendChild(a2);
+          var div3_3 = document.createElement("div");
+          var ul = document.createElement("ul");
+          ul.className = "d-flex flex-row align-items-center justify-content-start";
+          var li = document.createElement("li");
+          var li2 = document.createElement("li");
+          var a3 = document.createElement("a");
+          var aT3 = document.createTextNode(data[i].autor+" - ");
+          a3.appendChild(aT3);
+          var a4 = document.createElement("a");
+          var aT4 = document.createTextNode(data[i].data);
+          a4.appendChild(aT4);
+          li.appendChild(a3);
+          li.className = "teste";
+          li2.appendChild(a4);
+          ul.appendChild(li);
+          ul.appendChild(li2);
+          div3_3.appendChild(ul);
+          var div3_4 = document.createElement("div");
+          div3_4.className = "news_post_text";
+          var p = document.createElement("p");
+          p.className = "block-with-text";
+          var idbutton = "text"+i;
+          var a = document.createElement("a");
+          a.id = "click"+i;
+          a.style.cursor = "pointer";
+          a.setAttribute("onclick","abrirNoticia("+i+")");
+          p.id = idbutton;
+          var pT = document.createTextNode(data[i].texto);
+          p.appendChild(pT);
+          div3_4.appendChild(p);
+          var divButton = document.createElement("div");
+          divButton.className = "button news_post_button";
+          var t = document.createTextNode("Leia Mais");
+          var t2 = document.createTextNode("Leia Mais");
+          var span = document.createElement("span");
+          var span2 = document.createElement("span");
+          span.appendChild(t);
+          span2.appendChild(t2);
+          span.id = "button"+i;
+          span2.id = "buttonx"+i;
+          span.color = "white";
+          span2.color = "white";
+          a.appendChild(span);
+          a.appendChild(span2);
+          divButton.appendChild(a);
+          div3.appendChild(div3_2);
+          div3.appendChild(div3_3);
+          div3.appendChild(div3_4);
+          div3.appendChild(divButton);
+          div1.appendChild(div3);
+
+          noticias.appendChild(div1);
+        }
+        var pagination = document.createElement("div");
+        pagination.className = "pagination";
+        var ul2 = document.createElement("ul");
+        ul2.className = "d-flex flex-row align-items-center justify-content-start";
+        var li4 = document.createElement("li");
+        li4.className = "active";
+        var li5 = document.createElement("li");
+        var li6 = document.createElement("li");
+        var a4 = document.createElement("a");
+        var a5 = document.createElement("a");
+        var a6 = document.createElement("a");
+        var aT4 = document.createTextNode("01");
+        var aT5 = document.createTextNode("02");
+        var aT6 = document.createTextNode("03");
+        a4.appendChild(aT4);
+        a5.appendChild(aT5);
+        a6.appendChild(aT6);
+        li4.appendChild(a4);
+        li5.appendChild(a5);
+        li6.appendChild(a6);
+        ul2.appendChild(li4);
+        ul2.appendChild(li5);
+        ul2.appendChild(li6);
+        pagination.appendChild(ul2);
+        noticias.appendChild(pagination);
+        $("#painel_Noticias").html(noticias);
+      }
+    });
+}
+
+
+function noticias2(id,pagination){
+
   $.ajax({
     type: 'POST',
     url: "control/listaNoticias2.php",
     dataType: "json",
-    data: {cat:cat,id:id},
+    data: {id:id,pagination:pagination},
     success: function(data) {
+
       var noticias = document.createElement("div");
       noticias.className = "news_posts";
       for (var i = 0; i < data.length; i++) {
@@ -292,34 +448,46 @@ function noticias2(cat,id){
 
         noticias.appendChild(div1);
       }
-      var pagination = document.createElement("div");
-      pagination.className = "pagination";
-      var ul2 = document.createElement("ul");
-      ul2.className = "d-flex flex-row align-items-center justify-content-start";
-      var li4 = document.createElement("li");
-      li4.className = "active";
-      var li5 = document.createElement("li");
-      var li6 = document.createElement("li");
-      var a4 = document.createElement("a");
-      var a5 = document.createElement("a");
-      var a6 = document.createElement("a");
-      var aT4 = document.createTextNode("01");
-      var aT5 = document.createTextNode("02");
-      var aT6 = document.createTextNode("03");
-      a4.appendChild(aT4);
-      a5.appendChild(aT5);
-      a6.appendChild(aT6);
-      li4.appendChild(a4);
-      li5.appendChild(a5);
-      li6.appendChild(a6);
-      ul2.appendChild(li4);
-      ul2.appendChild(li5);
-      ul2.appendChild(li6);
-      pagination.appendChild(ul2);
-      noticias.appendChild(pagination);
-      $("#painel_Noticias").html(noticias);
+      /////////////////////////////////////////////
+      $.ajax({
+        type: 'POST',
+        url: "control/buscaPag.php",
+        dataType: "json",
+        success: function(data) {
+          var tam = data.length;
+          var pagination = document.createElement("div");
+          pagination.className = "pagination";
+          tam = tam/5;
+          tam = Math.trunc(tam);
+          console.log(tam);
+          for (var i = 0; i < tam; i++) {
+            var ul2 = document.createElement("ul");
+            ul2.className = "d-flex flex-row align-items-center justify-content-start";
+            var li4 = document.createElement("li");
+            var a4 = document.createElement("a");
+            var aT4 = document.createTextNode("01");
+            a4.setAttribute("onclick","pagination("+i+")");
+            var j = i+1;
+            if (j==pagination) {
+              a4.className = "active";
+            }
+            a4.appendChild(aT4);
+            li4.appendChild(a4);
+            ul2.appendChild(li4);
+            pagination.appendChild(ul2);
+          }
+          /////////////////////////////////////////////
+          noticias.appendChild(pagination);
+          $("#painel_Noticias").html(noticias);
+
+        }});
+
     }
   });
+}
+
+function pagination(id){
+id = id+1;
 }
 
 function abrirNoticia(id){
@@ -370,7 +538,7 @@ function noticias3(){
         var a = document.createElement("a");
         var aT = document.createTextNode(data[i].titulo);
         a.appendChild(aT);
-        a.setAttribute("onclick", "noticias2('Todos',"+data[i].id+")");
+        a.setAttribute("onclick", "noticias2("+data[i].id+","+0+")");
         a.style.cursor = "pointer";
         div4.appendChild(a);
         div3.appendChild(div4);

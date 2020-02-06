@@ -61,6 +61,7 @@ if (index=="6") {
   document.getElementById("tela_forms").style.display = "block";
   document.getElementById("tela_matriz").style.display = "none";
   $("#tema").html("Dashboard Formulários");
+  Formulario();
 }
 if (index=="7") {
   document.getElementById("tela_geral").style.display = "none";
@@ -136,14 +137,14 @@ function listaForms(){
       for (var i = 0; i < data.length; i++) {
         if (data[i].categoria=="1"){
           data[i].categoria = "Competencia Comportamental Gestor";
-        }else if (data[i].categoria=="2"){
-          data[i].categoria = "Competencia Comportamental Não Gestor";
+        }else if (data[i].categoria=="3"){
+          data[i].categoria = "Competencia Tecnica Gestor";
         }
       }
 
       var aux2 = JSON.stringify(data);
         for (var i = 0; i < data.length; i++) {
-          if (data[i].categoria=="3"||data[i].categoria=="4"){
+          if (data[i].categoria=="2"||data[i].categoria=="4"){
            console.log(1);
          }else {
            data1.push({"id":data[i].id,"texto":data[i].texto,"categoria":data[i].categoria,
@@ -165,15 +166,15 @@ function listaForms2(){
     success: function(data) {
       var data1 = [];
       for (var i = 0; i < data.length; i++) {
-        if (data[i].categoria=="3") {
-          data[i].categoria = "Competencia Tecnica Gestor";
+        if (data[i].categoria=="2") {
+          data[i].categoria = "Competencia Comportamental Não Gestor";
         }else if (data[i].categoria=="4") {
           data[i].categoria = "Competencia Tecnica Não Gestor";
         }
       }
       var aux2 = JSON.stringify(data);
         for (var i = 0; i < data.length; i++) {
-          if (data[i].categoria=="1"||data[i].categoria=="2"){
+          if (data[i].categoria=="1"||data[i].categoria=="3"){
            console.log(1);
          }else {
            data1.push({"id":data[i].id,"texto":data[i].texto,"categoria":data[i].categoria,
@@ -490,4 +491,178 @@ $.ajax({
   }});
 
 
+}
+
+
+function Formulario(){
+
+  $.ajax({
+    type: 'POST',
+    url: "../control/buscaDesemepenho.php",
+    dataType: "json",
+    success: function(data) {
+      var data1 = [];
+      var aux2 = JSON.stringify(data);
+        for (var i = 0; i < data.length; i++) {
+         data1.push({"id":data[i].id,"indicador":data[i].indicador,"setores":data[i].setores,
+         "inicio":data[i].inicio,"fim":data[i].fim,"responsavel":data[i].responsavel,
+         "botao1":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiDesempenho("+data[i].id+")'></button>"
+           });
+
+        }
+criarTabela5(data1);
+				}
+			});
+}
+
+
+
+///////////////////////////////////////////////////////////////////
+function criarTabela5(data){
+    var table = document.getElementById('table_forms');
+    for(var i=0; i<data.length; i++){
+      var newRow = document.createElement('tr');
+    }
+    if($.fn.dataTable.isDataTable('#table_forms')){
+      table = $('#table_forms').DataTable();
+    }else {
+      table = $('#table_forms').DataTable( {
+        "scrollX": true,
+        data: data,
+        columns: [
+          { data: "id"},
+          { data: "indicador"},
+          { data: "setores"},
+          { data: "inicio"},
+          { data: "fim"},
+          { data: "responsavel"},
+          { data: "botao1"},
+      ],
+        dom: 'Bfrtip',
+         buttons: [
+             'excel',
+             'pdf',
+             'copy',
+             'csv',
+             'print'
+         ],
+          select: true,
+      } );
+    }
+}
+///////////////////////////////////////////////////////////////////
+function InitPesquisa(){
+  $("#modalepesquisa").modal();
+}
+
+
+
+function IniciarPesquisa(){
+  var selectedVal = $("#multiselect").val();
+  var indicador = document.getElementById("indicador").value;
+  var responsavel = document.getElementById("responsavel").value;
+  var inicio2 = document.getElementById("data_init").value;
+  var fim2 = document.getElementById("data_end").value;
+  var fim = fim2.split("-");
+  var inicio = inicio2.split("-");
+  fim = fim[2]+"/"+fim[1]+"/"+fim[0];
+  inicio = inicio[2]+"/"+inicio[1]+"/"+inicio[0];
+  
+  selectedVal = JSON.stringify(selectedVal);
+    $.ajax({
+      url: "../control/SalvaPesquisaDesempenho.php",
+      type: "POST",
+      data: {indicador:indicador,responsavel:responsavel,inicio:inicio,fim:fim,
+      json:selectedVal},
+      success: function(data) {
+
+        if (data == "1") {
+          const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 2000
+            })
+
+            Toast.fire({
+              type: 'success',
+              title: 'Pesquisa Iniciada Com Sucesso'
+            })
+            setTimeout(function(){
+            window.location.reload();
+          }, 1000);
+        } else {
+          const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 2000
+            })
+
+            Toast.fire({
+              type: 'error',
+              title: 'Falha ao Iniciar Pesquisa'
+            })
+
+        }
+      },
+      error: function(jXHR, textStatus, errorThrown) {}
+    });
+
+}
+
+function ExcluiDesempenho(id){
+  Swal.fire({
+  title: 'Deseja Ecluir?',
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Sim!'
+}).then((result) => {
+    if (result.value) {
+      Exclui5(id);
+    }
+})
+}
+
+
+function Exclui5(id){
+  var id = id;
+  $.ajax({
+    url: "../control/ExcluiDesempenho.php",
+    type: "POST",
+    data: {id:id},
+    success: function(data) {
+      if (data == "1") {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000
+          })
+
+          Toast.fire({
+            type: 'success',
+            title: 'Pesquisa Excluida Com Sucesso'
+          })
+          setTimeout(function(){
+          window.location.reload();
+        }, 1000);
+      } else {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000
+          })
+
+          Toast.fire({
+            type: 'error',
+            title: 'Falha Ao Tentar Excluir Pesquisa'
+          })
+      }
+    },
+    error: function(jXHR, textStatus, errorThrown) {}
+  });
 }

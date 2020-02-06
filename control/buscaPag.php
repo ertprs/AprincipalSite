@@ -1,0 +1,19 @@
+<?php
+include_once 'connect.php';
+$conexao = new Conexao();
+$mysqli = $conexao->getConexao();
+$pagination2 = $pagination + 5;
+
+
+  $query = "SELECT * FROM noticias";
+  $result = mysqli_query($mysqli, $query) or die ("Erro ao buscar evento no banco. ".mysqli_error($mysqli));
+  $data = array();
+
+if(mysqli_num_rows($result) > 0){
+while($row = mysqli_fetch_assoc($result)){
+ $data[] = $row;
+}
+echo json_encode($newdata);
+}
+
+?>
