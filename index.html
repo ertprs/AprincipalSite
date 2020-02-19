@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/sweetalert2.css">
 <link rel="stylesheet" type="text/css" href="styles/sweetalert2.min.css">
+<link rel="stylesheet" type="text/css" href="styles/banner.css">
 <script src="js/Main.js"></script>
 
 </head>
@@ -21,10 +22,45 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="background_image" style="background-image:url(images/index_hero.jpg)"></div>
+		<!-- <div class="background_image" style="margin-top: 130px;background-image:url(images/capasite3.jpg)"></div> -->
+		<div class="slideshow-container">
+			<div class="mySlides fade">
+			  <img src="images/capasite3.jpg" class="img_banner" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+			  <img src="images/capasite5.jpg" class="img_banner" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+			  <img src="images/capasite4.jpg" class="img_banner" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+			  <img src="images/capasite2.jpg" class="img_banner" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+			  <img src="images/capasite1.jpg" class="img_banner" style="width:100%">
+			</div>
+		</div>
 
 		<!-- Header -->
+		<script>
+		var slideIndex = 0;
+		showSlides();
 
+		function showSlides() {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+
+		  for (i = 0; i < slides.length; i++) {
+		    slides[i].style.display = "none";
+		  }
+		  slideIndex++;
+		  if (slideIndex > slides.length) {slideIndex = 1}
+
+		  slides[slideIndex-1].style.display = "block";
+
+		  setTimeout(showSlides, 15000); // Change image every 2 seconds
+		}
+		</script>
 		<header class="header" id="header">
 			<div>
 				<div class="header_top">
@@ -87,9 +123,10 @@
 				<div class="row">
 					<div class="col">
 						<div class="home_content">
-							<div class="home_title">Seja Bem vindo a Aprincipal Mamãe e Bebê</div>
-							<div class="home_text">Tornou-se referência na cidade de Marabá por trabalhar com venda de produtos de 0 a 16 anos</div>
-							<div class="button home_button"><a href="#"><span>Contato</span><span>Contato</span></a></div>
+							<!-- <div class="home_title">Seja Bem vindo a Aprincipal Mamãe e Bebê</div>
+							<div class="home_text">Tornou-se referência na cidade de Marabá por trabalhar com venda de produtos de 0 a 16 anos</div> -->
+							<!-- <br><br><br><br><br><br><br><br><br>
+							<div class="button home_button"><a href="#"><span>Contato</span><span>Contato</span></a></div> -->
 						</div>
 					</div>
 				</div>
@@ -157,7 +194,6 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_title">Nossos Produtos</div>
-					<div class="section_subtitle">Insira Um Texto Aqui</div>
 				</div>
 			</div>
 			<br><br>

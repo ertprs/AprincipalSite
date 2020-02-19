@@ -16,19 +16,18 @@ if ($id!="Todos") {
   $data = array();
 }
 
-if(mysqli_num_rows($result) > 0)
-{
-while($row = mysqli_fetch_assoc($result))
-{
+if(mysqli_num_rows($result) > 0){
+while($row = mysqli_fetch_assoc($result)){
  $data[] = $row;
 }
-$max = sizeof($data);
-$newdata = array();
-for($i=0; $i<$max; $i++){
-  if($i>=$pagination){
-    array_push($newdata,$data[$i]);
-  }
-}
+
+ $newdata = array();
+ $aux = $pagination2-5;
+ for($i=0; $i<$pagination2; $i++){
+   if($i<$pagination2 && $i>=$aux){
+     array_push($newdata,$data[$i]);
+   }
+ }
 
 echo json_encode($newdata);
 }

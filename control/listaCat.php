@@ -6,9 +6,9 @@ $mysqli = $conexao->getConexao();
 $query = "SELECT DISTINCT categoria FROM noticias";
 $result = mysqli_query($mysqli, $query);
 $data = array();
+
 if(mysqli_num_rows($result) > 0){
-while($row = mysqli_fetch_assoc($result))
-{
+while($row = mysqli_fetch_assoc($result)){
  $data[] = $row;
 }
 $data = json_encode($data);

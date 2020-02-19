@@ -229,8 +229,10 @@ $setor = $_SESSION['setor'];
     dataType: "json",
     data:{id:<?php echo $id?>},
     success: function(data2) {
-      //var  data = JSON.stringify(data2[0].root);
+      console.log(data2);
       var  data = JSON.parse(data2[0].root);
+      //var  data = JSON.parse(data);
+      console.log(data);
     data.map(function(item,index){
     if (item.site1=="true") {
       document.getElementById("cabecalho_marketing").style.display = "block"

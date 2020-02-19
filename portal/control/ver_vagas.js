@@ -1,4 +1,5 @@
 var global_check = 0;
+
 function listaVagas2(){
   $.ajax({
     type: 'POST',
@@ -114,7 +115,6 @@ function listaVagas(){
     dataType: "json",
     success: function(data) {
       var aux = document.createElement("div");
-      aux.className = "row";
       data.map(function(item,index){
         var div = document.createElement("div");
         div.className = "col-sm-6";
@@ -157,7 +157,9 @@ function listaVagas(){
         div.appendChild(div1);
         aux.appendChild(div);
       });
-
+      aux.className = "row";
+      aux.id = "teste";
+      aux.style.width = "100% !important";
       $("#VagasAbertas").html(aux);
 
     }});
@@ -317,20 +319,43 @@ function listaCandidatos(id){
       var data1 = [];
       var aux2 = JSON.stringify(data);
     for (var i = 0; i <data.length; i++) {
+      var aux100 = JSON.parse(data[i].perfil);
+      console.log(aux100);
 
-      if (data[i].etapa=="1") {
-        var etapa = "25%";
-      }else if (data[i].etapa=="2") {
-        var etapa = "50%";
-      }else if (data[i].etapa=="3") {
-        var etapa = "75%";
-      }else if (data[i].etapa=="4") {
-        var etapa = "100%";
+      var aguia = Number(aux100[0].porcentagem);
+      var tubarao = Number(aux100[1].porcentagem);
+      var gato = Number(aux100[2].porcentagem);
+      var lobo =Number(aux100[3].porcentagem);
+
+      var perfil = "";
+      var img = "";
+      if (aguia>tubarao &&aguia>lobo &&aguia>gato){
+        perfil = "Aguia";
+        img = "../../aguia.jfif";
       }
-      data1.push({"id":data[i].id,"nome":data[i].nome,"cpf":data[i].cpf,"endereco":data[i].endereco,
+      if (tubarao>aguia &&tubarao>lobo &&tubarao>gato){
+        perfil = "Tubarão";
+        img = "../../tubarao.jpg";
+
+      }
+      if (lobo>aguia &&lobo>tubarao &&lobo>gato){
+        perfil = "Lobo";
+        img = "../../lobo.jfif";
+
+      }
+      if (gato>aguia &&gato>lobo &&gato>tubarao){
+        perfil = "Gato";
+        img = "../../gato.png";
+
+      }
+
+      var etapa = data[i].etapa+"0%";
+      data1.push({"id":data[i].id,"nome":data[i].nome,"perfil":perfil,
+      img:"<img src='"+img+"' style='width:50%'></img>",
+      "cpf":data[i].cpf,"endereco":data[i].endereco,
       "escolaridade":data[i].escolaridade,"etapa":etapa,
       "botao1":"<a style='color:white !important' class='btn btn-info fa fa-download' type='button'"
-       +"href='../curriculos/"+data[i].curriculo+"' download='curriculo "+data[i].nome+".pdf'></a>",
+       +"href='../"+data[i].curriculo+"' download='curriculo "+data[i].nome+".pdf'></a>",
        "botao2":"<button class='btn btn-warning fa fa-edit' type='button' onclick='AbrirCandidato("+data[i].id+","+aux2+")'></button>",
       "botao3":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiCandidato("+data[i].id+")'></button>"
       });
@@ -355,6 +380,8 @@ function criarTabela(data){
         columns: [
           { data: "id"},
           { data: "nome"},
+          { data: "perfil"},
+          { data: "img"},
           { data: "cpf"},
           { data: "endereco"},
           { data: "escolaridade"},
@@ -383,7 +410,7 @@ function AbrirCandidato(id,data2){
       data = data2[i];
     }
   }
-  console.log(data);
+
   $("#modaledit").modal();
   $("#TituloModalCentralizado").html(data.nome);
   $("#cpf_modal").val(data.cpf);
@@ -395,29 +422,67 @@ function AbrirCandidato(id,data2){
 
   global_check = data.etapa;
   if (data.etapa=="1") {
-    document.getElementById("barra_prog").ariaValuenow ="25";
-    document.getElementById("barra_prog").style.width ="25%";
+    document.getElementById("barra_prog").ariaValuenow ="10";
+    document.getElementById("barra_prog").style.width ="10%";
     document.getElementById("barra_prog").className ="progress-bar progress-bar-danger progress-bar-striped";
-    $("#barra_prog").html("&nbsp;25% de Progresso");
-    $("#inlineRadio").click();
+    $("#barra_prog").html("&nbsp;10% de Progresso");
+    $("#inlineRadio1").click();
+    $("#etapa").val("1").change();
+
   }else if (data.etapa=="2") {
+    document.getElementById("barra_prog").ariaValuenow ="20";
+    document.getElementById("barra_prog").style.width ="20%";
+    document.getElementById("barra_prog").className ="progress-bar progress-bar-danger progress-bar-striped";
+    $("#barra_prog").html("&nbsp;20% de Progresso");
+    $("#etapa").val("2").change();
+  }else if (data.etapa=="3") {
+    document.getElementById("barra_prog").ariaValuenow ="30";
+    document.getElementById("barra_prog").style.width ="30%";
+    document.getElementById("barra_prog").className ="progress-bar progress-bar-warning progress-bar-striped";
+    $("#barra_prog").html("&nbsp;30% de Progresso");
+    $("#etapa").val("3").change();
+  }else if (data.etapa=="4") {
+    document.getElementById("barra_prog").ariaValuenow ="40";
+    document.getElementById("barra_prog").style.width ="40%";
+    document.getElementById("barra_prog").className ="progress-bar progress-bar-warning progress-bar-striped";
+    $("#barra_prog").html("&nbsp;40% de Progresso");
+    $("#etapa").val("4").change();
+  }else if (data.etapa=="5") {
     document.getElementById("barra_prog").ariaValuenow ="50";
     document.getElementById("barra_prog").style.width ="50%";
     document.getElementById("barra_prog").className ="progress-bar progress-bar-warning progress-bar-striped";
     $("#barra_prog").html("&nbsp;50% de Progresso");
-    $("#inlineRadio2").click();
-  }else if (data.etapa=="3") {
-    document.getElementById("barra_prog").ariaValuenow ="75";
-    document.getElementById("barra_prog").style.width ="75%";
+    $("#etapa").val("5").change();
+  }else if (data.etapa=="6") {
+    document.getElementById("barra_prog").ariaValuenow ="60";
+    document.getElementById("barra_prog").style.width ="60%";
+    document.getElementById("barra_prog").className ="progress-bar progress-bar-warning progress-bar-striped";
+    $("#barra_prog").html("&nbsp;60% de Progresso");
+    $("#etapa").val("6").change();
+  }else if (data.etapa=="7") {
+    document.getElementById("barra_prog").ariaValuenow ="70";
+    document.getElementById("barra_prog").style.width ="70%";
     document.getElementById("barra_prog").className ="progress-bar progress-bar-info progress-bar-striped";
-    $("#barra_prog").html("&nbsp;75% de Progresso");
-    $("#inlineRadio3").click();
-  }else if (data.etapa=="4") {
+    $("#barra_prog").html("&nbsp;70% de Progresso");
+    $("#etapa").val("7").change();
+  }else if (data.etapa=="8") {
+    document.getElementById("barra_prog").ariaValuenow ="80";
+    document.getElementById("barra_prog").style.width ="80%";
+    document.getElementById("barra_prog").className ="progress-bar progress-bar-info progress-bar-striped";
+    $("#barra_prog").html("&nbsp;80% de Progresso");
+    $("#etapa").val("8").change();
+  }else if (data.etapa=="9") {
+    document.getElementById("barra_prog").ariaValuenow ="90";
+    document.getElementById("barra_prog").style.width ="90%";
+    document.getElementById("barra_prog").className ="progress-bar progress-bar-info progress-bar-striped";
+    $("#barra_prog").html("&nbsp;100% de Progresso");
+    $("#etapa").val("9").change();
+  }else if (data.etapa=="10") {
     document.getElementById("barra_prog").ariaValuenow ="100";
     document.getElementById("barra_prog").style.width ="100%";
     document.getElementById("barra_prog").className ="progress-bar progress-bar-success progress-bar-striped";
     $("#barra_prog").html("&nbsp;100% de Progresso");
-    $("#inlineRadio4").click();
+    $("#etapa").val("10").change();
   }
 }
 

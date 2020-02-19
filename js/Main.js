@@ -91,7 +91,7 @@ function produtos(){
              a2.appendChild(img6);
            }
            if (tam2>=7) {
-             var img3 = document.createElement("img");
+             var img7 = document.createElement("img");
              img7.alt = "Image";
              img7.style.maxWidth = "100%";
              img7.src = "portal/"+data[6].foto;
@@ -453,31 +453,33 @@ function noticias2(id,pagination){
         type: 'POST',
         url: "control/buscaPag.php",
         dataType: "json",
-        success: function(data) {
-          var tam = data.length;
-          var pagination = document.createElement("div");
-          pagination.className = "pagination";
-          tam = tam/5;
-          tam = Math.trunc(tam);
-          console.log(tam);
-          for (var i = 0; i < tam; i++) {
-            var ul2 = document.createElement("ul");
-            ul2.className = "d-flex flex-row align-items-center justify-content-start";
-            var li4 = document.createElement("li");
-            var a4 = document.createElement("a");
-            var aT4 = document.createTextNode("01");
-            a4.setAttribute("onclick","pagination("+i+")");
+        success: function(data3) {
+          var tam3 = data3.length;
+          var pagination3 = document.createElement("div");
+          pagination3.className = "pagination";
+          tam3 = tam3/5;
+          tam3 = Math.ceil(tam3);
+          console.log(tam3);
+          for (var i = 0; i < tam3; i++) {
+            var ul23 = document.createElement("ul");
+            ul23.className = "d-flex flex-row align-items-center justify-content-start";
+            var li43 = document.createElement("li");
+            var a43 = document.createElement("a");
             var j = i+1;
+            var aT43 = document.createTextNode(j);
+            a43.setAttribute("onclick","pagination("+i+")");
             if (j==pagination) {
-              a4.className = "active";
+              a43.className = "active";
+              a43.style.background = "#f91d81 !important";
+
             }
-            a4.appendChild(aT4);
-            li4.appendChild(a4);
-            ul2.appendChild(li4);
-            pagination.appendChild(ul2);
+            a43.appendChild(aT43);
+            li43.appendChild(a43);
+            ul23.appendChild(li43);
+            pagination3.appendChild(ul23);
           }
           /////////////////////////////////////////////
-          noticias.appendChild(pagination);
+          noticias.appendChild(pagination3);
           $("#painel_Noticias").html(noticias);
 
         }});

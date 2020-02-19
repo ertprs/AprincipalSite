@@ -93,6 +93,8 @@
                                                   <tr>
                                                     <td>Id</td>
                                                     <td>Nome</td>
+                                                    <td>Perfil</td>
+                                                    <td>Imagem</td>
                                                     <td>CPF</td>
                                                     <td>Endereço</td>
                                                     <td>Escolaridade</td>
@@ -162,24 +164,64 @@
                   </div>
                 </div>
                 <div class="form-row" style="margin:20px">
+                  <div class="col-12">
+										<label data-error="wrong" data-success="right" for="etapa">Fase No Processo</label>
+											<select  id="etapa" class="form-control" onchange="Captura(this.value)">
+                        <option value="0"></option>
+												<option value="1">Candidatura</option>
+												<option value="2">Triagem de Curriculo</option>
+									      <option value="3">Teste Psicológicos</option>
+												<option value="4">Prova de Conhecimento</option>
+									      <option value="5">Dinamica de Grupo</option>
+												<option value="6">Entrevista Dirigida</option>
+                        <option value="7">Entrevista Livre</option>
+                        <option value="8">Apresentação ao Gestor</option>
+                        <option value="9">Exames Admissionais</option>
+                        <option value="10">Contratação</option>
+									    </select>
+									</div>
                   <input  type="hidden" id="id_can">
                   <input  type="hidden" id="id_vaga">
-                  <div class="form-check form-check-inline">
-                    <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" value="1">
-                    <label class="form-check-label" for="inlineRadio1">Enviou Curriculo</label>
+                  <!-- <div class="form-check form-check-inline">
+                    <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
+                    <label class="form-check-label" for="inlineRadio1">Candidatura</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
-                    <label class="form-check-label" for="inlineRadio2">Avaliamos Curriculo</label>
+                    <label class="form-check-label" for="inlineRadio2">Triagem de Curriculo</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3">
-                    <label class="form-check-label" for="inlineRadio3">Fez Entrevista</label>
+                    <label class="form-check-label" for="inlineRadio3">Teste Psicológicos</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4">
-                    <label class="form-check-label" for="inlineRadio4">Aprovado</label>
+                    <label class="form-check-label" for="inlineRadio4">Prova de Conhecimento</label>
                   </div>
+                  <div class="form-check form-check-inline">
+                    <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5">
+                    <label class="form-check-label" for="inlineRadio5">Dinamica de Grupo</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="6">
+                    <label class="form-check-label" for="inlineRadio6">Entrevista Dirigida</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="7">
+                    <label class="form-check-label" for="inlineRadio7">Entrevista Livre</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="8">
+                    <label class="form-check-label" for="inlineRadio8">Apresentação ao Gestor</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="9">
+                    <label class="form-check-label" for="inlineRadio9">Exames Admissionais</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input onchange="Captura(this.value)" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio10" value="10">
+                    <label class="form-check-label" for="inlineRadio10">Contratação</label>
+                  </div>-->
                 </div>
               </div>
               <div class="modal-footer">

@@ -4,7 +4,7 @@ include_once 'connect.php';
 $conexao = new Conexao();
 $mysqli = $conexao->getConexao();
 
-$query = "SELECT * FROM noticias order by id desc limit 6";
+$query = "SELECT * FROM noticias order by id desc limit 3";
 $result = mysqli_query($mysqli, $query);
 $data = array();
 

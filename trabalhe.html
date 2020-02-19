@@ -132,23 +132,30 @@
 									<form class="form-row"  style="margin:20px" id="candidato_forms">
 									<div class="col-6">
 										<label data-error="wrong" data-success="right" for="nome_modal">Nome</label>
-										<input type="text" id="nome_modal" class="form-control validate"></input>
+										<input type="text" id="nome_modal" class="form-control validate" required></input>
 									</div>
 									<div class="col-6">
 										<label data-error="wrong" data-success="right" for="cpf_modal2">CPF</label>
-										<input type="text"  id="cpf_modal2" class="form-control validate"></input>
+										<input type="text"  id="cpf_modal2" class="form-control validate" required></input>
 									</div>
 									<div class="col-6">
 										<label data-error="wrong" data-success="right" for="endereco_modal">Endereço</label>
-										<input type="text" id="endereco_modal" class="form-control validate"></input>
+										<input type="text" id="endereco_modal" class="form-control validate" required></input>
 									</div>
 									<div class="col-6">
 										<label data-error="wrong" data-success="right" for="escolaridade_modal">Escolaridade</label>
-										<input type="text" id="escolaridade_modal" class="form-control validate"></input>
+											<select  id="escolaridade_modal" class="form-control">
+												<option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
+												<option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
+									      <option value="Ensino Medio Incompleto">Ensino Medio Incompleto</option>
+												<option value="Ensino Medio Completo">Ensino Medio Completo</option>
+									      <option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>
+												<option value="Ensino Superior Completo">Ensino Superior Completo</option>
+									    </select>
 									</div>
 									<div class="col-6">
 										<label data-error="wrong" data-success="right" for="email">E-mail</label>
-										<input type="text" id="email" class="form-control validate"></input>
+										<input type="text" id="email" class="form-control validate" required></input>
 									</div>
 									<div class="col-6">
 										<label data-error="wrong" data-success="right" for="curriculo_modal">Curriculo em PDF - Max 4MB</label>
@@ -156,9 +163,9 @@
 									</div>
 									<input type="hidden" name="curriculo_modal2" id="curriculo_modal2" />
 								</form>
-								
+
 								<input type="hidden" id="inputaux2"></input>
-								<a class="btn btn-primary btn_vagas" onclick="inscreva2()" style="cursor: pointer;margin-left:20px">Enviar Candidatura</a>
+								<a class="btn btn-primary btn_vagas" onclick="inscreva2()" style="cursor: pointer;margin-left:20px">Proxima Etapa</a>
 								</div>
 							</div>
 						</div>
