@@ -215,8 +215,10 @@ function inscreva3(resposta){
   var endereco_modal = document.getElementById("endereco_modal").value;
   var escolaridade_modal = document.getElementById("escolaridade_modal").value;
   var curriculo = document.getElementById("curriculo_modal2").value;
+  var telefone = document.getElementById("telefone").value;
+  var cidade = document.getElementById("cidade").value;
   var email = document.getElementById("email").value;
-  if (nome_modal==""||cpf_modal2==""||endereco_modal==""||escolaridade_modal==""||email=="") {
+  if (telefone==""||nome_modal==""||cpf_modal2==""||endereco_modal==""||escolaridade_modal==""||email=="") {
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -246,21 +248,23 @@ function inscreva3(resposta){
         url: "portal/control/salvaCandidato.php",
         dataType: "json",
         data:{id:id,nome:nome_modal,cpf:cpf_modal2,endereco:endereco_modal,
-        escolaridade:escolaridade_modal,curriculo:curriculo,email:email,res:resposta},
+        escolaridade:escolaridade_modal,curriculo:curriculo,email:email,res:resposta,cidade:cidade,telefone:telefone},
         success: function(data) {
           if (data == "1") {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 2000
-              })
+            Swal.fire({
+            title: 'Candidatura Feita Com Sucesso. Aguarde Contato?',
+            type: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim!'
+          }).then((result) => {
+              if (result.value) {
+                window.location.reload();
+              }
+          })
 
-              Toast.fire({
-                type: 'success',
-                title: 'Candidatura Feita Com Sucesso. Aguarde Contato'
-              })
-              window.location.reload();
+
           } else {
             const Toast = Swal.mixin({
                 toast: true,
@@ -283,8 +287,10 @@ function inscreva2(){
   var endereco_modal = document.getElementById("endereco_modal").value;
   var escolaridade_modal = document.getElementById("escolaridade_modal").value;
   var curriculo = document.getElementById("curriculo_modal2").value;
+  var telefone = document.getElementById("telefone").value;
+  var cidade = document.getElementById("cidade").value;
   var email = document.getElementById("email").value;
-  if (nome_modal==""||cpf_modal2==""||endereco_modal==""||escolaridade_modal==""||email=="") {
+  if (telefone==""||nome_modal==""||cpf_modal2==""||endereco_modal==""||escolaridade_modal==""||email=="") {
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -297,13 +303,39 @@ function inscreva2(){
         title: 'Preencha Todos Os Campos'
       })
   }else {
+    var id = document.getElementById("inputaux").value;
+    id = JSON.parse(id);
+    id = id.id;
     $.ajax({
-      url: "portal/control/BuscaQuestions.php",
+      url: "portal/control/buscaCandidato.php",
       type: "POST",
       dataType: "json",
+      data:{id:id,cpf:cpf_modal2},
       success: function(data) {
-          aux2(data[0].perguntas);
-        }});
+
+        if (data!="0") {
+          const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 10000
+            })
+            Toast.fire({
+              type: 'error',
+              title: 'Você Já Se Candidatou Para Esse Cargo'
+            })
+        }else {
+          $.ajax({
+            url: "portal/control/BuscaQuestions.php",
+            type: "POST",
+            dataType: "json",
+            success: function(data) {
+                aux2(data[0].perguntas);
+            }});
+        }
+      }});
+
+
   }
 
 }
@@ -336,6 +368,8 @@ var value = 0;
                           text: data[j].titulo,
                           input: 'radio',
                           width:900,
+                          allowOutsideClick: false,
+                          allowEscapeKey: false,
                           inputOptions: inputOptions,
                           inputValidator: (value) => {
                             if (!value) {
@@ -363,6 +397,8 @@ var value = 0;
                           text: data[j].titulo,
                           input: 'radio',
                           width:900,
+                          allowOutsideClick: false,
+                          allowEscapeKey: false,
                           inputOptions: inputOptions,
                           inputValidator: (value) => {
                             if (!value) {
@@ -390,6 +426,8 @@ var value = 0;
                           text: data[j].titulo,
                           input: 'radio',
                           width:900,
+                          allowOutsideClick: false,
+                          allowEscapeKey: false,
                           inputOptions: inputOptions,
                           inputValidator: (value) => {
                             if (!value) {
@@ -417,6 +455,8 @@ var value = 0;
                           text: data[j].titulo,
                           input: 'radio',
                           width:900,
+                          allowOutsideClick: false,
+                          allowEscapeKey: false,
                           inputOptions: inputOptions,
                           inputValidator: (value) => {
                             if (!value) {
@@ -465,6 +505,10 @@ function verificaCPF(){
 
 
     function getPDF1(element){
+
+        Swal.fire(
+          'O seu curriculo está em PDF?',
+        )
       var file = element.files[0];
       var reader = new FileReader();
       reader.onloadend = function() {

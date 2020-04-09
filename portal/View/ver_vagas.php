@@ -87,7 +87,7 @@
                                   <div style="display:block" id="menu_vaga2">
                                     <div class="card-body">
                                         <div class="basic-form">
-                                            <div id="tableColaboradores">
+                                              <h5 style="text-align:center">Tabela com Participantes e Aprovados</h5>
                                               <table id="table1" style="width:100%" class="table table-striped table-bordered" >
                                                 <thead>
                                                   <tr>
@@ -98,6 +98,7 @@
                                                     <td>CPF</td>
                                                     <td>Endereço</td>
                                                     <td>Escolaridade</td>
+                                                    <td>Status</td>
                                                     <td>Etapa</td>
                                                     <td>Curriculo</td>
                                                     <td>Abrir Progresso</td>
@@ -107,9 +108,53 @@
                                                 <tbody>
                                                 </tbody>
                                               </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                                              <br><br>
+                                        <h5 style="text-align:center">Tabela com Banco de Talentos</h5>
+
+                                          <table id="table2" style="width:100%" class="table table-striped table-bordered" >
+                                            <thead>
+                                              <tr>
+                                                <td>Id</td>
+                                                <td>Nome</td>
+                                                <td>Perfil</td>
+                                                <td>Imagem</td>
+                                                <td>CPF</td>
+                                                <td>Endereço</td>
+                                                <td>Escolaridade</td>
+                                                <td>Status</td>
+                                                <td>Etapa</td>
+                                                <td>Curriculo</td>
+                                                <td>Abrir Progresso</td>
+                                                <td>Excluir</td>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                          </table>
+                                          <br><br>
+                                    <h5 style="text-align:center">Tabela com Eliminados</h5>
+                                      <table id="table3" style="width:100%" class="table table-striped table-bordered" >
+                                        <thead>
+                                          <tr>
+                                            <td>Id</td>
+                                            <td>Nome</td>
+                                            <td>Perfil</td>
+                                            <td>Imagem</td>
+                                            <td>CPF</td>
+                                            <td>Endereço</td>
+                                            <td>Escolaridade</td>
+                                            <td>Status</td>
+                                            <td>Etapa</td>
+                                            <td>Curriculo</td>
+                                            <td>Abrir Progresso</td>
+                                            <td>Excluir</td>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
                                   </div>
                                 </div>
                                 <div class="row" id="VagasHistorico">
@@ -164,7 +209,7 @@
                   </div>
                 </div>
                 <div class="form-row" style="margin:20px">
-                  <div class="col-12">
+                  <div class="col-6">
 										<label data-error="wrong" data-success="right" for="etapa">Fase No Processo</label>
 											<select  id="etapa" class="form-control" onchange="Captura(this.value)">
                         <option value="0"></option>
@@ -178,6 +223,15 @@
                         <option value="8">Apresentação ao Gestor</option>
                         <option value="9">Exames Admissionais</option>
                         <option value="10">Contratação</option>
+									    </select>
+									</div>
+                  <div class="col-6">
+										<label data-error="wrong" data-success="right" for="etapa">Status do Participante</label>
+											<select  id="etapa2" class="form-control" onchange="Captura2(this.value)">
+                        <option value="Participando">Participando</option>
+												<option value="Eliminado">Eliminado</option>
+									      <option value="Banco de Talentos">Banco de Talentos</option>
+												<option value="Selecionado">Selecionado</option>
 									    </select>
 									</div>
                   <input  type="hidden" id="id_can">

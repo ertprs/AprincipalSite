@@ -5,56 +5,63 @@ function listacol(){
     url: "../control/listaColAcesso.php",
     dataType: "json",
     success: function(data) {
+
       var data1 = [];
       var aux2 = JSON.stringify(data);
     for (var i = 0; i <data.length; i++) {
-
+      console.log(i);
       var aux = JSON.parse(data[i].root);
+      console.log(aux);
+      if (aux==0||aux==""||aux==null||aux=="null"||aux.length == 0) {
+        var novoVetor = [];
+        novoVetor.push(" Acesso Basico");
+      }else {
+        var novoVetor = [];
+        aux.map(function(item,index){
+          if (item.site=="true") {
+            novoVetor.push("( Site )");
+          }
 
-      var novoVetor = [];
-      aux.map(function(item,index){
-        if (item.site=="true") {
-          novoVetor.push("( Site )");
-        }
+          if (item.design=="true") {
+            novoVetor.push("( Desig )");
+          }
 
-        if (item.design=="true") {
-          novoVetor.push("( Desig )");
-        }
+          if (item.landing=="true") {
+            novoVetor.push("( Landing Page )");
+          }
+          if (item.colaborador=="true") {
+            novoVetor.push("( Colaborador )");
+          }
 
-        if (item.landing=="true") {
-          novoVetor.push("( Landing Page )");
-        }
-        if (item.colaborador=="true") {
-          novoVetor.push("( Colaborador )");
-        }
+          if (item.forms=="true") {
+            novoVetor.push("( Formulario )");
+          }
 
-        if (item.forms=="true") {
-          novoVetor.push("( Formulario )");
-        }
+          if (item.vagas=="true") {
+            novoVetor.push("( Gerir Vagas )");
+          }
 
-        if (item.vagas=="true") {
-          novoVetor.push("( Gerir Vagas )");
-        }
+          if (item.material=="true") {
+            novoVetor.push("( Material EAD )");
+          }
 
-        if (item.material=="true") {
-          novoVetor.push("( Material EAD )");
-        }
+          if (item.resultados=="true") {
+            novoVetor.push("( Resultados EAD )");
+          }
+          if (item.curso=="true") {
+            novoVetor.push("( Fazer Cursos )");
+          }
 
-        if (item.resultados=="true") {
-          novoVetor.push("( Resultados EAD )");
-        }
-        if (item.curso=="true") {
-          novoVetor.push("( Fazer Cursos )");
-        }
+          if (item.config=="true") {
+            novoVetor.push("( Acesso )");
+          }
+          if (item.config1=="true") {
+            novoVetor.push("( Indicadores )");
+          }
 
-        if (item.config=="true") {
-          novoVetor.push("( Acesso )");
-        }
-        if (item.config1=="true") {
-          novoVetor.push("( Indicadores )");
-        }
+        });
+      }
 
-      });
       data1.push({"nome_completo":data[i].nome,"setor":data[i].setor,"root":novoVetor,
       "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='Acesso("+data[i].id+","+aux2+")'></button>"
       });

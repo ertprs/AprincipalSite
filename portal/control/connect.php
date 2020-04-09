@@ -1,12 +1,10 @@
 <?php
-// começar ou retomar uma sessão
-
 
 class Conexao
  {
-    // private $usuario = "aprincip_admin";
-    // private $senha = "BBMM@bbmm@123";
-    // private $caminho = "localhost";
+    // private $usuario = "aprincip_ctech";
+    // private $senha = "1pirulito*";
+    // private $caminho = "162.241.102.227";
     // private $banco = "aprincip_aprincipal";
     // private $mysqli;
     private $usuario = "root";
@@ -30,10 +28,10 @@ class Conexao
   class ConexaoPDO
   {
     public static function getConexao(){
-    define('HOST', '162.241.2.87');
-define('USUARIO', 'port5718_admin');
-define('SENHA','40028922');
-define('DB', 'port5718_Aprincipal');
+    define('HOST', 'localhost');
+define('USUARIO', 'root');
+define('SENHA','');
+define('DB', 'port5718_aprincipal');
 
       $opcoes = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8');
       $conexao = new PDO("mysql:host=".HOST."; dbname=".DB, USUARIO, SENHA, $opcoes);

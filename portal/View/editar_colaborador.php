@@ -31,6 +31,7 @@
 <body onload="Init()">
   <script>
   function Init(){
+    listaColaboradores2();
     listaColaboradores();
   }
   </script>
@@ -53,11 +54,32 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="card-title">Gerenciar Colaboradores</div>
+                                <div class="card-title">Colaboradores - RAD</div>
                                 <br>
                                 <div class="basic-form">
                                     <div id="tableColaboradores">
                                       <table id="table1" style="width:100%" class="table table-striped table-bordered" >
+                                        <thead>
+                                          <tr>
+                                            <td>Id</td>
+                                            <td>Nome</td>
+                                            <td>Setor</td>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">Colaboradores - Cadastro Interno</div>
+                                <br>
+                                <div class="basic-form">
+                                    <div>
+                                      <table id="table2" style="width:100%" class="table table-striped table-bordered" >
                                         <thead>
                                           <tr>
                                             <td>Id</td>

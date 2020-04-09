@@ -7,6 +7,8 @@
   $edital1 = $_POST["curriculo"];
   $email = $_POST["email"];
   $res = $_POST["res"];
+  $telefone = $_POST["telefone"];
+  $cidade = $_POST["cidade"];
 
      include_once 'connect.php';
      $conexao = new Conexao();
@@ -19,7 +21,8 @@
      'E','I','O','U','n','n','c','C','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_',
      '_','_','_','_' );
      $nome_do_PDF = str_replace($what, $by, $nome);
-
+     $aleatorio = rand(1,9999999999999);
+     $nome_do_PDF = $nome_do_PDF.$aleatorio;
      /////Tratamento de Arquivo de base 64 para PDF 1////////////////
      if (($edital1!=null)&&($edital1!="")) {
            $caminhoPDF = "../curriculos/";
@@ -38,8 +41,8 @@
      $etapa = "1";
      $json = json_encode($res,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 ///////////////////////////////////////////////////////////////////
-     $sql = "INSERT INTO candidatos (nome, cpf,endereco,escolaridade,curriculo,email,id_vaga,etapa,perfil)
-     VALUES ('$nome', '$cpf', '$endereco', '$escolaridade', '$filePDF1', '$email', '$id','$etapa','$json')";
+     $sql = "INSERT INTO candidatos (cidade,telefone,nome, cpf,endereco,escolaridade,curriculo,email,id_vaga,etapa,perfil)
+     VALUES ('$cidade','$telefone','$nome', '$cpf', '$endereco', '$escolaridade', '$filePDF1', '$email', '$id','$etapa','$json')";
      $status = mysqli_query($mysqli, $sql)  or die ("Erro ao buscar evento no banco. ".mysqli_error($mysqli));
        if ($status) {
          echo "1";

@@ -65,16 +65,231 @@
                         <div id="tela_geral" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
                           <br>
+                          <div class="row">
+                            <div class="col-4" id="div_chart"></div>
+                            <div class="col-4" id="div_charthorizontal"></div>
+                            <div class="col-4" id="select_geral">
+                            </div>
 
+
+                          </div><br>
+                          <h3 style="text-align: center;justify-content: center;display: flex;margin-top: 10px;color:#808080;">Matriz de Desempenho</h3>
+                          <br>
+                          <div id="matriz_desempenho_4" class="row" style="display:none;border: solid 1px #808080">
+                            <table class="table" >
+                              <tr>
+                                <th rowspan="6" style="vertical-align: middle;"><h4 class="t_vertical">Competências Técnicas</h4></th>
+                                <td  class="table_matriz" id="alto_matriz4_dash"></td>
+                                <td  class="matriz_desempenho_dash" id="m41" style="border: solid 1px;"></td>
+                                <td  class="matriz_desempenho_dash" id="m42"  style="border: solid 1px;"></td>
+                                <td  class="matriz_desempenho_dash" id="m43" style="border: solid 1px;"></td>
+                                <td  class="matriz_desempenho_dash" id="m44" style="border: solid 1px;"></td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz" id="medioalto_matriz4_dash"></td>
+                                <td class="matriz_desempenho_dash" id="m45" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m46" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m47" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m48" style="border: solid 1px;"></td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz"  id="mediobaixo_matriz4_dash"></td>
+                                <td class="matriz_desempenho_dash" id="m49" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m410" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m411" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m412" style="border: solid 1px;"></td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz" id="baixo_matriz4_dash"></td>
+                                <td class="matriz_desempenho_dash" id="m413" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m414" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m415" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m416" style="border: solid 1px;"></td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td class="table_matriz"  id="baixo_matriz4_dash1"></td>
+                                <td class="table_matriz"  id="mediobaixo_matriz4_dash1"></td>
+                                <td class="table_matriz"  id="medioalto_matriz4_dash1"></td>
+                                <td class="table_matriz"  id="alto_matriz4_dash1"></td>
+                              </tr>
+                              <tr>
+                                <th colspan="5"><h4 style="text-align: center;">Competências Comportamentais</h4></th>
+                              </tr>
+                            </table>
+                          </div>
+                          <div id="matriz_desempenho_3" class="row"  style="display:none;border: solid 1px #808080">
+                            <table class="table">
+                              <tr>
+                                <th rowspan="6"  style="vertical-align: middle;"><h4 class="t_vertical">Competências Técnicas</h4></th>
+                                <td  class="table_matriz" id="alto_matriz3_dash"></td>
+                                <td  class="matriz_desempenho_dash" id="m31" style="border: solid 1px;"></td>
+                                <td  class="matriz_desempenho_dash" id="m32" style="border: solid 1px;"></td>
+                                <td  class="matriz_desempenho_dash" id="m33" style="border: solid 1px;"></td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz" id="medio_matriz3_dash"></td>
+                                <td class="matriz_desempenho_dash" id="m34" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m35" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m36" style="border: solid 1px;"></td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz"  id="baixo_matriz3_dash"></td>
+                                <td class="matriz_desempenho_dash" id="m37" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m38" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m39" style="border: solid 1px;"></td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td class="table_matriz"  id="baixo_matriz3_dash1"></td>
+                                <td class="table_matriz"  id="medio_matriz3_dash1"></td>
+                                <td class="table_matriz"  id="alto_matriz3_dash1"></td>
+                              </tr>
+                              <tr>
+                                <th colspan="5"><h4 style="text-align: center;">Competências Comportamentais</h4></th>
+                              </tr>
+                            </table>
+                          </div>
+                          <div id="matriz_desempenho_2" class="row"  style="display:none;border: solid 1px #808080">
+                            <table class="table">
+                              <tr>
+                                <th rowspan="6"  style="vertical-align: middle;"><h4 class="t_vertical">Competências Técnicas</h4></th>
+                                <td  class="table_matriz" id="alto_matriz2_dash"></td>
+                                <td  class="matriz_desempenho_dash" id="m21" style="border: solid 1px;"></td>
+                                <td  class="matriz_desempenho_dash" id="m22" style="border: solid 1px;"></td>
+                              </tr>
+                              <tr>
+                                <td class="table_matriz"  id="baixo_matriz2_dash"></td>
+                                <td class="matriz_desempenho_dash" id="m23" style="border: solid 1px;"></td>
+                                <td class="matriz_desempenho_dash" id="m24" style="border: solid 1px;"></td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td class="table_matriz"  id="baixo_matriz2_dash1"></td>
+                                <td class="table_matriz"  id="alto_matriz2_dash1"></td>
+                              </tr>
+                              <tr>
+                                <th colspan="5"><h4 style="text-align: center;">Competências Comportamentais</h4></th>
+                              </tr>
+                            </table>
+                          </div>
+                          <div class="basic-form" style="margin-top:100px">
+                            <h3 style="text-align: center;justify-content: center;display: flex;margin-top: 10px;color:#808080;">Gestores</h3>
+                            <div id="indicadores_gestores" class="col-12">
+                              <div class="col-12" style="display:flex">
+                                <div class="basic-form" style="width:50%">
+                                  <h5 style="text-align: center;justify-content: center;display: flex;margin-top: 10px;color:#808080;">Habilidades Comportamentais</h5>
+                                  <table id="table11" style="width:100%" class="table table-striped table-bordered" >
+                                    <thead>
+                                      <tr>
+                                        <td>Id</td>
+                                        <td>Titulo</td>
+                                        <td>Media</td>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <div style="width:50%;margin-top:50px">
+                                  <canvas id="radar-chart">
+                                  </canvas>
+                                </div>
+                              </div>
+                              <div class="col-12" style="display:flex">
+                                <div class="basic-form" style="width:50%">
+                                  <h5 style="text-align: center;justify-content: center;display: flex;margin-top: 10px;color:#808080;">Habilidades Tecnicas</h5>
+                                      <table id="table22" style="width:100%" class="table table-striped table-bordered" >
+                                        <thead>
+                                          <tr>
+                                            <td>Id</td>
+                                            <td>Titulo</td>
+                                            <td>Media</td>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                      </table>
+                                </div>
+                                <div style="width:50%;margin-top:50px">
+                                  <canvas id="radar-chart2">
+                                  </canvas>
+                                </div>
+                              </div>
+                            </div>
+                            <hr style="border: solid 1px #808080; margin:50px">
+                            <h3 style="margin-top: 100px;text-align: center;justify-content: center;display: flex;margin-top: 10px;color:#808080;">Não Gestores</h3>
+                            <div id="indicadores_naogestores">
+                              <div class="col-12" style="display:flex">
+                                <div class="basic-form" style="width:50%">
+                                  <h5 style="text-align: center;justify-content: center;display: flex;margin-top: 10px;color:#808080;">Habilidades Comportamentais</h5>
+                                      <table id="table33" style="width:100%" class="table table-striped table-bordered" >
+                                        <thead>
+                                          <tr>
+                                            <td>Id</td>
+                                            <td>Titulo</td>
+                                            <td>Media</td>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                      </table>
+                                </div>
+                                <div style="width:50%;margin-top:50px">
+                                  <canvas id="radar-chart3">
+                                  </canvas>
+                                </div>
+                              </div>
+                              <div class="col-12" style="display:flex">
+                                <div class="basic-form" style="width:50%">
+                                  <h5 style="text-align: center;justify-content: center;display: flex;margin-top: 10px;color:#808080;">Habilidades Tecnicas</h5>
+                                      <table id="table44" style="width:100%" class="table table-striped table-bordered" >
+                                        <thead>
+                                          <tr>
+                                            <td>Id</td>
+                                            <td>Titulo</td>
+                                            <td>Media</td>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                      </table>
+                                </div>
+                                <div style="width:50%;margin-top:50px">
+                                  <canvas id="radar-chart4">
+                                  </canvas>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
                         </div>
                         <div id="tela_departamento" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
                           <br>
+                          <div class="col-12" style="display:flex">
+                            <div class="col-8" id="div_chart2">
+                            </div>
+                            <div class="col-4" id="select_geral2">
+                            </div>
+                          </div>
+                          <div class="col-12 row">
+                            <div class="col-12" id="div_chart3">
+                            </div>
+                            <div class="col-12" id="div_chart4">
+                            </div>
+                          </div>
+
                         </div>
                         <div id="tela_colaborador" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
                           <br>
+                          <div class="col-12" style="display:flex">
+                            <div class="col-8" id="div_chart10">
+                            </div>
+                            <div class="col-4" id="select_geral3">
+                            </div>
+                          </div>
                         </div>
                         <div id="tela_evolucao" style="display:block">
                           <hr style="border: solid 1px;color:#cec7c7">
@@ -84,28 +299,15 @@
                           <hr style="border: solid 1px;color:#cec7c7">
                           <br>
                           <div class="card-body">
-                              <div class="card-title">Criar Indicadores</div>
-                              <br>
-                              <div class="basic-form">
-                                  <form>
-                                      <div class="form-row">
-                                          <div class="form-group col-md-6">
-                                              <label>Titulo</label>
-                                              <input type="text" id="texto_indicador" class="form-control" placeholder="Insira o Texto Aqui..."></input>
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                              <label>Tipo</label>
-                                              <select id="tipo_indicador" class="form-control">
-                                              <option value="1">Competencia Comportamental Gestor</option>
-                                              <option value="2">Competencia Comportamental Não Gestor</option>
-                                              <option value="3">Competencia Tecnica Gestor</option>
-                                              <option value="4">Competencia Tecnica Não Gestor</option>
-                                            </select>
-                                          </div>
-                                      </div>
-                                      <button type="button" onclick="SalvaIndicador()" class="btn btn-info">Salvar Indicadores</button>
-                                  </form>
+                            <input type="hidden" id="id_new" class="form-control"></input>
+
+                              <div id="aleatorio">
                               </div>
+                              <div class="form-group col-md-2">
+                                <button type="button" onclick="SalvaBase()" class="btn btn-info">Criar Nova Base</button>
+                              </div>
+                              <br>
+                              <hr style="border: solid 1px;color:#cec7c7">
                           </div>
 
                           <div class="card-body">
@@ -149,6 +351,30 @@
                                   </table>
                                 </div>
                               </div>
+                          </div>
+                          <div class="basic-form">
+                              <form>
+                                  <div class="form-row">
+                                      <div class="form-group col-md-12">
+                                        <h3 style="color:#212121">Editar Base de Indicadores Selecionados</h3>
+                                      </div>
+                                      <br>
+                                      <div class="form-group col-md-6">
+                                          <label>Titulo</label>
+                                          <input type="text" id="texto_indicador" class="form-control" placeholder="Insira o Texto Aqui..."></input>
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                          <label>Tipo</label>
+                                          <select id="tipo_indicador" class="form-control">
+                                          <option value="1">Competencia Comportamental Gestor</option>
+                                          <option value="2">Competencia Comportamental Não Gestor</option>
+                                          <option value="3">Competencia Tecnica Gestor</option>
+                                          <option value="4">Competencia Tecnica Não Gestor</option>
+                                        </select>
+                                      </div>
+                                  </div>
+                                  <button type="button" onclick="SalvaIndicador()" class="btn btn-info">Salvar Indicadores</button>
+                              </form>
                           </div>
                           <hr style="border: solid 1px;color:#cec7c7">
 
@@ -200,42 +426,11 @@
                               <div class="card-body">
                                   <div style="justify-content:space-between;display:flex">
                                     <div class="card-title">Gerenciar Pesquisas de Desempenho</div>
-                                    <button type="button" onclick="InitPesquisa()" class="btn btn-info">Iniciar Pesquisa</button>
                                   </div>
-                                  <div class="basic-form">
-                                    <div id="tableFormularios">
-                                      <table id="table_forms" style="width:100%" class="table table-striped table-bordered" >
-                                        <thead>
-                                          <tr>
-                                            <td>Id</td>
-                                            <td>Indicador</td>
-                                            <td>Setores</td>
-                                            <td>Inicio</td>
-                                            <td>Fim</td>
-                                            <td>Responsavel</td>
-                                            <td>Excluir</td>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
-                              </div>
-
-                              <!-- Modal Login -->
-                              <div class="modal fade" id="modalepesquisa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header text-center">
-                                      <h4>Iniciar Pesquisa</h4>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
+                                  <div class="basic-form" id="modalepesquisa">
                                     <div class="modal-body mx-3 row" >
                                       <div class="md-form col-6" style="margin-bottom:10px">
-                                        <label data-error="wrong" data-success="right" for="defaultForm-email">Indicador</label>
+                                        <label data-error="wrong" data-success="right" for="defaultForm-email">Nome da Pesquisa</label>
                                         <input type="text" id="indicador" class="form-control validate" placeholder="descrição"></input>
                                       </div>
                                       <div class="md-form col-6" style="margin-bottom:10px">
@@ -267,13 +462,43 @@
                                           <input type="date" id="data_end" class="form-control validate" placeholder="Nome"></input>
                                         </div>
                                       </div>
+                                      <div class="col-12" id="aux99">
+
+                                      </div>
                                     </div>
+
+
+
                                     <div class="modal-footer d-flex justify-content-center">
-                                      <button class="btn btn-info" style="width:10rem" onclick="IniciarPesquisa()">Iniciar Pesquisa</button>
+                                      <button type="button" onclick="IniciarPesquisa()" class="btn btn-info">Iniciar Pesquisa</button>
                                     </div>
                                   </div>
-                                </div>
+
+                                  <br><br>
+                                  <div class="basic-form">
+                                    <div id="tableFormularios">
+                                      <table id="table_forms" style="width:100%" class="table table-striped table-bordered" >
+                                        <thead>
+                                          <tr>
+                                            <td>Id</td>
+                                            <td>Indicador</td>
+                                            <td>Base de Indicadores</td>
+                                            <td>Setores</td>
+                                            <td>Inicio</td>
+                                            <td>Fim</td>
+                                            <td>Responsavel</td>
+                                            <td>Excluir</td>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+
                               </div>
+
+
 
                         </div>
                         <div id="tela_matriz" style="display:block">
@@ -1161,6 +1386,45 @@
       </div>
     </div>
 
+    <!-- Modal Login -->
+    <div class="modal fade" id="modaledit2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title" id="TituloModalCentralizado2">Título do modal</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3" style="display:flex;justify-content:space-between">
+            <div class="col-6">
+              <label data-error="wrong" data-success="right" for="defaultForm-email">Titulo</label>
+              <input type="text" id="titulo_interno2" class="form-control validate" placeholder="Insira o Titulo Aqui..."></input>
+            </div>
+            <div class="col-6">
+              <label data-error="wrong" data-success="right" for="defaultForm-email">Texto</label>
+              <textarea type="text" id="texto_interno2" class="form-control validate" placeholder="Insira o Texto Aqui..."></textarea>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:center">
+            <button class="btn btn-info" style="width:10rem" onclick="SalvaConteudo2()">Salvar Sub Indicador</button>
+          </div>
+          <hr style="border: solid 1px;color:#cec7c7">
+          <div class="modal-body mx-3">
+            <div id="table_indicador2">
+
+            </div>
+          </div>
+
+          <input type="hidden" id="id_indicador2" class="form-control validate">
+          <div class="modal-footer d-flex justify-content-center">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     <script src="../plugins/common/common.min.js"></script>
     <script src="../js/custom.min.js"></script>
@@ -1169,6 +1433,7 @@
     <script src="../js/styleSwitcher.js"></script>
     <script src="../control/AvaliacaoDesempenho.js"></script>
     <script src="../control/AvaliacaoDesempenhoGeral.js"></script>
+    <script src="../control/AvaliacaoDesempenhoCol.js"></script>
     <script src="../control/matriz.js"></script>
     <script src="../js/sweetalert2.all.min.js"></script>
     <script src="../js/sweetalert2.all.js"></script>

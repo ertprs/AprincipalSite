@@ -213,3 +213,12 @@ input[type="checkbox"]:checked:after {
 .aux {
     max-width: 90% !important;
 }
+
+
+.matriz_desempenho_dash{
+  vertical-align: text-top !important;
+  margin: 10px !important;
+  width: 195px !important;
+  height: 120px !important;
+  color: black !important;
+}

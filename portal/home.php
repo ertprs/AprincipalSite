@@ -94,18 +94,17 @@
                         </div>
                     </div>
                 </div>
-                <hr style="border: solid 1px;color:#cec7c7">
+                <hr style="border: solid 1px;color:#cec7c7;width:60%;margin-left:20%">
                 <h3 style="color:#cec7c7;text-align:center;">Pesquisas</h3>
                 <div id="tela_dash2" style="display:flex;justify-content:center">
                 </div>
-                <hr style="border: solid 1px;color:#cec7c7">
                 <div id="tela_dash">
                 </div>
-                <hr style="border: solid 1px;color:#cec7c7">
+                <hr style="border: solid 1px;color:#cec7c7;width:60%;margin-left:20%">
                 <h3 style="color:#cec7c7;text-align:center;">Avisos</h3>
                 <div id="tela_avisos2" style="display:flex;justify-content:center">
                 </div>
-                <hr style="border: solid 1px;color:#cec7c7">
+                <hr style="border: solid 1px;color:#cec7c7;width:60%;margin-left:20%">
                 <div id="tela_avisos">
                 </div>
 
@@ -245,6 +244,12 @@
             <input id="setor_user" type="hidden" value="<?php echo $setor?>"></input>
             <!-- #/ container -->
         </div>
+
+
+
+
+
+
         <!--**********************************
             Content body end
         ***********************************-->

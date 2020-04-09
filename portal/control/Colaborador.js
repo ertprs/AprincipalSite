@@ -71,11 +71,10 @@ function SalvaColaborador(){
 }
 
 
-
-function listaColaboradores(){
+function listaColaboradores2(){
   $.ajax({
     type: 'POST',
-    url: "../control/listaColaboradores.php",
+    url: "../control/listaColaboradoresX.php",
     dataType: "json",
     success: function(data) {
       var data1 = [];
@@ -90,9 +89,24 @@ criarTabela(data1);
 				}
 			});
 }
+function listaColaboradores(){
+  $.ajax({
+    type: 'POST',
+    url: "../control/listaColaboradoresY.php",
+    dataType: "json",
+    success: function(data) {
+      var data1 = [];
+      var aux2 = JSON.stringify(data);
+    for (var i = 0; i <data.length; i++) {
+      data1.push({"id":data[i].id,"nome":data[i].nome,"setor":data[i].setor
+  });
+    }
+criarTabela5(data1);
+				}
+			});
+}
 
-function criarTabela(data){
-  console.log(data);
+function criarTabela5(data){
     var table = document.getElementById('table1');
     for(var i=0; i<data.length; i++){
       var newRow = document.createElement('tr');
@@ -102,6 +116,38 @@ function criarTabela(data){
     }
     else {
       table = $('#table1').DataTable( {
+        "scrollX": true,
+        data: data,
+        columns: [
+          { data: "id"},
+          { data: "nome"},
+          { data: "setor"},
+      ],
+        dom: 'Bfrtip',
+         buttons: [
+             'excel',
+             'pdf',
+             'copy',
+             'csv',
+             'print'
+         ],
+          select: true,
+      } );
+    }
+}
+
+
+function criarTabela(data){
+  console.log(data);
+    var table = document.getElementById('table2');
+    for(var i=0; i<data.length; i++){
+      var newRow = document.createElement('tr');
+    }
+    if ( $.fn.dataTable.isDataTable( '#table2' ) ) {
+      table = $('#table2').DataTable();
+    }
+    else {
+      table = $('#table2').DataTable( {
         "scrollX": true,
         data: data,
         columns: [
@@ -126,7 +172,7 @@ function criarTabela(data){
 
 function ExcluiColaborador(id){
   Swal.fire({
-  title: 'Deseja Ecluir?',
+  title: 'Deseja Excluir?',
   type: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',

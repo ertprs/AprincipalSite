@@ -1,10 +1,13 @@
 <?php
+if( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ) {
+    header("Location: http://www.aprincipalbb.com.br/portal/");
+}
 session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>PUMA Leilões - Login</title>
+	<title>A Principal - Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -99,6 +102,8 @@ session_start();
 	<script src="js/sweetalert2.all.js"></script>
 	<script src="js/sweetalert2.js"></script>
 	<script src="js/sweetalert2.min.js"></script>
+	<script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
+
 
 
 </body>

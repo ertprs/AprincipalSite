@@ -1,4 +1,5 @@
 var global_check = 0;
+var global_check2 = "Participando";
 
 function listaVagas2(){
   $.ajax({
@@ -50,7 +51,6 @@ function listaVagas2(){
         div.appendChild(div1);
         aux.appendChild(div);
       });
-      console.log(aux);
       $("#VagasHistorico").html(aux);
 
     }});
@@ -233,6 +233,9 @@ function verCandidatura(id){
           $("#cidadeVaga").val(data[0].cidade);
           $("#enderecoVaga").val(data[0].endereco);
           $("#benVaga").val(data[0].beneficios);
+          var table = $('#table1').DataTable();
+          table.clear().draw();
+          table.destroy();
             listaCandidatos(id);
     }});
   }, 200);
@@ -317,50 +320,75 @@ function listaCandidatos(id){
     data: {id:id},
     success: function(data) {
       var data1 = [];
+      var data2 = [];
+      var data3 = [];
       var aux2 = JSON.stringify(data);
+
     for (var i = 0; i <data.length; i++) {
-      var aux100 = JSON.parse(data[i].perfil);
-      console.log(aux100);
-
-      var aguia = Number(aux100[0].porcentagem);
-      var tubarao = Number(aux100[1].porcentagem);
-      var gato = Number(aux100[2].porcentagem);
-      var lobo =Number(aux100[3].porcentagem);
-
       var perfil = "";
       var img = "";
-      if (aguia>tubarao &&aguia>lobo &&aguia>gato){
-        perfil = "Aguia";
-        img = "../../aguia.jfif";
-      }
-      if (tubarao>aguia &&tubarao>lobo &&tubarao>gato){
-        perfil = "Tubarão";
-        img = "../../tubarao.jpg";
+      var aux100 = JSON.parse(data[i].perfil);
+      if (aux100!=null) {
+        var aguia = Number(aux100[0].porcentagem);
+        var tubarao = Number(aux100[1].porcentagem);
+        var gato = Number(aux100[2].porcentagem);
+        var lobo =Number(aux100[3].porcentagem);
+        if (aguia>tubarao &&aguia>lobo &&aguia>gato){
+          perfil = "Aguia";
+          img = "../../aguia.jfif"; }
+        if (tubarao>aguia &&tubarao>lobo &&tubarao>gato){
+          perfil = "Tubarao";
+          img = "../../tubarao.jpg"; }
+        if (lobo>aguia &&lobo>tubarao &&lobo>gato){
+          perfil = "Lobo";
+          img = "../../lobo.jfif"; }
+        if (gato>aguia &&gato>lobo &&gato>tubarao){
+          perfil = "Gato";
+          img = "../../gato.png"; }
 
       }
-      if (lobo>aguia &&lobo>tubarao &&lobo>gato){
-        perfil = "Lobo";
-        img = "../../lobo.jfif";
 
-      }
-      if (gato>aguia &&gato>lobo &&gato>tubarao){
-        perfil = "Gato";
-        img = "../../gato.png";
 
-      }
+
 
       var etapa = data[i].etapa+"0%";
-      data1.push({"id":data[i].id,"nome":data[i].nome,"perfil":perfil,
-      img:"<img src='"+img+"' style='width:50%'></img>",
-      "cpf":data[i].cpf,"endereco":data[i].endereco,
-      "escolaridade":data[i].escolaridade,"etapa":etapa,
-      "botao1":"<a style='color:white !important' class='btn btn-info fa fa-download' type='button'"
-       +"href='../"+data[i].curriculo+"' download='curriculo "+data[i].nome+".pdf'></a>",
-       "botao2":"<button class='btn btn-warning fa fa-edit' type='button' onclick='AbrirCandidato("+data[i].id+","+aux2+")'></button>",
-      "botao3":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiCandidato("+data[i].id+")'></button>"
-      });
+      if (data[i].status=="Eliminado") {
+        data3.push({"id":data[i].id,"nome":data[i].nome,"perfil":perfil,
+        img:"<img src='"+img+"' style='width:50%'></img>",
+        "cpf":data[i].cpf,"endereco":data[i].endereco,
+        "escolaridade":data[i].escolaridade,"etapa":etapa,"status":data[i].status,
+        "botao1":"<a style='color:white !important' class='btn btn-info fa fa-download' type='button'"
+         +"href='../"+data[i].curriculo+"' download='curriculo "+data[i].nome+".pdf'></a>",
+         "botao2":"<button class='btn btn-warning fa fa-edit' type='button' onclick='AbrirCandidato("+data[i].id+","+aux2+")'></button>",
+        "botao3":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiCandidato("+data[i].id+")'></button>"
+        });
+      }else if (data[i].status=="Banco de Talentos") {
+        data2.push({"id":data[i].id,"nome":data[i].nome,"perfil":perfil,
+        img:"<img src='"+img+"' style='width:50%'></img>",
+        "cpf":data[i].cpf,"endereco":data[i].endereco,
+        "escolaridade":data[i].escolaridade,"etapa":etapa,"status":data[i].status,
+        "botao1":"<a style='color:white !important' class='btn btn-info fa fa-download' type='button'"
+         +"href='../"+data[i].curriculo+"' download='curriculo "+data[i].nome+".pdf'></a>",
+         "botao2":"<button class='btn btn-warning fa fa-edit' type='button' onclick='AbrirCandidato("+data[i].id+","+aux2+")'></button>",
+        "botao3":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiCandidato("+data[i].id+")'></button>"
+        });
+      } else {
+        data1.push({"id":data[i].id,"nome":data[i].nome,"perfil":perfil,
+        img:"<img src='"+img+"' style='width:50%'></img>",
+        "cpf":data[i].cpf,"endereco":data[i].endereco,
+        "escolaridade":data[i].escolaridade,"etapa":etapa,"status":data[i].status,
+        "botao1":"<a style='color:white !important' class='btn btn-info fa fa-download' type='button'"
+         +"href='../"+data[i].curriculo+"' download='curriculo "+data[i].nome+".pdf'></a>",
+         "botao2":"<button class='btn btn-warning fa fa-edit' type='button' onclick='AbrirCandidato("+data[i].id+","+aux2+")'></button>",
+        "botao3":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiCandidato("+data[i].id+")'></button>"
+        });
+      }
+
+
     }
 criarTabela(data1);
+criarTabela2(data2);
+criarTabela3(data3);
 				}
 			});
 }
@@ -385,6 +413,47 @@ function criarTabela(data){
           { data: "cpf"},
           { data: "endereco"},
           { data: "escolaridade"},
+          { data: "status"},
+          { data: "etapa"},
+          { data: "botao1"},
+          { data: "botao2"},
+          { data: "botao3"},
+        ],
+          dom: 'Bfrtip',
+           buttons: [
+               'excel',
+               'pdf',
+               'csv'
+           ],
+            select: true,
+        } );
+
+      }
+
+  }
+
+
+function criarTabela2(data){
+    var table = document.getElementById('table2');
+    for(var i=0; i<data.length; i++){
+      var newRow = document.createElement('tr');
+    }
+    if ($.fn.dataTable.isDataTable('#table2')){
+      table = $('#table2').DataTable();
+    }
+    else {
+      table = $('#table2').DataTable( {
+        "scrollX": true,
+        data: data,
+        columns: [
+          { data: "id"},
+          { data: "nome"},
+          { data: "perfil"},
+          { data: "img"},
+          { data: "cpf"},
+          { data: "endereco"},
+          { data: "escolaridade"},
+          { data: "status"},
           { data: "etapa"},
           { data: "botao1"},
           { data: "botao2"},
@@ -394,15 +463,138 @@ function criarTabela(data){
          buttons: [
              'excel',
              'pdf',
-             'copy',
-             'csv',
-             'print'
+             'csv'
          ],
           select: true,
       } );
     }
+
+
 }
 
+
+function criarTabela3(data){
+    var table = document.getElementById('table3');
+    for(var i=0; i<data.length; i++){
+      var newRow = document.createElement('tr');
+    }
+    if ($.fn.dataTable.isDataTable('#table3')){
+      table = $('#table3').DataTable();
+    }
+    else {
+      table = $('#table3').DataTable( {
+        "scrollX": true,
+        data: data,
+        columns: [
+          { data: "id"},
+          { data: "nome"},
+          { data: "perfil"},
+          { data: "img"},
+          { data: "cpf"},
+          { data: "endereco"},
+          { data: "escolaridade"},
+          { data: "status"},
+          { data: "etapa"},
+          { data: "botao1"},
+          { data: "botao2"},
+          { data: "botao3"},
+        ],
+          dom: 'Bfrtip',
+           buttons: [
+               'excel',
+               'pdf',
+               'csv'
+           ],
+            select: true,
+        } );
+      }
+      aux22();
+  }
+
+  function aux22(){
+    var table = $('#table1').DataTable();
+    var table2 = $('#table2').DataTable();
+    var table3 = $('#table3').DataTable();
+    table.button().add( 3, {
+        action: function () {
+            mover(1);
+        },
+        text: 'Mover Varios'
+    });
+    table.button().add( 4, {
+        action: function () {
+            email(1);
+        },
+        text: 'Enviar E-mail'
+    });
+    table2.button().add( 3, {
+        action: function () {
+            mover(2);
+        },
+        text: 'Mover Varios'
+    });
+    table2.button().add( 4, {
+        action: function () {
+            email(2);
+        },
+        text: 'Enviar E-mail'
+    });
+    table3.button().add( 3, {
+        action: function () {
+            mover(3);
+        },
+        text: 'Mover Varios'
+    });
+    table3.button().add( 4, {
+        action: function () {
+            email(3);
+        },
+        text: 'Enviar E-mail'
+    });
+  }
+
+function mover(){
+  alert("Mover");
+}
+function email(table){
+  var id = document.getElementById("id_vaga").value;
+  if (table==1) {
+
+    $.ajax({
+      type: 'POST',
+      url: "../control/EnviaEmail.php",
+      dataType: "json",
+      data: {id:id,tipo:"Selecionado"},
+      success: function(data) {
+
+      }});
+
+  }else if (table==2) {
+
+        $.ajax({
+          type: 'POST',
+          url: "../control/EnviaEmail.php",
+          dataType: "json",
+          data: {id:id,tipo:"Banco de Talentos"},
+          success: function(data) {
+
+          }});
+
+
+  }else if (table==3) {
+
+        $.ajax({
+          type: 'POST',
+          url: "../control/EnviaEmail.php",
+          dataType: "json",
+          data: {id:id,tipo:"Eliminado"},
+          success: function(data) {
+
+          }});
+
+
+  }
+}
 
 function AbrirCandidato(id,data2){
   for (var i = 0; i < data2.length; i++) {
@@ -419,8 +611,9 @@ function AbrirCandidato(id,data2){
   document.getElementById("btn_cur").href = "../curriculos/"+data.curriculo;
   document.getElementById("btn_cur").download = "curriculo "+data.nome+".pdf";
   $("#id_can").val(data.id);
-
+  $("#etapa2").val(data.status).change();
   global_check = data.etapa;
+  global_check2 = data.status;
   if (data.etapa=="1") {
     document.getElementById("barra_prog").ariaValuenow ="10";
     document.getElementById("barra_prog").style.width ="10%";
@@ -489,6 +682,9 @@ function AbrirCandidato(id,data2){
 function Captura(id){
 global_check = id;
 }
+function Captura2(id){
+global_check2 = id;
+}
 
 function ExcluiCandidato(id){
   Swal.fire({
@@ -511,7 +707,7 @@ function SalvaEtapa(){
   $.ajax({
     url: "../control/SalvaEtapa.php",
     type: "POST",
-    data: {etapa:global_check,id:id},
+    data: {etapa:global_check,status:global_check2,id:id},
     success: function(data) {
       if (data == "1") {
         const Toast = Swal.mixin({
@@ -528,7 +724,7 @@ function SalvaEtapa(){
           var table = $('#table1').DataTable();
           table.clear().draw();
           table.destroy();
-          listaCandidatos(id2)
+          listaCandidatos(id2);
       } else {
         const Toast = Swal.mixin({
             toast: true,

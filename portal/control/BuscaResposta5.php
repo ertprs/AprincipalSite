@@ -1,11 +1,12 @@
 <?php
 $id = $_POST['id'];
+$respostas = $_POST['respostas'];
 
 include_once 'connect.php';
 $conexao = new Conexao();
 $mysqli = $conexao->getConexao();
 
-  $query = "SELECT * FROM indicadores";
+  $query = "SELECT * FROM indicadores where nome_indicador='$respostas'";
   $result = mysqli_query($mysqli, $query);
   $data = array();
 

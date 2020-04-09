@@ -8,6 +8,7 @@ if (index=="1") {
   document.getElementById("tela_forms").style.display = "none";
   document.getElementById("tela_matriz").style.display = "none";
   $("#tema").html("Dashboard Geral");
+  init();
 }
 if (index=="2") {
   document.getElementById("tela_geral").style.display = "none";
@@ -18,6 +19,7 @@ if (index=="2") {
   document.getElementById("tela_forms").style.display = "none";
   document.getElementById("tela_matriz").style.display = "none";
   $("#tema").html("Dashboard Departamentos");
+  init2();
 }
 if (index=="3") {
   document.getElementById("tela_geral").style.display = "none";
@@ -28,6 +30,7 @@ if (index=="3") {
   document.getElementById("tela_forms").style.display = "none";
   document.getElementById("tela_matriz").style.display = "none";
   $("#tema").html("Dashboard Colaborador");
+  init3();
 }
 if (index=="4") {
   document.getElementById("tela_geral").style.display = "none";
@@ -47,9 +50,8 @@ if (index=="5") {
   document.getElementById("tela_indicador").style.display = "block";
   document.getElementById("tela_forms").style.display = "none";
   document.getElementById("tela_matriz").style.display = "none";
-  $("#tema").html("Dashboard Indicadores");
-  listaForms();
-  listaForms2();
+  $("#tema").html("Dashboard Indicadores Padrões");
+  geraBase();
   niveis();
 }
 if (index=="6") {
@@ -61,6 +63,7 @@ if (index=="6") {
   document.getElementById("tela_forms").style.display = "block";
   document.getElementById("tela_matriz").style.display = "none";
   $("#tema").html("Dashboard Formulários");
+  geraBase2();
   Formulario();
 }
 if (index=="7") {
@@ -125,14 +128,122 @@ function SalvaIndicador(){
 }
 
 
+function geraBase(){
+  $.ajax({
+    type: 'POST',
+    url: "../control/buscaIndicadores3.php",
+    dataType: "json",
+    success: function(data) {
+      var label = document.createElement("label");
+      var labelT = document.createTextNode("Base de Indicadores");
+      label.appendChild(labelT);
+      var select = document.createElement("select");
+      select.className = "form-control";
+      select.id = "base2";
+      select.setAttribute("onclick","mudaBase(this.value)");
+      for (var i = 0; i < data.length; i++) {
+        var option = document.createElement("option");
+        option.value = data[i].indicador;
+        var optionT = document.createTextNode(data[i].nome_indicador);
+        option.appendChild(optionT);
+        select.appendChild(option);
+        var id_new = data[i].indicador;
+      }
+      id_new = Number(id_new)+1;
+      document.getElementById("id_new").value = id_new;
+      var select_base = document.createElement("div");
+      select_base.className = "form-group col-md-6";
+      select_base.id = "select_base";
+      select_base.appendChild(label);
+      select_base.appendChild(select);
+      var div = document.createElement("div");
+      div.className = "form-group col-md-6";
+      var label2 = document.createElement("label");
+      var labelT2 = document.createTextNode("Base de Indicador");
+      label2.appendChild(labelT2);
+      div.appendChild(label2);
+      var inp = document.createElement("input");
+      inp.type = "text";
+      inp.id = "base_indicador";
+      inp.className = "form-control";
+      inp.value = data[0].nome_indicador;
+      div.appendChild(inp);
+      var div2 = document.createElement("div");
+      div2.className = "form-row"
+      div2.appendChild(select_base);
+      div2.appendChild(div);
+      $("#aleatorio").html(div2);
+      //////////////////////
+      listaForms(data[0].indicador);
+      listaForms2(data[0].indicador);
+      //////////////////////
+    }});
+}
 
+function geraBase2(){
+  $.ajax({
+    type: 'POST',
+    url: "../control/buscaIndicadores3.php",
+    dataType: "json",
+    success: function(data) {
 
-function listaForms(){
+      var label = document.createElement("label");
+      var labelT = document.createTextNode("Base de Indicadores");
+      label.appendChild(labelT);
+      label.id = "id_10";
+      var select = document.createElement("select");
+      select.className = "form-control";
+      select.id = "base22";
+      for (var i = 0; i < data.length; i++) {
+        var option = document.createElement("option");
+        option.value = data[i].indicador;
+        var optionT = document.createTextNode(data[i].nome_indicador);
+        option.appendChild(optionT);
+        select.appendChild(option);
+      }
+      var div = document.createElement("div");
+      div.className="md-form col-12";
+      div.appendChild(label);
+      div.appendChild(select);
+      $("#aux99").html(div);
+    }});
+}
+
+function mudaBase(id){
+var texto = $("#base2 option:selected").text();
+document.getElementById("base_indicador").value = texto;
+listaForms(id);
+listaForms2(id);
+}
+
+function SalvaBase(){
+var titulo = document.getElementById("base_indicador").value;
+var id = document.getElementById("base2").value;
+var id_new = document.getElementById("id_new").value;
+
+$.ajax({
+  type: 'POST',
+  url: "../control/SalvaIndicador2.php",
+  dataType: "json",
+  data:{titulo:titulo,id:id,id_new:id_new},
+  success: function(data) {
+    if (data=="1") {
+      geraBase();
+    }
+  }});
+}
+
+function listaForms(id){
   $.ajax({
     type: 'POST',
     url: "../control/buscaIndicadores.php",
     dataType: "json",
+    data:{id:id},
     success: function(data) {
+
+      var table = $('#table3').DataTable();
+      table.clear().draw();
+      table.destroy();
       var data1 = [];
       for (var i = 0; i < data.length; i++) {
         if (data[i].categoria=="1"){
@@ -145,7 +256,6 @@ function listaForms(){
       var aux2 = JSON.stringify(data);
         for (var i = 0; i < data.length; i++) {
           if (data[i].categoria=="2"||data[i].categoria=="4"){
-           console.log(1);
          }else {
            data1.push({"id":data[i].id,"texto":data[i].texto,"categoria":data[i].categoria,
            "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='Edita("+data[i].id+","+aux2+")'></button>",
@@ -153,17 +263,22 @@ function listaForms(){
            });
          }
         }
+
 criarTabela(data1);
 				}
 			});
 }
 
-function listaForms2(){
+function listaForms2(id){
   $.ajax({
     type: 'POST',
     url: "../control/buscaIndicadores.php",
     dataType: "json",
+    data:{id:id},
     success: function(data) {
+      var table = $('#table5').DataTable();
+      table.clear().draw();
+      table.destroy();
       var data1 = [];
       for (var i = 0; i < data.length; i++) {
         if (data[i].categoria=="2") {
@@ -175,7 +290,6 @@ function listaForms2(){
       var aux2 = JSON.stringify(data);
         for (var i = 0; i < data.length; i++) {
           if (data[i].categoria=="1"||data[i].categoria=="3"){
-           console.log(1);
          }else {
            data1.push({"id":data[i].id,"texto":data[i].texto,"categoria":data[i].categoria,
            "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='Edita("+data[i].id+","+aux2+")'></button>",
@@ -252,6 +366,7 @@ function criarTabela_2(data){
       } );
     }
 }
+
 ///////////////////////////////////////////////////////////////////
 function Edita(id,data){
 var tipo = "";
@@ -268,7 +383,6 @@ var tipo = "";
 }
 ///////////////////////////////////////////////////////////////////
 function table_indicador(id){
-  console.log(id);
   $.ajax({
     type: 'POST',
     url: "../control/buscaIndicadores2.php",
@@ -505,7 +619,7 @@ function Formulario(){
       var aux2 = JSON.stringify(data);
         for (var i = 0; i < data.length; i++) {
          data1.push({"id":data[i].id,"indicador":data[i].indicador,"setores":data[i].setores,
-         "inicio":data[i].inicio,"fim":data[i].fim,"responsavel":data[i].responsavel,
+         "inicio":data[i].inicio,"fim":data[i].fim,"responsavel":data[i].responsavel,"respostas":data[i].respostas,
          "botao1":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiDesempenho("+data[i].id+")'></button>"
            });
 
@@ -532,6 +646,7 @@ function criarTabela5(data){
         columns: [
           { data: "id"},
           { data: "indicador"},
+          { data: "respostas"},
           { data: "setores"},
           { data: "inicio"},
           { data: "fim"},
@@ -552,28 +667,204 @@ function criarTabela5(data){
 }
 ///////////////////////////////////////////////////////////////////
 function InitPesquisa(){
-  $("#modalepesquisa").modal();
+  document.getElementById("modalepesquisa").style.display = "block";
+  $.ajax({
+    type: 'POST',
+    url: "../control/buscaDesemepenho.php",
+    dataType: "json",
+    success: function(data) {
+      var aux = JSON.stringify(data);
+      var select = document.createElement("select");
+      select.id = "filtro_indicador";
+      select.className = "form-control";
+      select.setAttribute("onchange","buscaIndicadores_antigos("+aux+")");
+
+
+      var label = document.createElement("label");
+      var labelt = document.createTextNode("Indicadores");
+      label.appendChild(labelt);
+      label.for = "filtro_indicador";
+
+      var option = document.createElement("option");
+      option.value = "SN";
+      var t = document.createTextNode("Padrão");
+      option.appendChild(t);
+      select.appendChild(option)
+
+      data.map(function(item){
+        var option = document.createElement("option");
+        option.value = item.id;
+        var t = document.createTextNode(item.indicador);
+        option.appendChild(t);
+        select.appendChild(option)
+      });
+      document.getElementById("tipos_indicadores").appendChild(label);
+      document.getElementById("tipos_indicadores").appendChild(select);
+
+    }});
+}
+function buscaIndicadores_antigos(data){
+  var table = $('#table8').DataTable();
+  var table2 = $('#table9').DataTable();
+  table.clear().draw();
+  table.destroy();
+  table2.clear().draw();
+  table2.destroy();
+
+  var id_indicador = document.getElementById("filtro_indicador").value;
+
+  if (id_indicador=="SN") {
+    console.log(1);
+  }else {
+  for (var i = 0; i < data.length; i++) {
+    if (data[i].id==id_indicador) {
+      var titulos = JSON.parse(data[i].titulos);
+      var indicadores = JSON.parse(data[i].indicadores);
+    }
+  }
+var gestor = []; var naogestor = []; var titulogestor = []; var titulonaogestor = [];
+  for (var i = 0; i < indicadores.length; i++) {
+    if (indicadores[i][0]=="1"||indicadores[i][0]=="3") {
+      gestor.push(indicadores[i]);
+    }else {
+      naogestor.push(indicadores[i]);
+    }
+  }
+  for (var i = 0; i < titulos.length; i++) {
+    if (titulos[i][1]=="1"||titulos[i][1]=="3") {
+      titulogestor.push(titulos[i]);
+    }else {
+      titulonaogestor.push(titulos[i]);
+    }
+  }
+  console.log(titulogestor);
+/////////////////
+$.ajax({
+  type: 'POST',
+  url: "../control/SalvaProvisorio.php",
+  dataType: "json",
+  data:{gestor:gestor,naogestor:naogestor,titulogestor:titulogestor,titulonaogestor:titulonaogestor},
+  success: function(data) {
+
+  }});
+var data1 = [];
+var aux2 = JSON.stringify(gestor);
+  for (var i = 0; i < titulogestor.length; i++) {
+    var aux4 = JSON.stringify(titulogestor[i][0]);
+   data1.push({"indicador":titulogestor[i][0],"setores":titulogestor[i][1],
+   "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='EditaIndicadorAntigo("+aux4+","+aux2+")'></button>",
+   "botao2":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiIndicadorAntig("+titulogestor[i][0]+")'></button>"
+     });
+  }
+criarTabelaIndicador1(data1);
+////////////////
+/////////////////
+var data2 = [];
+var aux3 = JSON.stringify(naogestor);
+  for (var i = 0; i < titulonaogestor.length; i++) {
+   data2.push({"indicador":titulonaogestor[i][0],"setores":titulonaogestor[i][1],
+   "botao1":"<button class='btn btn-info fa fa-edit' type='button' onclick='EditaIndicadorAntigo("+titulonaogestor[i][0]+","+aux3+")'></button>",
+   "botao2":"<button class='btn btn-warning fa fa-times' style='color:white' type='button' onclick='ExcluiIndicadorAntig("+titulonaogestor[i][0]+")'></button>"
+     });
+  }
+criarTabelaIndicador2(data2);
+    document.getElementById("bloco_indicadores").style.display = "flex";
+
+  }
+}
+function EditaIndicadorAntigo(titulogestor,gestor){
+console.log(titulogestor);
+  console.log("--------------");
+  console.log(gestor);
+}
+
+function criarTabelaIndicador1(data){
+    var table = document.getElementById('table8');
+    for(var i=0; i<data.length; i++){
+      var newRow = document.createElement('tr');
+    }
+    if ( $.fn.dataTable.isDataTable( '#table8' ) ) {
+      table = $('#table8').DataTable();
+    }
+    else {
+      table = $('#table8').DataTable( {
+        "scrollX": true,
+        data: data,
+        columns: [
+          { data: "indicador"},
+          { data: "setores"},
+          { data: "botao1"},
+          { data: "botao2"},
+      ],
+        dom: 'Bfrtip',
+         buttons: [
+             'excel',
+             'pdf',
+             'copy',
+             'csv',
+             'print'
+         ],
+          select: true,
+      } );
+    }
 }
 
 
+function criarTabelaIndicador2(data){
+    var table = document.getElementById('table9');
+    for(var i=0; i<data.length; i++){
+      var newRow = document.createElement('tr');
+    }
+    if ( $.fn.dataTable.isDataTable( '#table9' ) ) {
+      table = $('#table9').DataTable();
+    }
+    else {
+      table = $('#table9').DataTable( {
+        "scrollX": true,
+        data: data,
+        columns: [
+          { data: "indicador"},
+          { data: "setores"},
+          { data: "botao1"},
+          { data: "botao2"},
+      ],
+        dom: 'Bfrtip',
+         buttons: [
+             'excel',
+             'pdf',
+             'copy',
+             'csv',
+             'print'
+         ],
+          select: true,
+      } );
+    }
+}
+
+function fecha(){
+  document.getElementById("modalepesquisa").style.display = "none";
+}
 
 function IniciarPesquisa(){
   var selectedVal = $("#multiselect").val();
+  var base = $("#base22").val();
+  var baseNome = $("#base22 option:selected").text();
+
   var indicador = document.getElementById("indicador").value;
   var responsavel = document.getElementById("responsavel").value;
   var inicio2 = document.getElementById("data_init").value;
   var fim2 = document.getElementById("data_end").value;
   var fim = fim2.split("-");
   var inicio = inicio2.split("-");
-  fim = fim[2]+"/"+fim[1]+"/"+fim[0];
-  inicio = inicio[2]+"/"+inicio[1]+"/"+inicio[0];
-  
+  fim = fim[0]+"-"+fim[1]+"-"+fim[2];
+  inicio = inicio[0]+"-"+inicio[1]+"-"+inicio[2];
+
   selectedVal = JSON.stringify(selectedVal);
     $.ajax({
       url: "../control/SalvaPesquisaDesempenho.php",
       type: "POST",
       data: {indicador:indicador,responsavel:responsavel,inicio:inicio,fim:fim,
-      json:selectedVal},
+      json:selectedVal,base:base,baseNome:baseNome},
       success: function(data) {
 
         if (data == "1") {

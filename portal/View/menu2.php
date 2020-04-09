@@ -42,7 +42,7 @@ $id = $_SESSION['id'];
     <div class="nav-header">
         <div class="brand-logo">
             <a href="../home.php" style="justify-content: center;display: flex;">
-              <img class="logo_apbbmm" src="images/logo.png" alt="">
+              <img class="logo_apbbmm" src="../images/logo.png" alt="">
             </a>
         </div>
     </div>
@@ -145,6 +145,7 @@ $id = $_SESSION['id'];
                   </a>
                   <ul aria-expanded="false">
                       <li id="alanding1"   style="display:none"><a href="baby+.php">Wifi Social</a></li>
+                      <li id="alanding2"   style="display:none"><a href="pesquisa_satisfacao.php">Link de Satisfação</a></li>
                   </ul>
               </li>
               <li  id="cabecalho_rh"class="nav-label"  style="display:none">RH</li>
@@ -230,7 +231,7 @@ $id = $_SESSION['id'];
     success: function(data2) {
       //var  data = JSON.stringify(data2[0].root);
       var  data = JSON.parse(data2[0].root);
-      console.log(data);
+
       data.map(function(item,index){
       if (item.site1=="true") {
         document.getElementById("cabecalho_marketing").style.display = "block"
@@ -263,6 +264,11 @@ $id = $_SESSION['id'];
         document.getElementById("alanding").style.display = "block"
         document.getElementById("alanding1").style.display = "block"
       }
+      if (item.landing_2=="true") {
+        document.getElementById("cabecalho_marketing").style.display = "block"
+        document.getElementById("alanding").style.display = "block"
+        document.getElementById("alanding2").style.display = "block"
+      }
       if (item.colaborador1=="true") {
         document.getElementById("cabecalho_rh").style.display = "block"
         document.getElementById("acolaborador").style.display = "block"
@@ -271,7 +277,7 @@ $id = $_SESSION['id'];
       if (item.colaborador2=="true") {
         document.getElementById("cabecalho_rh").style.display = "block"
         document.getElementById("acolaborador").style.display = "block"
-        document.getElementById("acolaborador1").style.display = "block"
+        document.getElementById("acolaborador2").style.display = "block"
       }
 
       if (item.forms1=="true") {
@@ -287,7 +293,7 @@ $id = $_SESSION['id'];
       if (item.forms3=="true") {
         document.getElementById("cabecalho_rh").style.display = "block"
         document.getElementById("aforms").style.display = "block"
-        document.getElementById("aforms3").style.display = "block"
+        
       }
       if (item.forms4=="true") {
         document.getElementById("cabecalho_rh").style.display = "block"

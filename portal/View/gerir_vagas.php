@@ -7,6 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="cache-control" content="no-cache" />
+
     <title>Aprincipal Bebê e Mamãe</title>
     <!-- Favicon icon -->
     <link rel="icon" type="../image/png" sizes="16x16" href="images/favicon.png">
@@ -72,19 +74,19 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Funções</label>
-                                                <textarea type="text" id="funcoes" class="form-control" placeholder="Responsabilidades"></textarea>
+                                                <textarea rows="5" type="text" id="funcoes" class="form-control" placeholder="Responsabilidades"></textarea>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Requisitos</label>
-                                                <textarea type="text" id="requisitos" class="form-control" placeholder="Requisitos"></textarea>
+                                                <textarea rows="5" type="text" id="requisitos" class="form-control" placeholder="Requisitos"></textarea>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Beneficios</label>
-                                                <textarea type="text" id="beneficios" class="form-control" placeholder="Beneficios"></textarea>
+                                                <textarea rows="5" type="text" id="beneficios" class="form-control" placeholder="Beneficios"></textarea>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Carga Horaria Semanal</label>
-                                                <textarea type="text" id="jornada" class="form-control" placeholder="Jornada de Trabalho Semanal"></textarea>
+                                                <textarea rows="5" type="text" id="jornada" class="form-control" placeholder="Jornada de Trabalho Semanal"></textarea>
                                             </div>
                                         </div>
                                         <button type="button" onclick="SalvaVaga()" class="btn btn-primary">Cadastrar</button>
@@ -101,6 +103,7 @@
                                           <tr>
                                             <td>Id</td>
                                             <td>Nome</td>
+                                            <td>Estado</td>
                                             <td>Funções</td>
                                             <td>Departamento</td>
                                             <td>Requisitos</td>
@@ -140,6 +143,57 @@
         <!--**********************************
             Footer end
         ***********************************-->
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document" style="max-width:1000px !important">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="row">
+            <div class="basic-form col-11" style="margin-left:30px" >
+                <form><input id="id_vaga" type="hidden"></input>
+                    <div class="form-row">
+                        <div class="form-group col-6" >
+                          <label data-error="wrong" data-success="right" for="nome_vaga">Nome da Vaga</label>
+                          <input type="text" id="nome_vaga" class="form-control validate">
+                        </div>
+                        <div class="col-6" id="selectModal">
+                        </div>
+                        <div class="form-group col-6" >
+                          <label data-error="wrong" data-success="right" for="funcoes_vaga">Funções</label>
+                          <textarea rows="5" type="text" id="funcoes_vaga" class="form-control validate"></textarea>
+                        </div>
+                        <div class="form-group col-6" >
+                          <label data-error="wrong" data-success="right" for="requisitos_vaga">Requisitos</label>
+                          <textarea  rows="5" type="text" id="requisitos_vaga" class="form-control validate"></textarea>
+                        </div>
+                        <div class="form-group col-6" >
+                          <label data-error="wrong" data-success="right" for="beneficios_vaga">Beneficios</label>
+                          <textarea  rows="5" type="text" id="beneficios_vaga" class="form-control validate"></textarea>
+                        </div>
+                        <div class="form-group col-6" >
+                          <label data-error="wrong" data-success="right" for="carga_vaga">Carga Horaria Semanal</label>
+                          <input type="text" id="carga_vaga" class="form-control validate">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-primary" style="width:10rem" onclick="EditaVaga()">Editar Vaga</button>
+          </div>'
+        </div>
+      </div>
     </div>
     <!--**********************************
         Main wrapper end

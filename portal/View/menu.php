@@ -146,6 +146,7 @@ $setor = $_SESSION['setor'];
                   </a>
                   <ul aria-expanded="false">
                       <li id="alanding1"   style="display:none"><a href="./View/baby+.php">Wifi Social</a></li>
+                      <li id="alanding2"   style="display:none"><a href="./View/pesquisa_satisfacao.php">Link de Satisfação</a></li>
                   </ul>
               </li>
               <li  id="cabecalho_rh"class="nav-label"  style="display:none">RH</li>
@@ -229,10 +230,9 @@ $setor = $_SESSION['setor'];
     dataType: "json",
     data:{id:<?php echo $id?>},
     success: function(data2) {
-      console.log(data2);
       var  data = JSON.parse(data2[0].root);
-      //var  data = JSON.parse(data);
-      console.log(data);
+
+
     data.map(function(item,index){
     if (item.site1=="true") {
       document.getElementById("cabecalho_marketing").style.display = "block"
@@ -265,6 +265,11 @@ $setor = $_SESSION['setor'];
       document.getElementById("alanding").style.display = "block"
       document.getElementById("alanding1").style.display = "block"
     }
+    if (item.landing_2=="true") {
+      document.getElementById("cabecalho_marketing").style.display = "block"
+      document.getElementById("alanding").style.display = "block"
+      document.getElementById("alanding2").style.display = "block"
+    }
     if (item.colaborador1=="true") {
       document.getElementById("cabecalho_rh").style.display = "block"
       document.getElementById("acolaborador").style.display = "block"
@@ -273,7 +278,7 @@ $setor = $_SESSION['setor'];
     if (item.colaborador2=="true") {
       document.getElementById("cabecalho_rh").style.display = "block"
       document.getElementById("acolaborador").style.display = "block"
-      document.getElementById("acolaborador1").style.display = "block"
+      document.getElementById("acolaborador2").style.display = "block"
     }
 
     if (item.forms1=="true") {
@@ -289,7 +294,7 @@ $setor = $_SESSION['setor'];
     if (item.forms3=="true") {
       document.getElementById("cabecalho_rh").style.display = "block"
       document.getElementById("aforms").style.display = "block"
-      document.getElementById("aforms3").style.display = "block"
+      
     }
     if (item.forms4=="true") {
       document.getElementById("cabecalho_rh").style.display = "block"

@@ -8,9 +8,10 @@ $dia = date("d");
 $mes = date("m");
 $ano = date("Y");
 
-$query = "SELECT a.id,a.id_colaborador,a.nome,a.resposta,a.id_pesquisa,a.departamento,a.resposta2,a.id_gestor, b.indicador, b.responsavel,b.inicio,b.fim,b.setores,b.perguntas,b.verifica
-FROM respostadesempenho as a INNER JOIN pesquisadesempenho as b on a.id_pesquisa = b.id where a.id_gestor='$id'";
-$result = mysqli_query($mysqli, $query);
+$query = "SELECT a.gestor,a.id,a.id_colaborador,a.nome,a.resposta,a.id_pesquisa,a.departamento,a.resposta2,a.id_gestor,
+ b.indicador, b.responsavel,b.inicio,b.fim,b.setores,b.perguntas,b.verifica FROM respostadesempenho as a,
+ pesquisadesempenho as b where a.id_gestor='$id' and a.id_pesquisa=b.id and (a.resposta2 is null)";
+$result = mysqli_query($mysqli, $query) or die ("Erro ao buscar evento no banco. ".mysqli_error($mysqli));
 $data = array();
 if(mysqli_num_rows($result) > 0){
 while($row = mysqli_fetch_assoc($result)){

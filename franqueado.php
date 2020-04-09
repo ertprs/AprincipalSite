@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Aprincipal</title>
+<title>A Principal</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Health medical template project">
@@ -45,14 +45,11 @@
 												<li><a href="duvidas.html">Duvidas Frequentes</a></li>
 												<li><a href="franqueado.php">Seja Um Fraqueado</a></li>
 												<li><a href="trabalhe.html">Trabalhe Conosco</a></li>
-												<li><a href="portal/index.php">Portal Aprincipal</a></li>
+												<li><a href="portal/index.php">Portal A Principal</a></li>
 												<li><a href="https://www.aprincipalbb.com.br/webmail">Webmail</a></li>
 											</ul>
 										</div>
-										<div class="header_top_phone">
-											<i class="fa fa-phone" aria-hidden="true"></i>
-											<span>+34 586 778 8892</span>
-										</div>
+
 									</div>
 									<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
 								</div>
@@ -108,7 +105,7 @@
 	<div class="services" id="services">
 		<div class="container">
 			<div class="row" style="display:flex;justify-content:center !important">
-				<h1 class="col-10" style="text-align:center !important">Motivos para investir em uma franquia Aprincipal Mamãe e Bebê</h1>
+				<h1 class="col-10" style="text-align:center !important">Motivos para investir em uma franquia A Principal Mamãe e Bebê</h1>
 			</div>
 			<div class="row icon_boxes_row">
 
@@ -189,7 +186,7 @@
 		<div class="container">
 			<div class="row">
 				<!-- Milestone -->
-				<div class="col-Aprincipal milestone_col">
+				<div class="col-A Principal milestone_col">
 					<div class="milestone d-flex flex-row align-items-center justify-content-start">
 						<div class="milestone_icon d-flex flex-column align-items-center justify-content-center"><img src="images/icon_7.svg" alt=""></div>
 						<div class="milestone_content">
@@ -200,7 +197,7 @@
 				</div>
 
 				<!-- Milestone -->
-				<div class="col-Aprincipal milestone_col">
+				<div class="col-A Principal milestone_col">
 					<div class="milestone d-flex flex-row align-items-center justify-content-start">
 						<div class="milestone_icon d-flex flex-column align-items-center justify-content-center"><img src="images/icon_7.svg" alt=""></div>
 						<div class="milestone_content">
@@ -211,7 +208,7 @@
 				</div>
 
 				<!-- Milestone -->
-				<div class="col-Aprincipal milestone_col">
+				<div class="col-A Principal milestone_col">
 					<div class="milestone d-flex flex-row align-items-center justify-content-start">
 						<div class="milestone_icon d-flex flex-column align-items-center justify-content-center"><img src="images/icon_7.svg" alt=""></div>
 						<div class="milestone_content">
@@ -223,7 +220,7 @@
 				</div>
 
 				<!-- Milestone -->
-				<div class="col-Aprincipal milestone_col">
+				<div class="col-A Principal milestone_col">
 					<div class="milestone d-flex flex-row align-items-center justify-content-start">
 						<div class="milestone_icon d-flex flex-column align-items-center justify-content-center"><img src="images/icon_7.svg" alt=""></div>
 						<div class="milestone_content">
@@ -234,7 +231,7 @@
 				</div>
 
 				<!-- Milestone -->
-				<div class="col-Aprincipal milestone_col">
+				<div class="col-A Principal milestone_col">
 					<div class="milestone d-flex flex-row align-items-center justify-content-start">
 						<div class="milestone_icon d-flex flex-column align-items-center justify-content-center"><img src="images/icon_7.svg" alt=""></div>
 						<div class="milestone_content">
@@ -443,18 +440,18 @@
 					<div class="col-lg-3 footer_col">
 						<div class="footer_about">
 							<div class="logo">
-								<a href="#">Aprincipal</a>
+								<a href="#">A Principal</a>
 							</div>
 							<div class="footer_social">
 								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li><a href="https://www.instagram.com/aprincipalbebe/"><i class="rodape_ fa fa-instagram" aria-hidden="true"></i></a></li>
+									<li><a href="https://www.instagram.com/Aprincipalbebe/"><i class="rodape_ fa fa-instagram" aria-hidden="true"></i></a></li>
 									<li><a href="#"><i class="rodape_ fa fa-facebook" aria-hidden="true"></i></a></li>
 									<li><a href="#"><i class="rodape_ fa fa-twitter" aria-hidden="true"></i></a></li>
 									<li><a href="#"><i class="rodape_ fa fa-linkedin" aria-hidden="true"></i></a></li>
 								</ul>
 							</div>
 							<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> Desenvolvido <i class="fa fa-heart-o" aria-hidden="true"></i> Por <a href="#" target="_blank">Aprincipal</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Desenvolvido <i class="fa fa-heart-o" aria-hidden="true"></i> Por <a href="#" target="_blank">A Principal</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </div>
 						</div>
@@ -507,14 +504,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Desen
 									<li><a href="duvidas.html">Duvidas Frequentes</a></li>
 									<li><a href="franqueado.php">Seja Um Fraqueado</a></li>
 									<li><a href="trabalhe.html">Trabalhe Conosco</a></li>
-									<li><a href="portal/index.php">Portal Aprincipal</a></li>
+									<li><a href="portal/index.php">Portal A Principal</a></li>
 									<li><a href="https://www.aprincipalbb.com.br/webmail">Webmail</a></li>
 								</ul>
 							</div>
-							<div class="footer_phone ml-lg-auto">
-								<i class="fa fa-phone" aria-hidden="true"></i>
-								<span>+34 586 778 8892</span>
-							</div>
+
 						</div>
 					</div>
 				</div>
