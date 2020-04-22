@@ -4,16 +4,16 @@
 
 class Conexao
  {
-    private $usuario = "aprincip_ctech";
-    private $senha = "1pirulito*";
-    private $caminho = "162.241.102.227";
-    private $banco = "aprincip_aprincipal";
-    private $mysqli;
-    // private $usuario = "root";
-    // private $senha = "";
-    // private $caminho = "localhost";
-    // private $banco = "port5718_aprincipal";
+    // private $usuario = "aprincip_ctech";
+    // private $senha = "1pirulito*";
+    // private $caminho = "162.241.102.227";
+    // private $banco = "aprincip_aprincipal";
     // private $mysqli;
+    private $usuario = "root";
+    private $senha = "";
+    private $caminho = "localhost";
+    private $banco = "port5718_aprincipal";
+    private $mysqli;
 
    function __construct()
    {

@@ -180,6 +180,16 @@ $setor = $_SESSION['setor'];
                         <li id="avagas2"   style="display:none"><a href="./View/ver_vagas.php">Ver Candidaturas</a></li>
                     </ul>
                 </li>
+                <li id="cabecalho_bi" class="nav-label"  style="display:none">BI</li>
+                <li id="avendas"  style="display:none">
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-user menu-icon"></i> <span class="nav-text">Painel de Vendas</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li id="avendas1"    style="display:none"><a href="./View/bi_vendasgeral.php">Global</a></li>
+                        <li id="avendas2"   style="display:none" ><a href="./View/ecodor.php">Vendedores</a></li>
+                    </ul>
+                </li>
                 <li id="cabecalho_ead" class="nav-label"  style="display:none">EAD</li>
                 <li id="amaterial"  style="display:none">
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -294,7 +304,7 @@ $setor = $_SESSION['setor'];
     if (item.forms3=="true") {
       document.getElementById("cabecalho_rh").style.display = "block"
       document.getElementById("aforms").style.display = "block"
-      
+
     }
     if (item.forms4=="true") {
       document.getElementById("cabecalho_rh").style.display = "block"
@@ -343,6 +353,16 @@ $setor = $_SESSION['setor'];
       document.getElementById("cabecalho_ead").style.display = "block"
       document.getElementById("acurso").style.display = "block"
       document.getElementById("acurso2").style.display = "block"
+    }
+    if (item.avendas1=="true") {
+      document.getElementById("cabecalho_bi").style.display = "block"
+      document.getElementById("avendas").style.display = "block"
+      document.getElementById("avendas1").style.display = "block"
+    }
+    if (item.avendas2=="true") {
+      document.getElementById("cabecalho_bi").style.display = "block"
+      document.getElementById("avendas").style.display = "block"
+      document.getElementById("avendas2").style.display = "block"
     }
     if (item.config=="true") {
 

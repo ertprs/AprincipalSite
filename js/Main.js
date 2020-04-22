@@ -376,10 +376,16 @@ function noticias2(id,pagination){
 
       var noticias = document.createElement("div");
       noticias.className = "news_posts";
+      console.log(data);
+      console.log("Qnt Noticias:"+data.length);
       for (var i = 0; i < data.length; i++) {
+          if(data[i]==null){
+
+          }else{
         var div1 = document.createElement("div");
         div1.className = "news_post";
         var img = document.createElement("img");
+        console.log(data[i].fotos);
         img.src = "portal/"+data[i].fotos;
         var div2 = document.createElement("div");
         div2.className = "news_post_image";
@@ -446,7 +452,7 @@ function noticias2(id,pagination){
         div3.appendChild(divButton);
         div1.appendChild(div3);
 
-        noticias.appendChild(div1);
+        noticias.appendChild(div1);}
       }
       /////////////////////////////////////////////
       $.ajax({

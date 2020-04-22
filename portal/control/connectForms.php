@@ -9,6 +9,11 @@ class Conexao
     private $caminho = "localhost";
     private $banco = "port5718_formularios";
     private $mysqli;
+   //  private $usuario = "aprincip_ctech";
+   // private $senha = "1pirulito*";
+   // private $caminho = "162.241.102.227";
+   // private $banco = "aprincip_formularios";
+   // private $mysqli;
 
    function __construct()
    {
